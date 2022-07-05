@@ -1,19 +1,25 @@
 const express = require("express");
-const routes = require("../src/routes");
+// const routes = require("../src/routes");
+// const exphbs = require("express-handlebars");
 // import sequelize connection
 const connection = require("./config/connection");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// const hbs = exphbs.create({ helpers });
+
+// app.engine("handlebars", hbs.engine);
+// app.set("view engine", "handlebars");
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(routes);
+// app.use(routes);
 
 const init = async () => {
   try {
-    await connection.sync({ force: false });
+    await connection.sync({ force: true });
 
     console.log(`[INFO]: DB connection successful`);
 
