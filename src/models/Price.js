@@ -15,6 +15,10 @@ Price.init({
   price: {
     type: DataTypes.DECIMAL(8, 2),
     allowNull: false,
+    references: {
+      model: Students,
+      key,
+    },
     validate: {
       isDecimal: true,
     },

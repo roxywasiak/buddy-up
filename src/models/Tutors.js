@@ -2,6 +2,13 @@ const { Model, DataTypes, STRING } = require("sequelize");
 
 const connection = require("../config/connection");
 
+const connection = require("../config/connection");
+// import references
+const Students = require("./Students");
+const Subjects = require("./Subjects");
+const Tutors = require("./Tutors");
+const TutorSubjects = require("./TutorSubjects");
+
 class Tutor extends Model {}
 
 Tutor.init({
@@ -41,6 +48,7 @@ Tutor.init({
   },
   calendlyLink: {
     type: DataTypes.STRING,
+    validate: { isURL: true },
     allowNull: false,
     unique: true,
   },
@@ -53,9 +61,16 @@ Tutor.init({
   price: {
     type: DataTypes.DECIMAL(8, 2),
     allowNull: false,
+    foreignKey: true,
+    references: {
+      model: Price,
+      key: "id",
+    },
+
     validate: {
       isDecimal: true,
     },
+    references,
   },
   isRemote: {
     type: DataTypes.STRING,
