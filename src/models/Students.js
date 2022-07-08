@@ -4,8 +4,9 @@ const { Model, DataTypes } = require("sequelize");
 
 const connection = require("../config/connection");
 // import hooks
+const { hashPassword } = require("../hooks");
 
-class Student extends Model {
+class Students extends Model {
   // call a method that returns
   //    id: this.id,
   //       firstName: this.firstName,
@@ -79,9 +80,12 @@ const options = {
   timestamps: true,
   underscored: false,
   freezeTableName: true,
-  modelName: "student",
+  modelName: "students",
+  hooks: {
+    beforeCreate: hashPassword,
+  },
 };
 
-Student.init(schema, options);
+Students.init(schema, options);
 
-module.exports = Student;
+module.exports = Students;
