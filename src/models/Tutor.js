@@ -5,7 +5,7 @@ const { hashPassword } = require("../hooks");
 // import references
 const Price = require("./Price");
 
-class Tutors extends Model {}
+class Tutor extends Model {}
 
 const schema = {
   id: {
@@ -85,12 +85,12 @@ const options = {
   timestamps: false,
   freezeTableName: true,
   underscored: true,
-  modelName: "Tutors",
+  modelName: "Tutor",
   hooks: {
     beforeCreate: hashPassword,
   },
 };
 
-Tutors.init(schema, options);
+Tutor.init(schema, options);
 
-module.exports = Tutors;
+module.exports = Tutor;

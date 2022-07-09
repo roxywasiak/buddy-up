@@ -2,13 +2,12 @@ const { Model, DataTypes } = require("sequelize");
 
 const connection = require("../config/connection");
 // import references
-const Students = require("./Student");
-const Subjects = require("./Subject");
-const Tutors = require("./Tutor");
-const TutorSubjects = require("./TutorSubject");
-const tutorSubjects = require("./TutorSubject");
+const Student = require("./Student");
+const Subject = require("./Subject");
+const Tutor = require("./Tutor");
+const TutorSubject = require("./TutorSubject");
 
-class Ads extends Model {}
+class Ad extends Model {}
 
 const schema = {
   id: {
@@ -21,7 +20,7 @@ const schema = {
     type: DataTypes.INTEGER,
     allowNull: true,
     references: {
-      model: Students,
+      model: Student,
       key: "id",
     },
   },
@@ -29,7 +28,7 @@ const schema = {
     type: DataTypes.INTEGER,
     allowNull: true,
     references: {
-      model: Tutors,
+      model: Tutor,
       key: "id",
     },
   },
@@ -40,7 +39,7 @@ const schema = {
       isDecimal: true,
     },
     references: {
-      model: Students,
+      model: Student,
       key: "budget",
     },
   },
@@ -52,7 +51,7 @@ const schema = {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: Subjects,
+      model: Subject,
       key: "id",
     },
   },
@@ -60,7 +59,7 @@ const schema = {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: TutorSubjects,
+      model: TutorSubject,
       key: "subjectId",
     },
   },
@@ -71,9 +70,9 @@ const options = {
   timestamps: true,
   underscored: false,
   freezeTableName: true,
-  modelName: "Ads",
+  modelName: "Ad",
 };
 
-Ads.init(schema, options);
+Ad.init(schema, options);
 
-module.exports = Ads;
+module.exports = Ad;

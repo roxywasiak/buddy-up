@@ -3,7 +3,7 @@ const { Model, DataTypes } = require("sequelize");
 const connection = require("../config/connection");
 // import referencee
 
-class Subjects extends Model {}
+class Subject extends Model {}
 
 const schema = {
   id: {
@@ -27,9 +27,9 @@ const options = {
   timestamps: false,
   freezeTableName: true,
   underscored: true,
-  modelName: "Subjects",
+  modelName: "Subject",
 };
 
-Subjects.init(schema, options);
+Subject.init(schema, options);
 
-module.exports = Subjects;
+module.exports = Subject;

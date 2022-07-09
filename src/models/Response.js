@@ -3,10 +3,11 @@ const { Model, DataTypes } = require("sequelize");
 const connection = require("../config/connection");
 // import references
 
-const Ads = require("./ads");
-const Tutors = require("./Tutor");
+const Ad = require("./ad");
+const Tutor = require("./Tutor");
+const Student = require("./Student");
 
-class Responses extends Model {}
+class Response extends Model {}
 
 const schema = {
   id: {
@@ -19,17 +20,23 @@ const schema = {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: Ads,
+      model: Ad,
       key: "id",
     },
   },
-  userId: {
+  tutorId: {
     type: DataTypes.INTEGER,
-    allowNull: false,
+    allowNull: true,
     references: {
-      model: Ads,
-      key: "subjectId",
-      model: Tutors,
+      model: Tutor,
+      key: "id",
+    },
+  },
+  studentId: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+    references: {
+      model: Student,
       key: "id",
     },
   },
@@ -47,9 +54,9 @@ const options = {
   timestamps: true,
   underscored: false,
   freezeTableName: true,
-  modelName: "Responses",
+  modelName: "Response",
 };
 
-Responses.init(schema, options);
+Response.init(schema, options);
 
-module.exports = Responses;
+module.exports = Response;

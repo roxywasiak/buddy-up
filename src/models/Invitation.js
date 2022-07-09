@@ -2,11 +2,11 @@ const { Model, DataTypes } = require("sequelize");
 
 const connection = require("../config/connection");
 // import references
-const Students = require("./Student");
-const Subjects = require("./Subject");
-const Tutors = require("./Tutor");
+const Student = require("./Student");
+const Subject = require("./Subject");
+const Tutor = require("./Tutor");
 
-class Invitations extends Model {}
+class Invitation extends Model {}
 
 const schema = {
   id: {
@@ -19,7 +19,7 @@ const schema = {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: Students,
+      model: Student,
       key: "id",
     },
   },
@@ -27,7 +27,7 @@ const schema = {
     type: DataTypes.INTEGER,
     allowNull: true,
     references: {
-      model: Students,
+      model: Student,
       key: "id",
     },
   },
@@ -35,7 +35,7 @@ const schema = {
     type: DataTypes.INTEGER,
     allowNull: true,
     references: {
-      model: Tutors,
+      model: Tutor,
       key: "id",
     },
   },
@@ -43,7 +43,7 @@ const schema = {
     type: DataTypes.INTEGER,
     allowNull: true,
     references: {
-      model: Subjects,
+      model: Subject,
       key: "id",
     },
   },
@@ -61,9 +61,9 @@ const options = {
   timestamps: true,
   underscored: false,
   freezeTableName: true,
-  modelName: "Invitations",
+  modelName: "Invitation",
 };
 
-Invitations.init(schema, options);
+Invitation.init(schema, options);
 
-module.exports = Invitations;
+module.exports = Invitation;

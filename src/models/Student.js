@@ -8,7 +8,7 @@ const { hashPassword } = require("../hooks");
 
 const Price = require("./Price");
 
-class Students extends Model {}
+class Student extends Model {}
 
 const schema = {
   id: {
@@ -79,12 +79,12 @@ const options = {
   timestamps: true,
   underscored: false,
   freezeTableName: true,
-  modelName: "Students",
+  modelName: "Student",
   hooks: {
     beforeCreate: hashPassword,
   },
 };
 
-Students.init(schema, options);
+Student.init(schema, options);
 
-module.exports = Students;
+module.exports = Student;
