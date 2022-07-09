@@ -35,6 +35,9 @@ const schema = {
   password: {
     type: DataTypes.STRING,
     allowNull: false,
+    validate: {
+      len: [8],
+    },
   },
   budget: {
     type: DataTypes.DECIMAL(10, 2),
