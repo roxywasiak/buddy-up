@@ -50,7 +50,7 @@ const options = {
   timestamps: true,
   underscored: false,
   freezeTableName: true,
-  modelName: "invitations",
+  modelName: "Invitations",
 };
 
 Invitations.init(schema, options);
