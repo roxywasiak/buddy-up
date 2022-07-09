@@ -19,3 +19,22 @@ module.exports = {
 };
 
 // associations
+Tutors.belongsToMany(TutorSubjects, {
+  through: {
+    model: Subjects,
+  },
+});
+
+TutorSubjects.belongsToMany(Tutors, {
+  through: {
+    model: Subjects,
+  },
+});
+
+Tutors.belongsToMany(Price, {
+  through: {
+    model: Subjects,
+  },
+});
+
+Subjects.belongToOne();
