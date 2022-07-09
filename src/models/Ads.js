@@ -63,7 +63,7 @@ const options = {
   timestamps: true,
   underscored: false,
   freezeTableName: true,
-  modelName: "ads",
+  modelName: "Ads",
 };
 
 Ads.init(schema, options);

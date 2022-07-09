@@ -4,6 +4,7 @@ const connection = require("../config/connection");
 // import references
 
 const Ads = require("./Ads");
+const Tutors = require("./Tutors");
 
 class Responses extends Model {}
 
@@ -46,7 +47,7 @@ const options = {
   timestamps: true,
   underscored: false,
   freezeTableName: true,
-  modelName: "responses",
+  modelName: "Responses",
 };
 
 Responses.init(schema, options);

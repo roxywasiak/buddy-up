@@ -1,43 +1,41 @@
-const { addListener } = require("nodemon");
 const { Model, DataTypes } = require("sequelize");
 
 const connection = require("../config/connection");
-// import references
-const Students = require("./Students");
-const Subjects = require("./Subjects");
-const Tutors = require("./Tutors");
-const TutorSubjects = require("./TutorSubjects");
+// import referencee
+
+const Ads = require("./Ads");
 
 class Subjects extends Model {}
 
-Subjects.init(
-  {
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true,
-      references: {
-        model: Ads,
-        foreignKey: "subjectId",
-      },
-    },
-    subjectName: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    details: {
-      type: DataTypes.STRING,
-      allowNull: false,
+const schema = {
+  id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    primaryKey: true,
+    autoIncrement: true,
+    references: {
+      model: Ads,
+      foreignKey: "subjectId",
     },
   },
-  {
-    sequelize,
-    timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: "Subjects",
-  }
-);
+  subjectName: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  details: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+};
+
+const options = {
+  sequelize: connection,
+  timestamps: false,
+  freezeTableName: true,
+  underscored: true,
+  modelName: "Subjects",
+};
+
+Subjects.init(schema, options);
 
 module.exports = Subjects;

@@ -1,17 +1,13 @@
 const { Model, DataTypes } = require("sequelize");
 
 const connection = require("../config/connection");
-
-const connection = require("../config/connection");
+const { hashPassword } = require("../hooks");
 // import references
-const Students = require("./Students");
-const Subjects = require("./Subjects");
-const Tutors = require("./Tutors");
-const TutorSubjects = require("./TutorSubjects");
+const Price = require("./Price");
 
-class Tutor extends Model {}
+class Tutors extends Model {}
 
-Tutor.init({
+const schema = {
   id: {
     type: DataTypes.INTEGER,
     allowNull: false,
@@ -66,11 +62,9 @@ Tutor.init({
       model: Price,
       key: "id",
     },
-
     validate: {
       isDecimal: true,
     },
-    references,
   },
   isRemote: {
     type: DataTypes.STRING,
@@ -84,6 +78,19 @@ Tutor.init({
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-});
+};
+
+const options = {
+  sequelize: connection,
+  timestamps: false,
+  freezeTableName: true,
+  underscored: true,
+  modelName: "Tutors",
+  hooks: {
+    beforeCreate: hashPassword,
+  },
+};
+
+Tutors.init(schema, options);
 
 module.exports = Tutors;

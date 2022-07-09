@@ -2,6 +2,8 @@ const { Model, DataTypes } = require("sequelize");
 
 const connection = require("../config/connection");
 // import references
+const Students = require("./Students");
+const Tutors = require("./Tutors");
 
 class Invitations extends Model {}
 

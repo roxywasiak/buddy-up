@@ -6,13 +6,9 @@ const connection = require("../config/connection");
 // import hooks
 const { hashPassword } = require("../hooks");
 
-class Students extends Model {
-  // call a method that returns
-  //    id: this.id,
-  //       firstName: this.firstName,
-  //       lastName: this.lastName,
-  //       email: this.email,
-}
+const Price = require("./Price");
+
+class Students extends Model {}
 
 const schema = {
   id: {
@@ -80,7 +76,7 @@ const options = {
   timestamps: true,
   underscored: false,
   freezeTableName: true,
-  modelName: "students",
+  modelName: "Students",
   hooks: {
     beforeCreate: hashPassword,
   },
