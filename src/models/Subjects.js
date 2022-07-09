@@ -3,8 +3,6 @@ const { Model, DataTypes } = require("sequelize");
 const connection = require("../config/connection");
 // import referencee
 
-const Ads = require("./Ads");
-
 class Subjects extends Model {}
 
 const schema = {
@@ -13,10 +11,6 @@ const schema = {
     allowNull: false,
     primaryKey: true,
     autoIncrement: true,
-    references: {
-      model: Ads,
-      foreignKey: "subjectId",
-    },
   },
   subjectName: {
     type: DataTypes.STRING,

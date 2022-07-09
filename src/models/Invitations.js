@@ -3,6 +3,7 @@ const { Model, DataTypes } = require("sequelize");
 const connection = require("../config/connection");
 // import references
 const Students = require("./Students");
+const Subjects = require("./Subjects");
 const Tutors = require("./Tutors");
 
 class Invitations extends Model {}
@@ -22,13 +23,27 @@ const schema = {
       key: "id",
     },
   },
-  recieverId: {
+  studentRecieverId: {
     type: DataTypes.INTEGER,
-    allowNull: false,
+    allowNull: true,
     references: {
       model: Students,
       key: "id",
+    },
+  },
+  tutorRecieverId: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+    references: {
       model: Tutors,
+      key: "id",
+    },
+  },
+  subjectId: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+    references: {
+      model: Subjects,
       key: "id",
     },
   },
@@ -38,10 +53,6 @@ const schema = {
     validate: {
       isUrl: true,
     },
-  },
-  isTutor: {
-    type: DataTypes.BOOLEAN,
-    defaultValue: false,
   },
 };
 

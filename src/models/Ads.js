@@ -5,6 +5,7 @@ const connection = require("../config/connection");
 const Students = require("./Students");
 const Subjects = require("./Subjects");
 const Tutors = require("./Tutors");
+const TutorSubjects = require("./TutorSubjects");
 const tutorSubjects = require("./TutorSubjects");
 
 class Ads extends Model {}
@@ -16,12 +17,18 @@ const schema = {
     autoIncrement: true,
     allowNull: false,
   },
-  userId: {
+  studentId: {
     type: DataTypes.INTEGER,
-    allowNull: false,
+    allowNull: true,
     references: {
       model: Students,
       key: "id",
+    },
+  },
+  tutorId: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+    references: {
       model: Tutors,
       key: "id",
     },
@@ -41,18 +48,19 @@ const schema = {
     type: DataTypes.TEXT,
     allowNull: false,
   },
-  isTutor: {
-    type: DataTypes.BOOLEAN,
-    defaultValue: false,
-  },
-
   subjectId: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
       model: Subjects,
       key: "id",
-      model: tutorSubjects,
+    },
+  },
+  tutorSubjectId: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+      model: TutorSubjects,
       key: "subjectId",
     },
   },
