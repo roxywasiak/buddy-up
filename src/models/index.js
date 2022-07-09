@@ -24,7 +24,27 @@ Tutors.belongsToMany(Students, {
   foreignKey: "senderId",
 });
 
-Tutors.belongsToMany(TutorSubjects, {
+Students.belongsToMany(Tutors, {
+  through: Invitations,
+  foreignKey: "senderId",
+});
+
+Tutors.belongsToMany(Subjects, {
+  through: Ads,
+  foreignKey: "subjectId",
+});
+
+Subjects.belongsToMany(Tutors, {
+  through: Ads,
+  foreignKey: "subjectId",
+});
+
+Students.belongsToMany(Subjects, {
+  through: Ads,
+  foreignKey: "subjectId",
+});
+
+Subjects.belongsToMany(Students, {
   through: Ads,
   foreignKey: "subjectId",
 });
@@ -38,7 +58,7 @@ Price.belongsTo(Students, {
   foreignKey: "budget",
   onDelete: "CASCADE",
 });
-
+// INVITATIONS RELATIONSHIP JUNCTION TABLE
 Students.belongsToMany(Tutors, {
   through: Invitations,
   foreignKey: "tutorRecieverId",
@@ -122,6 +142,31 @@ Tutors.belongsToMany(Subjects, {
   through: {
     model: TutorSubjects,
   },
+});
+
+// RESPONSES RELAIONSHIP
+Ads.belongsToMany(Tutors, {
+  through: {
+    model: Responses,
+  },
+  foreignKey: "addId",
+});
+
+Tutors.belongsToMany(Ads, {
+  through: {
+    model: Responses,
+  },
+  foreignKey: "addId",
+});
+
+Responses.hasMany(Tutors, {
+  foreignKey: userId,
+  onDelete: "CASCADES",
+});
+
+Tutors.belongsTo(Responses, {
+  foreignKey: userId,
+  onDelete: "CASCADES",
 });
 
 module.exports = {
