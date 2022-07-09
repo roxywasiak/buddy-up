@@ -2,8 +2,8 @@ const { Model, DataTypes } = require("sequelize");
 
 const connection = require("../config/connection");
 
-const Subjects = require("./Subjects");
-const Tutors = require("./Tutors");
+const Subjects = require("./Subject");
+const Tutors = require("./Tutor");
 
 class TutorSubjects extends Model {}
 

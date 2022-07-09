@@ -3,8 +3,8 @@ const { Model, DataTypes } = require("sequelize");
 const connection = require("../config/connection");
 // import references
 
-const Ads = require("./Ads");
-const Tutors = require("./Tutors");
+const Ads = require("./ads");
+const Tutors = require("./Tutor");
 
 class Responses extends Model {}
 
