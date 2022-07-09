@@ -1,11 +1,11 @@
 const Ads = require("./Ads");
-const Invitations = require("./invitations");
+const Invitations = require("./Invitation");
 const Price = require("./Price");
-const Responses = require("./Responses");
-const Students = require("./Students");
-const Subjects = require("./Subjects");
-const Tutors = require("./Tutors");
-const TutorSubjects = require("./TutorSubjects");
+const Responses = require("./Response");
+const Students = require("./Student");
+const Subjects = require("./Subject");
+const Tutors = require("./Tutor");
+const TutorSubjects = require("./TutorSubject");
 
 // associations
 
