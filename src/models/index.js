@@ -8,13 +8,13 @@ const Tutors = require("./Tutors");
 const TutorSubjects = require("./TutorSubjects");
 
 // associations
-Tutors.belongsToMany(Subjects, {
-  through: {
-    model: TutorSubjects,
-  },
-});
 
 Tutors.hasMany(Price, {
+  foreignKey: "price",
+  onDelete: "CASCADE",
+});
+
+Price.belongsTo(Tutors, {
   foreignKey: "price",
   onDelete: "CASCADE",
 });
@@ -24,18 +24,17 @@ Tutors.belongsToMany(Students, {
   foreignKey: "senderId",
 });
 
-Tutors.hasMany(Ads, {
-  foreignKey: "tutorId",
+Tutors.belongsToMany(TutorSubjects, {
+  through: Ads,
+  foreignKey: "subjectId",
+});
+
+Students.hasMany(Price, {
+  foreignKey: "budget",
   onDelete: "CASCADE",
 });
 
-Tutors.belongsToMany(TutorSubjects, {
-  through: {
-    model: Ads,
-  },
-  foreignKey: "subjectId",
-});
-Students.hasMany(Price, {
+Price.belongsTo(Students, {
   foreignKey: "budget",
   onDelete: "CASCADE",
 });
@@ -45,19 +44,36 @@ Students.belongsToMany(Tutors, {
   foreignKey: "tutorRecieverId",
 });
 
-// **
+Tutors.belongsToMany(Students, {
+  through: Invitations,
+  foreignKey: "tutorRecieverId",
+});
+
 Students.belongsToMany(Subjects, {
   through: Invitations,
   foreignKey: "studentRecieverId",
 });
 
-Students.hasMany(Subjects, {
-  through: {
-    model: Invitations,
-  },
-  foreignKey: "subjectId",
-  onDelete: "CASCADE",
+Subjects.belongsToMany(Students, {
+  through: Invitations,
+  foreignKey: "studentRecieverId",
 });
+
+// Students.hasMany(Subjects, {
+//   through: {
+//     model: Invitations,
+//   },
+//   foreignKey: "subjectId",
+//   onDelete: "CASCADE",
+// });
+
+// Students.belongsTo(Subjects, {
+//   through: {
+//     model: Invitations,
+//   },
+//   foreignKey: "subjectId",
+//   onDelete: "CASCADE",
+// });
 
 Students.belongsToMany(Subjects, {
   through: {
@@ -66,9 +82,46 @@ Students.belongsToMany(Subjects, {
   foreignKey: "id",
 });
 
+// Ads associations
+Tutors.hasMany(Ads, {
+  foreignKey: "tutorId",
+  onDelete: "CASCADE",
+});
+
+Ads.belongsTo({
+  foreignKey: "tutorId",
+  onDelete: "CASCADE",
+});
+
 Students.hasMany(Ads, {
   foreignKey: "studentId",
   onDelete: "CASCADE",
+});
+
+Ads.belongsTo(Students, {
+  foreignKey: "studentId",
+});
+
+Subjects.hasMany(Ads, {
+  foreignKey: "subjectId",
+  onDelete: "CASCADE",
+});
+
+Ads.belongsTo(Subjects, {
+  foreignKey: "subjectId",
+  onDelete: "CASCADE",
+});
+
+Subjects.belongsToMany(Tutors, {
+  through: {
+    model: TutorSubjects,
+  },
+});
+
+Tutors.belongsToMany(Subjects, {
+  through: {
+    model: TutorSubjects,
+  },
 });
 
 module.exports = {
