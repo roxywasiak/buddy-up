@@ -1,6 +1,6 @@
-const { Tutor } = require("../models");
+const { student } = require("../models");
 
-const tutorData = [
+const studentData = [
   {
     firstName: "",
     lastName: "",
@@ -9,13 +9,10 @@ const tutorData = [
     location: "",
     lat: "",
     long: "",
-    price: "",
     isRemotes: "",
-    socialMedia: "",
-    calendlyLink: "",
   },
 ];
 
-const seedCategories = () => Tutor.bulkCreate(tutorData);
+const seedCategories = () => Tutor.bulkCreate(studentData);
 
 module.exports = seedCategories;
