@@ -1,52 +1,55 @@
 const { Model, DataTypes } = require("sequelize");
 
 const connection = require("../config/connection");
+// import references
 
-const Subjects = require("./Subjects");
+const Ads = require("./Ads");
 const Tutors = require("./Tutors");
 
-class TutorSubjects extends Model {}
+class Responses extends Model {}
 
 const schema = {
   id: {
     type: DataTypes.INTEGER,
-    allowNull: false,
     primaryKey: true,
     autoIncrement: true,
+    allowNull: false,
   },
-  tutorId: {
+  adId: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    foreignKey: true,
     references: {
+      model: Ads,
+      key: "id",
+    },
+  },
+  userId: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+      model: Ads,
+      key: "subjectId",
       model: Tutors,
       key: "id",
     },
   },
-  subjectId: {
-    type: DataTypes.INTEGER,
+  status: {
+    type: Sequelize.ENUM("pending", "completed", "rejected"),
     allowNull: false,
-    foreignKey: true,
-    references: {
-      model: Subjects,
-      key: "id",
-    },
-    level: {
-      DataTypes: STRING,
-      allowNull: false,
-      foreignKey: true,
+    validate: {
+      isUrl: true,
     },
   },
 };
 
 const options = {
   sequelize: connection,
-  timestamps: false,
+  timestamps: true,
+  underscored: false,
   freezeTableName: true,
-  underscored: true,
-  modelName: "TutorSubjects",
+  modelName: "Responses",
 };
 
-TutorSubjects.init(schema, options);
+Responses.init(schema, options);
 
-module.exports = TutorSubjects;
+module.exports = Responses;

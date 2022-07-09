@@ -1,11 +1,12 @@
 const { Model, DataTypes } = require("sequelize");
-const { model } = require("../config/connection");
 
 const connection = require("../config/connection");
 
+const Students = require("./Students");
+
 class Price extends Model {}
 
-Price.init({
+const schema = {
   id: {
     type: DataTypes.INTEGER,
     allowNull: false,
@@ -17,12 +18,22 @@ Price.init({
     allowNull: false,
     references: {
       model: Students,
-      key,
+      key: "id",
     },
     validate: {
       isDecimal: true,
     },
   },
-});
+};
+
+const options = {
+  sequelize: connection,
+  timestamps: false,
+  freezeTableName: true,
+  underscored: true,
+  modelName: "Price",
+};
+
+Price.init(schema, options);
 
 module.exports = Price;
