@@ -68,12 +68,18 @@ const schema = {
     allowNull: false,
   },
   lat: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.DECIMAL(15, 8),
     allowNull: false,
+    validate: {
+      isDecimal: true,
+    },
   },
   long: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.DECIMAL(15, 8),
     allowNull: false,
+    validate: {
+      isDecimal: true,
+    },
   },
 };
 

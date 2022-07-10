@@ -18,6 +18,10 @@ const schema = {
       isDecimal: true,
     },
   },
+  budget: {
+    type: DataTypes.ENUM(["low", "medium", "high"]),
+    allowNull: true,
+  },
 };
 
 const options = {
