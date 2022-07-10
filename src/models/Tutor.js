@@ -55,15 +55,12 @@ const schema = {
   },
 
   price: {
-    type: DataTypes.DECIMAL(8, 2),
+    type: DataTypes.INTEGER,
     allowNull: false,
     foreignKey: true,
     references: {
       model: Price,
       key: "id",
-    },
-    validate: {
-      isDecimal: true,
     },
   },
   isRemote: {

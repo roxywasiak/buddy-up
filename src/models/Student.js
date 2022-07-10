@@ -40,11 +40,8 @@ const schema = {
     },
   },
   budget: {
-    type: DataTypes.DECIMAL(10, 2),
+    type: DataTypes.INTEGER,
     allowNull: false,
-    validate: {
-      isDecimal: true,
-    },
     references: {
       model: Price,
       key: "id",
