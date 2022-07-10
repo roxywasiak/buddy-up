@@ -5,7 +5,6 @@ const connection = require("../config/connection");
 const Student = require("./Student");
 const Subject = require("./Subject");
 const Tutor = require("./Tutor");
-const TutorSubject = require("./TutorSubject");
 
 class Ad extends Model {}
 
@@ -33,15 +32,8 @@ const schema = {
     },
   },
   budget: {
-    type: DataTypes.DECIMAL(10, 2),
+    type: DataTypes.INTEGER,
     allowNull: false,
-    validate: {
-      isDecimal: true,
-    },
-    references: {
-      model: Student,
-      key: "budget",
-    },
   },
   description: {
     type: DataTypes.TEXT,
@@ -53,14 +45,6 @@ const schema = {
     references: {
       model: Subject,
       key: "id",
-    },
-  },
-  tutorSubjectId: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    references: {
-      model: TutorSubject,
-      key: "subjectId",
     },
   },
 };

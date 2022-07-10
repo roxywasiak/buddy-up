@@ -31,11 +31,12 @@ const schema = {
       model: Subject,
       key: "id",
     },
-    level: {
-      DataTypes: STRING,
-      allowNull: false,
-      foreignKey: true,
-    },
+  },
+
+  level: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    foreignKey: true,
   },
 };
 

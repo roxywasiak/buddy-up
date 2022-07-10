@@ -48,7 +48,7 @@ const schema = {
     },
   },
   status: {
-    type: Sequelize.ENUM("pending", "completed", "rejected"),
+    type: DataTypes.ENUM("pending", "completed", "rejected"),
     allowNull: false,
     validate: {
       isUrl: true,
