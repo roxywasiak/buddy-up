@@ -1,52 +1,53 @@
   [ 
       
 {
-    "firstName": ,
-   "lastName":,
-    "email": ,
-    "password":,
-    "budget": ,
-    "location": ,
-    "isRemote":,
-    "lat":,
-    "long":,
+    "firstName": "Rishi",
+   "lastName": "Dev",
+    "email": "rishidev@email.com" ,
+    "password": "pass1234",
+    "budget": 1,
+    "location": "Birmingham",
+    "isRemote": true,
+    "lat": 33.518589,
+    "long": -86.810356
    },
 
    {
-    "firstName": ,
-   "lastName":,
-    "email": ,
-    "password":,
-    "budget": ,
-    "location": ,
-    "isRemote":,
-    "lat":,
-    "long":,
+    "firstName": "Claire",
+   "lastName":"Dale",
+    "email": "clairedale@email.com" ,
+    "password":"clairep",
+    "budget": 1,
+    "location": "Birmingham",
+    "isRemote": 3,
+    "lat": 33.518589,
+    "long": -86.810356
    },
 
    {
-    "firstName": ,
-   "lastName":,
-    "email": ,
-    "password":,
-    "budget": ,
-    "location": ,
-    "isRemote":,
-    "lat":,
-    "long":,
+    "firstName": "Rino",
+    "lastName":"Secreas",
+    "email":"rhino@email.com" ,
+    "password":"secreat",
+    "budget": 4 ,
+    "location": "London" ,
+    "isRemote": false,
+    "lat": 51.509865,
+    "long": -0.118092
+ 
    },
 
-   {
-    "firstName": ,
-   "lastName":,
-    "email": ,
-    "password":,
-    "budget": ,
-    "location": ,
-    "isRemote":,
-    "lat":,
-    "long":,
-   },
+  {
+    "firstName": "Sarah",
+    "lastName": "Mulley",
+    "email": "mulley@email.com",
+    "password": "passwr21",
+    "location": "Dublin",
+    "budget": 5,
+    "isRemote": false,
+    "lat": 53.349804,
+    "long": -6.26031
+  },
 
    {
     "firstName": ,
