@@ -1,0 +1,51 @@
+[
+  {
+    "subjectName": "Maths",
+    "details": "Mathematics is the science that deals with the logic of shape, quantity and arrangement.Math is all around us, in everything we do."
+  },
+
+  {
+    "subjectName": "English Literature",
+    "details": "English literature, the body of written works produced in the English language by inhabitants of the British Isles (including Ireland) from the 7th century to the present day."
+  },
+
+  {
+    "subjectName": "Journalism",
+    "details": "Journalism is the production and distribution of reports on the interaction of events, facts, ideas, and people that informs society to at least some degree."
+  },
+
+  {
+    "subjectName": "Physics",
+    "details": "Physics is the branch of science that deals with the structure of matter and how the fundamental constituents of the universe interact."
+  },
+
+  {
+    "subjectName": "Chemistry",
+    "details": "Chemistry is the scientific study of the properties and behavior of matter."
+  },
+
+  {
+    "subjectName": "Astrology",
+    "details": "The study of the movements and relative positions of celestial bodies interpreted as having an influence on human affairs."
+  },
+
+  {
+    "subjectName": "Music",
+    "details": "The art of arranging sound, learn to use the latest technology required in todays industry."
+  },
+
+  {
+    "subjectName": "Drama",
+    "details": "Learn the skills needed to Act in Films."
+  },
+
+  {
+    "subjectName": "Coding",
+    "details": "Full Stack Web Development to learn the skills needed in todays industry."
+  },
+
+  {
+    "subjectName": "Business",
+    "details": "International business studies study combines elements of accountancy, finance, marketing, organizational studies, human resource management, and operations."
+  }
+]
