@@ -1,27 +1,26 @@
 [
   {
     "studentId": 4,
-    "budget": "low",
-    "description": "I really need help with chemistry Alevel please can anyone help",
+    "budget": null,
+    "description": "I really need help with chemistry A-level please can anyone help",
     "subjectId": 3
   },
-
   {
     "studentId": 5,
     "budget": "medium",
-    "description": "I want to become a journalist in the future and I need more advanced sessions - please help!",
+    "description": "I want to become a journalist in the future and I need more advanced sessions with a tutor - please help!",
     "subjectId": 2
   },
   {
-    "tutorId": 1,
-    "budget": "high",
-    "description": "Whether its begin to advanced I can cater to all years in a wide range of musical instruments",
+    "studentId": 1,
+    "budget": null,
+    "description": "I want to study music with someone who has advanced musical instruments skills, please each out",
     "subjectId": 5
   },
   {
-    "tutorId": 7,
+    "studentId": 7,
     "budget": "low",
-    "description": "I am passionate about teaching coding to people who cannot afford the high prices of a bootcamp",
+    "description": "I am passionate about coding and want a tutor who can make me better",
     "subjectId": 6
   },
   {
@@ -29,5 +28,29 @@
     "budget": "medium",
     "description": "I need maths to meet my offer for uni but I do not think that is attainable. I would like a tutor that has experience improving their tutee's grade in a short time span. Thank you.",
     "subjectId": 1
+  },
+  {
+    "studentId": 10,
+    "budget": null,
+    "description": "I am currently studying for my chemistry exam, I need someone to study with me and keep me motivated",
+    "subjectId": 3
+  },
+  {
+    "studentId": 3,
+    "budget": null,
+    "description": "I enjoy studying chemistry and would like to study with another student",
+    "subjectId": 3
+  },
+  {
+    "studentId": 9,
+    "budget": "high",
+    "description": "I need a tutor who would push and challenge me to do well, I want to get into medicine",
+    "subjectId": 1
+  },
+  {
+    "studentId": 8,
+    "budget": "medium",
+    "description": "I want to find a tutor who is highly qualified in music",
+    "subjectId": 6
   }
 ]

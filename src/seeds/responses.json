@@ -1,1 +1,37 @@
-[]
+[
+  {
+    "adId": "3",
+    "userId": "1",
+    "status": "pending"
+  },
+  {
+    "adId": "2",
+    "userId": "4",
+    "status": "completed"
+  },
+  {
+    "adId": "5",
+    "userId": "6",
+    "status": "pending"
+  },
+  {
+    "adId": "4",
+    "userId": "3",
+    "status": "completed"
+  },
+  {
+    "adId": "7",
+    "userId": "2",
+    "status": "pending"
+  },
+  {
+    "adId": "8",
+    "userId": "2",
+    "status": "rejected"
+  },
+  {
+    "adId": "1",
+    "userId": "5",
+    "status": "completed"
+  }
+]
