@@ -22,7 +22,7 @@ const schema = {
       key: "id",
     },
   },
-  recieverId: {
+  receiverId: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {

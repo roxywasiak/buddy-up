@@ -18,7 +18,7 @@
     "password": "clairep",
     "budget": 1,
     "location": "Birmingham",
-    "isRemote": 3,
+    "isRemote": true,
     "lat": 33.518589,
     "long": -86.810356
   },
