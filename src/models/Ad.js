@@ -32,6 +32,10 @@ const schema = {
       key: "id",
     },
   },
+  isTutor: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+  },
   budgetId: {
     type: DataTypes.INTEGER,
     allowNull: true,

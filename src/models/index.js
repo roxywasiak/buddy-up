@@ -10,7 +10,7 @@ const TutorSubject = require("./TutorSubject");
 // Associations
 
 // PRICE ASSOCIATIONS
-Tutor.hasMany(Price, {
+Tutor.hasOne(Price, {
   foreignKey: "price",
   onDelete: "CASCADE",
 });
@@ -28,43 +28,6 @@ Student.hasMany(Price, {
 Price.belongsTo(Student, {
   foreignKey: "budget",
   onDelete: "CASCADE",
-});
-
-// INVITATION JUNCTION TABLE
-Student.hasMany(Invitation, {
-  foreignKey: "studentId",
-  onDelete: "CASCADE",
-});
-Invitation.belongsTo(Student, {
-  foreignKey: "studentId",
-  onDelete: "CASCADE",
-});
-
-Student.hasMany(Invitation, {
-  foreignKey: "senderId",
-  onDelete: "CASCADE",
-});
-Invitation.belongsTo(Student, {
-  foreignKey: "senderId",
-  onDelete: "CASCADE",
-});
-
-Tutor.belongsToMany(Student, {
-  through: Invitation,
-  foreignKey: "tutorRecieverId",
-});
-Student.belongsToMany(Tutor, {
-  through: Invitation,
-  foreignKey: "senderId",
-});
-
-Subject.belongsToMany(Student, {
-  through: Invitation,
-  foreignKey: "subjectId",
-});
-Student.belongsToMany(Subject, {
-  through: Invitation,
-  foreignKey: "senderId",
 });
 
 // AD JUNCTION TABLE
