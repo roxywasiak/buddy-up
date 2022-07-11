@@ -18,17 +18,9 @@ const schema = {
   },
   studentId: {
     type: DataTypes.INTEGER,
-    allowNull: true,
+    allowNull: false,
     references: {
       model: Student,
-      key: "id",
-    },
-  },
-  tutorId: {
-    type: DataTypes.INTEGER,
-    allowNull: true,
-    references: {
-      model: Tutor,
       key: "id",
     },
   },
