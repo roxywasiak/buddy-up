@@ -6,13 +6,13 @@ const tutorData = [
     lastName: "",
     email: "",
     password: "",
-    location: "",
-    lat: "",
-    long: "",
-    price: "",
-    isRemotes: "",
     socialMedia: "",
     calendlyLink: "",
+    location: "",
+    price: "",
+    isRemotes: "",
+    lat: "",
+    long: "",
   },
 ];
 
