@@ -1,0 +1,43 @@
+[
+  {
+    "tutorId": 1,
+    "subjectId": 3
+  },
+
+  {
+    "tutorId": 2,
+    "subjectId": 1
+  },
+  {
+    "tutorId": 4,
+    "subjectId": 2
+  },
+  {
+    "tutorId": 3,
+    "subjectId": 5
+  },
+  {
+    "tutorId": 5,
+    "subjectId": 3
+  },
+  {
+    "tutorId": 6,
+    "subjectId": 2
+  },
+  {
+    "tutorId": 7,
+    "subjectId": 4
+  },
+  {
+    "tutorId": 8,
+    "subjectId": 5
+  },
+  {
+    "tutorId": 9,
+    "subjectId": 3
+  },
+  {
+    "tutorId": 10,
+    "subjectId": 6
+  }
+]
