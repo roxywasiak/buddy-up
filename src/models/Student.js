@@ -1,18 +1,21 @@
+// import sequelize
+// import bcrypt
 const { Model, DataTypes } = require("sequelize");
 
 const connection = require("../config/connection");
+// import hooks
 const { hashPassword } = require("../hooks");
-// import references
+
 const Price = require("./Price");
 
-class Tutors extends Model {}
+class Student extends Model {}
 
 const schema = {
   id: {
     type: DataTypes.INTEGER,
-    allowNull: false,
     primaryKey: true,
     autoIncrement: true,
+    allowNull: false,
   },
   firstName: {
     type: DataTypes.STRING,
@@ -25,7 +28,6 @@ const schema = {
   email: {
     type: DataTypes.STRING,
     allowNull: false,
-    unique: true,
     validate: {
       isEmail: true,
     },
@@ -37,60 +39,49 @@ const schema = {
       len: [8],
     },
   },
-  socialMedia: {
-    type: DataTypes.STRING,
+  budget: {
+    type: DataTypes.INTEGER,
     allowNull: false,
-    unique: true,
-  },
-  calendlyLink: {
-    type: DataTypes.STRING,
-    validate: { isURL: true },
-    allowNull: false,
-    unique: true,
-  },
-
-  location: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-
-  price: {
-    type: DataTypes.DECIMAL(8, 2),
-    allowNull: false,
-    foreignKey: true,
     references: {
       model: Price,
       key: "id",
     },
+  },
+  location: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  isRemote: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
+  },
+  lat: {
+    type: DataTypes.DECIMAL(15, 8),
+    allowNull: false,
     validate: {
       isDecimal: true,
     },
   },
-  isRemote: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  lat: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-  },
   long: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.DECIMAL(15, 8),
     allowNull: false,
+    validate: {
+      isDecimal: true,
+    },
   },
 };
 
 const options = {
   sequelize: connection,
-  timestamps: false,
+  timestamps: true,
+  underscored: false,
   freezeTableName: true,
-  underscored: true,
-  modelName: "Tutors",
+  modelName: "Student",
   hooks: {
     beforeCreate: hashPassword,
   },
 };
 
-Tutors.init(schema, options);
+Student.init(schema, options);
 
-module.exports = Tutors;
+module.exports = Student;

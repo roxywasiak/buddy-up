@@ -2,10 +2,12 @@ const { Model, DataTypes } = require("sequelize");
 
 const connection = require("../config/connection");
 // import references
-const Students = require("./Students");
-const Tutors = require("./Tutors");
 
-class Invitations extends Model {}
+const Ad = require("./ad");
+const Tutor = require("./Tutor");
+const Student = require("./Student");
+
+class Response extends Model {}
 
 const schema = {
   id: {
@@ -14,34 +16,33 @@ const schema = {
     autoIncrement: true,
     allowNull: false,
   },
-  senderId: {
+  adId: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: Students,
+      model: Ad,
       key: "id",
     },
   },
-  recieverId: {
+  tutorId: {
     type: DataTypes.INTEGER,
-    allowNull: false,
+    allowNull: true,
     references: {
-      model: Students,
+      model: Tutor,
       key: "id",
-      model: Tutors,
+    },
+  },
+  studentId: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+    references: {
+      model: Student,
       key: "id",
     },
   },
   status: {
-    type: Sequelize.ENUM("pending", "completed", "rejected"),
+    type: DataTypes.ENUM("pending", "completed", "rejected"),
     allowNull: false,
-    validate: {
-      isUrl: true,
-    },
-  },
-  isTutor: {
-    type: DataTypes.BOOLEAN,
-    defaultValue: false,
   },
 };
 
@@ -50,9 +51,9 @@ const options = {
   timestamps: true,
   underscored: false,
   freezeTableName: true,
-  modelName: "Invitations",
+  modelName: "Response",
 };
 
-Invitations.init(schema, options);
+Response.init(schema, options);
 
-module.exports = Invitations;
+module.exports = Response;

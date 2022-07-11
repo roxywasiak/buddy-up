@@ -3,9 +3,7 @@ const { Model, DataTypes } = require("sequelize");
 const connection = require("../config/connection");
 // import referencee
 
-const Ads = require("./Ads");
-
-class Subjects extends Model {}
+class Subject extends Model {}
 
 const schema = {
   id: {
@@ -13,10 +11,6 @@ const schema = {
     allowNull: false,
     primaryKey: true,
     autoIncrement: true,
-    references: {
-      model: Ads,
-      foreignKey: "subjectId",
-    },
   },
   subjectName: {
     type: DataTypes.STRING,
@@ -33,9 +27,9 @@ const options = {
   timestamps: false,
   freezeTableName: true,
   underscored: true,
-  modelName: "Subjects",
+  modelName: "Subject",
 };
 
-Subjects.init(schema, options);
+Subject.init(schema, options);
 
-module.exports = Subjects;
+module.exports = Subject;

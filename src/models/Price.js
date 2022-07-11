@@ -2,8 +2,6 @@ const { Model, DataTypes } = require("sequelize");
 
 const connection = require("../config/connection");
 
-const Students = require("./Students");
-
 class Price extends Model {}
 
 const schema = {
@@ -16,13 +14,13 @@ const schema = {
   price: {
     type: DataTypes.DECIMAL(8, 2),
     allowNull: false,
-    references: {
-      model: Students,
-      key: "id",
-    },
     validate: {
       isDecimal: true,
     },
+  },
+  budget: {
+    type: DataTypes.ENUM(["low", "medium", "high"]),
+    allowNull: true,
   },
 };
 

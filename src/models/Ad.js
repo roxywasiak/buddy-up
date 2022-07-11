@@ -2,12 +2,11 @@ const { Model, DataTypes } = require("sequelize");
 
 const connection = require("../config/connection");
 // import references
-const Students = require("./Students");
-const Subjects = require("./Subjects");
-const Tutors = require("./Tutors");
-const tutorSubjects = require("./TutorSubjects");
+const Price = require("./Price");
+const Student = require("./Student");
+const Subject = require("./Subject");
 
-class Ads extends Model {}
+class Ad extends Model {}
 
 const schema = {
   id: {
@@ -16,44 +15,44 @@ const schema = {
     autoIncrement: true,
     allowNull: false,
   },
-  userId: {
+  studentId: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: Students,
-      key: "id",
-      model: Tutors,
+      model: Student,
       key: "id",
     },
   },
-  budget: {
-    type: DataTypes.DECIMAL(10, 2),
+  isTutor: {
+    type: DataTypes.BOOLEAN,
     allowNull: false,
-    validate: {
-      isDecimal: true,
-    },
+  },
+  budgetId: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
     references: {
-      model: Students,
-      key: "budget",
+      model: Price,
+      key: "id",
+    },
+  },
+  priceId: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+    references: {
+      model: Price,
+      key: "id",
     },
   },
   description: {
     type: DataTypes.TEXT,
     allowNull: false,
   },
-  isTutor: {
-    type: DataTypes.BOOLEAN,
-    defaultValue: false,
-  },
-
   subjectId: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: Subjects,
+      model: Subject,
       key: "id",
-      model: tutorSubjects,
-      key: "subjectId",
     },
   },
 };
@@ -63,9 +62,9 @@ const options = {
   timestamps: true,
   underscored: false,
   freezeTableName: true,
-  modelName: "Ads",
+  modelName: "Ad",
 };
 
-Ads.init(schema, options);
+Ad.init(schema, options);
 
-module.exports = Ads;
+module.exports = Ad;
