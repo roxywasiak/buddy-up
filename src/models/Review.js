@@ -6,7 +6,7 @@ const Student = require("./Student");
 const Subject = require("./Subject");
 const Tutor = require("./Tutor");
 
-class Invitation extends Model {}
+class Review extends Model {}
 
 const schema = {
   id: {
@@ -15,7 +15,15 @@ const schema = {
     autoIncrement: true,
     allowNull: false,
   },
-  senderId: {
+  tutorId: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+      model: Tutor,
+      key: "id",
+    },
+  },
+  studentId: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
@@ -23,32 +31,23 @@ const schema = {
       key: "id",
     },
   },
-  studentId: {
-    type: DataTypes.INTEGER,
-    allowNull: true,
-    references: {
-      model: Student,
-      key: "id",
-    },
-  },
-  tutorRecieverId: {
-    type: DataTypes.INTEGER,
-    allowNull: true,
-    references: {
-      model: Tutor,
-      key: "id",
-    },
-  },
   subjectId: {
     type: DataTypes.INTEGER,
-    allowNull: true,
+    allowNull: false,
     references: {
       model: Subject,
       key: "id",
     },
   },
-  status: {
-    type: DataTypes.ENUM("pending", "completed", "rejected"),
+  rating: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    validate: {
+      len: [1, 5],
+    },
+  },
+  review: {
+    type: DataTypes.STRING,
     allowNull: false,
   },
 };
@@ -58,9 +57,9 @@ const options = {
   timestamps: true,
   underscored: false,
   freezeTableName: true,
-  modelName: "Invitation",
+  modelName: "Review",
 };
 
-Invitation.init(schema, options);
+Review.init(schema, options);
 
-module.exports = Invitation;
+module.exports = Review;

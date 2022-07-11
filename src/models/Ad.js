@@ -5,7 +5,6 @@ const connection = require("../config/connection");
 const Price = require("./Price");
 const Student = require("./Student");
 const Subject = require("./Subject");
-const Tutor = require("./Tutor");
 
 class Ad extends Model {}
 

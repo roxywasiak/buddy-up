@@ -1,5 +1,5 @@
 const Ad = require("./Ad");
-const Invitation = require("./Invitation");
+const Review = require("./Review");
 const Price = require("./Price");
 const Response = require("./Response");
 const Student = require("./Student");
@@ -117,9 +117,40 @@ Student.belongsTo(Response, {
   onDelete: "CASCADES",
 });
 
+// reviews
+Subject.hasMany(Review, {
+  foreignKey: "subjectId",
+  onDelete: "CASCADE",
+});
+
+Review.belongsTo(Subject, {
+  foreignKey: "subjectId",
+  onDelete: "CASCADE",
+});
+
+Review.hasMany(Tutor, {
+  foreignKey: "tutorId",
+  onDelete: "CASCADES",
+});
+
+Tutor.belongsTo(Review, {
+  foreignKey: "tutorId",
+  onDelete: "CASCADES",
+});
+
+Review.hasMany(Student, {
+  foreignKey: "studentId",
+  onDelete: "CASCADES",
+});
+
+Student.belongsTo(Review, {
+  foreignKey: "studentId",
+  onDelete: "CASCADES",
+});
+
 module.exports = {
   Ad,
-  Invitation,
+  Review,
   Price,
   Response,
   Student,
