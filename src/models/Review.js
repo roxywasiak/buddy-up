@@ -2,11 +2,11 @@ const { Model, DataTypes } = require("sequelize");
 
 const connection = require("../config/connection");
 // import references
+const Student = require("./Student");
+const Subject = require("./Subject");
+const Tutor = require("./Tutor");
 
-const Ads = require("./Ads");
-const Tutors = require("./Tutors");
-
-class Responses extends Model {}
+class Review extends Model {}
 
 const schema = {
   id: {
@@ -15,30 +15,40 @@ const schema = {
     autoIncrement: true,
     allowNull: false,
   },
-  adId: {
+  tutorId: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: Ads,
+      model: Tutor,
       key: "id",
     },
   },
-  userId: {
+  studentId: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: Ads,
-      key: "subjectId",
-      model: Tutors,
+      model: Student,
       key: "id",
     },
   },
-  status: {
-    type: Sequelize.ENUM("pending", "completed", "rejected"),
+  subjectId: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+      model: Subject,
+      key: "id",
+    },
+  },
+  rating: {
+    type: DataTypes.INTEGER,
     allowNull: false,
     validate: {
-      isUrl: true,
+      len: [1, 5],
     },
+  },
+  review: {
+    type: DataTypes.STRING,
+    allowNull: false,
   },
 };
 
@@ -47,9 +57,9 @@ const options = {
   timestamps: true,
   underscored: false,
   freezeTableName: true,
-  modelName: "Responses",
+  modelName: "Review",
 };
 
-Responses.init(schema, options);
+Review.init(schema, options);
 
-module.exports = Responses;
+module.exports = Review;

@@ -2,10 +2,10 @@ const { Model, DataTypes } = require("sequelize");
 
 const connection = require("../config/connection");
 
-const Subjects = require("./Subjects");
-const Tutors = require("./Tutors");
+const Subject = require("./Subject");
+const Tutor = require("./Tutor");
 
-class TutorSubjects extends Model {}
+class TutorSubject extends Model {}
 
 const schema = {
   id: {
@@ -19,7 +19,7 @@ const schema = {
     allowNull: false,
     foreignKey: true,
     references: {
-      model: Tutors,
+      model: Tutor,
       key: "id",
     },
   },
@@ -28,14 +28,13 @@ const schema = {
     allowNull: false,
     foreignKey: true,
     references: {
-      model: Subjects,
+      model: Subject,
       key: "id",
     },
-    level: {
-      DataTypes: STRING,
-      allowNull: false,
-      foreignKey: true,
-    },
+  },
+  level: {
+    type: DataTypes.STRING,
+    allowNull: false,
   },
 };
 
@@ -44,9 +43,9 @@ const options = {
   timestamps: false,
   freezeTableName: true,
   underscored: true,
-  modelName: "TutorSubjects",
+  modelName: "TutorSubject",
 };
 
-TutorSubjects.init(schema, options);
+TutorSubject.init(schema, options);
 
-module.exports = TutorSubjects;
+module.exports = TutorSubject;
