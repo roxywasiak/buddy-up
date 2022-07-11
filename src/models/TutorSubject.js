@@ -32,11 +32,9 @@ const schema = {
       key: "id",
     },
   },
-
   level: {
     type: DataTypes.STRING,
     allowNull: false,
-    foreignKey: true,
   },
 };
 

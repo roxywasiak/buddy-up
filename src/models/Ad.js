@@ -2,6 +2,7 @@ const { Model, DataTypes } = require("sequelize");
 
 const connection = require("../config/connection");
 // import references
+const Price = require("./Price");
 const Student = require("./Student");
 const Subject = require("./Subject");
 const Tutor = require("./Tutor");
@@ -31,9 +32,21 @@ const schema = {
       key: "id",
     },
   },
-  budget: {
-    type: DataTypes.ENUM(["low", "medium", "high"]),
+  budgetId: {
+    type: DataTypes.INTEGER,
     allowNull: true,
+    references: {
+      model: Price,
+      key: "id",
+    },
+  },
+  priceId: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+    references: {
+      model: Price,
+      key: "id",
+    },
   },
   description: {
     type: DataTypes.TEXT,

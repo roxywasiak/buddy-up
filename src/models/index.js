@@ -7,7 +7,9 @@ const Subject = require("./Subject");
 const Tutor = require("./Tutor");
 const TutorSubject = require("./TutorSubject");
 
-// associations
+// Associations
+
+// PRICE ASSOCIATIONS
 Tutor.hasMany(Price, {
   foreignKey: "price",
   onDelete: "CASCADE",
@@ -16,36 +18,6 @@ Tutor.hasMany(Price, {
 Price.belongsTo(Tutor, {
   foreignKey: "price",
   onDelete: "CASCADE",
-});
-
-Tutor.belongsToMany(Student, {
-  through: Invitation,
-  foreignKey: "senderId",
-});
-
-Student.belongsToMany(Tutor, {
-  through: Invitation,
-  foreignKey: "senderId",
-});
-
-Tutor.belongsToMany(Subject, {
-  through: Ad,
-  foreignKey: "subjectId",
-});
-
-Subject.belongsToMany(Tutor, {
-  through: Ad,
-  foreignKey: "subjectId",
-});
-
-Student.belongsToMany(Subject, {
-  through: Ad,
-  foreignKey: "subjectId",
-});
-
-Subject.belongsToMany(Student, {
-  through: Ad,
-  foreignKey: "subjectId",
 });
 
 Student.hasMany(Price, {
@@ -58,102 +30,108 @@ Price.belongsTo(Student, {
   onDelete: "CASCADE",
 });
 
-// INVITATION RELATIONSHIP JUNCTION TABLE
+// INVITATION JUNCTION TABLE
+Student.hasMany(Invitation, {
+  foreignKey: "studentId",
+  onDelete: "CASCADE",
+});
+Invitation.belongsTo(Student, {
+  foreignKey: "studentId",
+  onDelete: "CASCADE",
+});
+
 Student.hasMany(Invitation, {
   foreignKey: "senderId",
   onDelete: "CASCADE",
 });
-
 Invitation.belongsTo(Student, {
   foreignKey: "senderId",
   onDelete: "CASCADE",
-});
-
-Student.belongsToMany(Tutor, {
-  through: Invitation,
-  foreignKey: "tutorRecieverId",
 });
 
 Tutor.belongsToMany(Student, {
   through: Invitation,
   foreignKey: "tutorRecieverId",
 });
-
-Student.belongsToMany(Subject, {
+Student.belongsToMany(Tutor, {
   through: Invitation,
-  foreignKey: "studentRecieverId",
+  foreignKey: "senderId",
 });
 
 Subject.belongsToMany(Student, {
   through: Invitation,
-  foreignKey: "studentRecieverId",
-});
-
-Invitation.HasMany(Subject, {
   foreignKey: "subjectId",
-  onDelete: "CASCADE",
+});
+Student.belongsToMany(Subject, {
+  through: Invitation,
+  foreignKey: "senderId",
 });
 
-Subject.belongsTo(Invitation, {
+// AD JUNCTION TABLE
+Tutor.belongsToMany(Subject, {
+  through: Ad,
+  foreignKey: "tutorId",
+});
+
+Subject.belongsToMany(Tutor, {
+  through: Ad,
   foreignKey: "subjectId",
-  onDelete: "CASCADE",
-});
-// Ad associations
-Tutor.hasMany(Ad, {
-  foreignKey: "tutorId",
-  onDelete: "CASCADE",
 });
 
-Ad.belongsTo({
-  foreignKey: "tutorId",
-  onDelete: "CASCADE",
-});
-
-Student.hasMany(Ad, {
-  foreignKey: "studentId",
-  onDelete: "CASCADE",
-});
-
-Ad.belongsTo(Student, {
+Student.belongsToMany(Subject, {
+  through: Ad,
   foreignKey: "studentId",
 });
 
-Subject.hasMany(Ad, {
+Subject.belongsToMany(Student, {
+  through: Ad,
   foreignKey: "subjectId",
-  onDelete: "CASCADE",
 });
 
-Ad.belongsTo(Subject, {
-  foreignKey: "subjectId",
-  onDelete: "CASCADE",
+Student.belongsToMany(Price, {
+  through: Ad,
+  foreignKey: "budgetId",
 });
 
-// Tutor Subject
+Price.belongsToMany(Student, {
+  through: Ad,
+  foreignKey: "budgetId",
+});
+
+Tutor.belongsToMany(Price, {
+  through: Ad,
+  foreignKey: "priceId",
+});
+
+Price.belongsToMany(Tutor, {
+  through: Ad,
+  foreignKey: "priceId",
+});
+
+// TUTOR-SUBJECT JUNCTION TABLE
 Subject.belongsToMany(Tutor, {
   through: {
     model: TutorSubject,
   },
+  foreignKey: "subjectId",
 });
 
 Tutor.belongsToMany(Subject, {
   through: {
     model: TutorSubject,
   },
+  foreignKey: "tutorId",
 });
 
 // RESPONSE RELAIONSHIP
-Ad.belongsToMany(Tutor, {
-  through: {
-    model: Response,
-  },
+Ad.hasMany(Response, {
   foreignKey: "addId",
+  onDelete: "CASCADE",
 });
 
-Tutor.belongsToMany(Ad, {
-  through: {
-    model: Response,
-  },
+Ad.belongsTo(Response, {
   foreignKey: "addId",
+  onDelete: "CASCADE",
 });
 
 Response.hasMany(Tutor, {

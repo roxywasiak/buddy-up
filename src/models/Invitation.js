@@ -23,7 +23,7 @@ const schema = {
       key: "id",
     },
   },
-  studentRecieverId: {
+  studentId: {
     type: DataTypes.INTEGER,
     allowNull: true,
     references: {
@@ -50,9 +50,6 @@ const schema = {
   status: {
     type: DataTypes.ENUM("pending", "completed", "rejected"),
     allowNull: false,
-    validate: {
-      isUrl: true,
-    },
   },
 };
 
