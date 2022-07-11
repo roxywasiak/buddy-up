@@ -32,8 +32,8 @@ const schema = {
     },
   },
   budget: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
+    type: DataTypes.ENUM(["low", "medium", "high"]),
+    allowNull: true,
   },
   description: {
     type: DataTypes.TEXT,
