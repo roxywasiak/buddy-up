@@ -5,7 +5,19 @@ const { hashPassword } = require("../hooks");
 // import references
 const Price = require("./Price");
 
-class Tutor extends Model {}
+class Tutor extends Model {
+  getUser() {
+    return {
+      id: this.id,
+      firstName: this.firstName,
+      lastName: this.lastName,
+      email: this.email,
+      socialMedia: this.socialMedia,
+      calendlyLink: this.calendlyLink,
+      userType: this.userType,
+    };
+  }
+}
 
 const schema = {
   id: {
@@ -75,6 +87,10 @@ const schema = {
       min: -180,
       max: 180,
     },
+  },
+  userType: {
+    type: DataTypes.STRING,
+    default: "tutor",
   },
 };
 

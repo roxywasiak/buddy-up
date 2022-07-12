@@ -8,7 +8,17 @@ const { hashPassword } = require("../hooks");
 
 const Price = require("./Price");
 
-class Student extends Model {}
+class Student extends Model {
+  getUser() {
+    return {
+      id: this.id,
+      firstName: this.firstName,
+      lastName: this.lastName,
+      email: this.email,
+      userType: this.userType,
+    };
+  }
+}
 
 const schema = {
   id: {
@@ -65,6 +75,10 @@ const schema = {
     validate: {
       isDecimal: true,
     },
+  },
+  userType: {
+    type: DataTypes.STRING,
+    default: "student",
   },
 };
 
