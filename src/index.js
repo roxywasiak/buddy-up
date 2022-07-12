@@ -1,5 +1,9 @@
+require("dotenv").config();
 const path = require("path");
+const exphbs = require("express-handlebars");
 const express = require("express");
+
+const hbs = exphbs.create({});
 
 const connection = require("./config/connection");
 const routes = require("./routes");
@@ -9,7 +13,7 @@ const connectSessionSequelize = require("connect-session-sequelize");
 const SequelizeStore = connectSessionSequelize(session.Store);
 
 const sessionOptions = {
-  secret: process.env.SESSION_SECRET,
+  secret: process.env.DB_SESSIONSECRET,
   resave: false,
   saveUninitialized: false,
   cookies: {
@@ -26,6 +30,8 @@ const sessionOptions = {
 const PORT = process.env.PORT || 4000;
 
 const app = express();
+app.engine("handlebars", hbs.engine);
+app.set("view engine", "handlebars");
 app.use(session(sessionOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

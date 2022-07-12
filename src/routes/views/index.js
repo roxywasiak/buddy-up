@@ -9,7 +9,7 @@ const {
 
 const router = Router();
 
-router.get("/main", renderHomePage);
+router.get("/", renderHomePage);
 router.get("/auth", renderAuthPage);
 router.get("/student-dashboard", renderStudentDashboard);
 router.get("/tutor-dashboard", renderTutorDashboard);

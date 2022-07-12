@@ -1,7 +1,7 @@
 const path = require("path");
 
 const renderHomePage = (req, res) => {
-  return res.render("main", { currentPage: "main" });
+  return res.send("auth");
 };
 
 const renderStudentDashboard = (req, res) => {
