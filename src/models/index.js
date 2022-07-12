@@ -52,24 +52,14 @@ Subject.belongsToMany(Student, {
   foreignKey: "subjectId",
 });
 
-Student.belongsToMany(Price, {
-  through: Ad,
+Price.hasMany(Ad, {
   foreignKey: "priceId",
+  onDelete: "CASCADE",
 });
 
-Price.belongsToMany(Student, {
-  through: Ad,
+Ad.belongsTo(Price, {
   foreignKey: "priceId",
-});
-
-Tutor.belongsToMany(Price, {
-  through: Ad,
-  foreignKey: "priceId",
-});
-
-Price.belongsToMany(Tutor, {
-  through: Ad,
-  foreignKey: "priceId",
+  onDelete: "CASCADE",
 });
 
 // TUTOR-SUBJECT JUNCTION TABLE
