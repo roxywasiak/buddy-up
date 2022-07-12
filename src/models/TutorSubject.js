@@ -30,7 +30,8 @@ const schema = {
     },
   },
   level: {
-    type: DataTypes.STRING,
+    type: DataTypes.ENUM("beginner", "intermediate", "advanced"),
+    defaultValue: "beginner",
     allowNull: true,
   },
 };
