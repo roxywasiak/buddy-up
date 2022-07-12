@@ -35,13 +35,10 @@ const schema = {
   password: {
     type: DataTypes.STRING,
     allowNull: false,
-    validate: {
-      len: [8],
-    },
   },
-  budget: {
+  priceId: {
     type: DataTypes.INTEGER,
-    allowNull: false,
+    allowNull: true,
     references: {
       model: Price,
       key: "id",

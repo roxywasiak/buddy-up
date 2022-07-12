@@ -33,20 +33,15 @@ const schema = {
   password: {
     type: DataTypes.STRING,
     allowNull: false,
-    validate: {
-      len: [8],
-    },
   },
   socialMedia: {
     type: DataTypes.STRING,
     allowNull: false,
-    unique: true,
   },
   calendlyLink: {
     type: DataTypes.STRING,
     validate: { isURL: true },
     allowNull: false,
-    unique: true,
   },
 
   location: {
@@ -54,10 +49,9 @@ const schema = {
     allowNull: false,
   },
 
-  price: {
+  priceId: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    foreignKey: true,
     references: {
       model: Price,
       key: "id",
@@ -67,18 +61,19 @@ const schema = {
     type: DataTypes.STRING,
     allowNull: false,
   },
+
   lat: {
-    type: DataTypes.DECIMAL(15, 8),
-    allowNull: false,
+    type: DataTypes.INTEGER,
     validate: {
-      isDecimal: true,
+      min: -90,
+      max: 90,
     },
   },
   long: {
-    type: DataTypes.DECIMAL(15, 8),
-    allowNull: false,
+    type: DataTypes.INTEGER,
     validate: {
-      isDecimal: true,
+      min: -180,
+      max: 180,
     },
   },
 };

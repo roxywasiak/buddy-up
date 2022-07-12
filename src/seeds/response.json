@@ -1,37 +1,47 @@
 [
   {
-    "adId": "3",
-    "userId": "1",
+    "adId": 1,
+    "tutorId": 4,
     "status": "pending"
   },
   {
-    "adId": "2",
-    "userId": "4",
+    "adId": 2,
+    "tutorId": 5,
     "status": "completed"
   },
   {
-    "adId": "5",
-    "userId": "6",
-    "status": "pending"
-  },
-  {
-    "adId": "4",
-    "userId": "3",
+    "adId": 3,
+    "studentId": 10,
     "status": "completed"
   },
   {
-    "adId": "7",
-    "userId": "2",
+    "adId": 4,
+    "tutorId": 6,
     "status": "pending"
   },
   {
-    "adId": "8",
-    "userId": "2",
+    "adId": 5,
+    "tutorId": 2,
+    "status": "completed"
+  },
+  {
+    "adId": 6,
+    "studentId": 9,
+    "status": "pending"
+  },
+  {
+    "adId": 7,
+    "tutorId": 5,
     "status": "rejected"
   },
   {
-    "adId": "1",
-    "userId": "5",
+    "adId": 8,
+    "tutorId": 3,
+    "status": "completed"
+  },
+  {
+    "adId": 9,
+    "studentId": 3,
     "status": "completed"
   }
 ]

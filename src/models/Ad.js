@@ -25,15 +25,7 @@ const schema = {
   },
   isTutor: {
     type: DataTypes.BOOLEAN,
-    allowNull: false,
-  },
-  budgetId: {
-    type: DataTypes.INTEGER,
-    allowNull: true,
-    references: {
-      model: Price,
-      key: "id",
-    },
+    default: true,
   },
   priceId: {
     type: DataTypes.INTEGER,
@@ -44,7 +36,7 @@ const schema = {
     },
   },
   description: {
-    type: DataTypes.TEXT,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   subjectId: {
@@ -59,7 +51,7 @@ const schema = {
 
 const options = {
   sequelize: connection,
-  timestamps: true,
+  timestamps: false,
   underscored: false,
   freezeTableName: true,
   modelName: "Ad",

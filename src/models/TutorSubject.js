@@ -1,7 +1,6 @@
 const { Model, DataTypes } = require("sequelize");
 
 const connection = require("../config/connection");
-
 const Subject = require("./Subject");
 const Tutor = require("./Tutor");
 
@@ -34,7 +33,7 @@ const schema = {
   },
   level: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
 };
 

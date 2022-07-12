@@ -2,12 +2,9 @@ const { Model, DataTypes } = require("sequelize");
 
 const connection = require("../config/connection");
 // import references
-
-const Ad = require("./Ad");
-const Tutor = require("./Tutor");
 const Student = require("./Student");
 
-class Response extends Model {}
+class Report extends Model {}
 
 const schema = {
   id: {
@@ -16,32 +13,16 @@ const schema = {
     autoIncrement: true,
     allowNull: false,
   },
-  adId: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    references: {
-      model: Ad,
-      key: "id",
-    },
-  },
-  tutorId: {
-    type: DataTypes.INTEGER,
-    allowNull: true,
-    references: {
-      model: Tutor,
-      key: "id",
-    },
-  },
   studentId: {
     type: DataTypes.INTEGER,
-    allowNull: true,
+    allowNull: false,
     references: {
       model: Student,
       key: "id",
     },
   },
-  status: {
-    type: DataTypes.ENUM("pending", "completed", "rejected"),
+  reportReason: {
+    type: DataTypes.TEXT,
     allowNull: false,
   },
 };
@@ -51,9 +32,9 @@ const options = {
   timestamps: true,
   underscored: false,
   freezeTableName: true,
-  modelName: "Response",
+  modelName: "Report",
 };
 
-Response.init(schema, options);
+Report.init(schema, options);
 
-module.exports = Response;
+module.exports = Report;

@@ -11,7 +11,7 @@ const schema = {
     primaryKey: true,
     autoIncrement: true,
   },
-  price: {
+  prices: {
     type: DataTypes.DECIMAL(8, 2),
     allowNull: false,
     validate: {

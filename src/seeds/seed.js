@@ -5,6 +5,7 @@ const {
   Review,
   Price,
   Response,
+  Report,
   Student,
   Subject,
   Tutor,
@@ -19,6 +20,7 @@ const student = require("./student.json");
 const subject = require("./subject.json");
 const tutor = require("./tutor.json");
 const tutorSubject = require("./tutorSubject.json");
+const report = require("./report.json");
 
 //variables to store the table entity names
 const seedAds = async () => {
@@ -28,7 +30,7 @@ const seedAds = async () => {
 };
 
 const seedReviews = async () => {
-  const promises = Review.map((review) => Review.create(review));
+  const promises = review.map((review) => Review.create(review));
   await Promise.all(promises);
   console.log("Successfully seeded reviews");
 };
@@ -70,6 +72,12 @@ const seedTutorSubject = async () => {
   await Promise.all(promises);
   console.log("Successfully seeded tutor subjects");
 };
+
+const seedReports = async () => {
+  const promises = report.map((report) => Report.create(report));
+  await Promise.all(promises);
+  console.log("Successfully seeded tutor subjects");
+};
 //promise/map/create
 //await
 //console.log if seeded
@@ -87,15 +95,17 @@ const init = async () => {
 
     await seedStudents();
 
-    await seedReviews();
-
-    await seedAds();
-
     await seedSubjects();
 
     await seedTutorSubject();
 
+    await seedAds();
+
     await seedResponses();
+
+    await seedReviews();
+
+    await seedReports();
 
     console.log("Seeding complete!!");
   } catch (error) {

@@ -43,10 +43,10 @@ const schema = {
     type: DataTypes.INTEGER,
     allowNull: false,
     validate: {
-      len: [1, 5],
+      len: [1, 6],
     },
   },
-  review: {
+  reviews: {
     type: DataTypes.STRING,
     allowNull: false,
   },

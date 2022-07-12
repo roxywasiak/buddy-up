@@ -7,7 +7,7 @@
     "socialMedia": "https://www.linkedin.com/in/a-m-9518071ab/",
     "calendlyLink": "https://birmingham.bootcampcontent.com/users/sign_in",
     "location": "Birmingham",
-    "price": 1,
+    "priceId": 1,
     "isRemote": true,
     "lat": 33.518589,
     "long": -86.810356
@@ -20,7 +20,7 @@
     "socialMedia": "https://birmingham.bootcampcontent.com/users/sign_in",
     "calendlyLink": "https://calendly.com/",
     "location": "Birmingham",
-    "price": 3,
+    "priceId": 3,
     "isRemote": false,
     "lat": 33.518589,
     "long": -86.810356
@@ -34,7 +34,7 @@
     "socialMedia": "https://birmingham.bootcampcontent.com/users/sign_in",
     "calendlyLink": "https://calendly.com/",
     "location": "London",
-    "price": 4,
+    "priceId": 2,
     "isRemote": false,
     "lat": 51.509865,
     "long": -0.118092
@@ -48,7 +48,7 @@
     "socialMedia": "https://uk.linkedin.com/",
     "calendlyLink": "https://calendly.com/",
     "location": "Dublin",
-    "price": 5,
+    "priceId": 1,
     "isRemote": false,
     "lat": 53.349804,
     "long": -6.26031
@@ -61,7 +61,7 @@
     "socialMedia": "https://uk.linkedin.com/",
     "calendlyLink": "https://calendly.com/",
     "location": "Dublin",
-    "price": 2,
+    "priceId": 2,
     "isRemote": true,
     "lat": 53.349804,
     "long": -6.26031
@@ -74,7 +74,7 @@
     "socialMedia": "https://uk.linkedin.com/",
     "calendlyLink": "https://calendly.com/",
     "location": "London",
-    "price": 2,
+    "priceId": 2,
     "isRemote": true,
     "lat": 51.509865,
     "long": -0.118092
@@ -87,7 +87,7 @@
     "socialMedia": "https://uk.linkedin.com/",
     "calendlyLink": "https://calendly.com/",
     "location": "Paris",
-    "price": 3,
+    "priceId": 3,
     "isRemote": false,
     "lat": 48.856613,
     "long": 2.352222
@@ -100,7 +100,7 @@
     "socialMedia": "https://uk.linkedin.com/",
     "calendlyLink": "https://calendly.com/",
     "location": "Paris",
-    "price": 2,
+    "priceId": 3,
     "isRemote": true,
     "lat": 48.856613,
     "long": 2.352222
@@ -113,7 +113,7 @@
     "socialMedia": "https://uk.linkedin.com/",
     "calendlyLink": "https://calendly.com/",
     "location": "Manchester",
-    "price": 7,
+    "priceId": 2,
     "isRemote": true,
     "lat": 53.4794892,
     "long": -2.2451148
@@ -126,7 +126,7 @@
     "socialMedia": "https://uk.linkedin.com/",
     "calendlyLink": "https://calendly.com/",
     "location": "Manchester",
-    "price": 1,
+    "priceId": 1,
     "isRemote": false,
     "lat": 53.4794892,
     "long": -2.2451148
@@ -139,7 +139,7 @@
     "socialMedia": "https://uk.linkedin.com/",
     "calendlyLink": "https://calendly.com/",
     "location": "Birmingham",
-    "price": 3,
+    "priceId": 3,
     "isRemote": true,
     "lat": 33.518589,
     "long": -86.810356

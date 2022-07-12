@@ -1,56 +1,62 @@
 [
   {
     "studentId": 4,
-    "budget": null,
+    "priceId": 1,
+    "isTutor": true,
     "description": "I really need help with chemistry A-level please can anyone help",
-    "subjectId": 3
-  },
-  {
-    "studentId": 5,
-    "budget": "medium",
-    "description": "I want to become a journalist in the future and I need more advanced sessions with a tutor - please help!",
     "subjectId": 2
   },
   {
+    "studentId": 5,
+    "priceId": 2,
+    "isTutor": true,
+    "description": "I want to become a journalist in the future and I need more advanced sessions with a tutor - please help!",
+    "subjectId": 3
+  },
+  {
     "studentId": 1,
-    "budget": null,
-    "description": "I want to study music with someone who has advanced musical instruments skills, please each out",
+    "isTutor": false,
+    "description": "I want to practise music with someone who has advanced musical instruments skills. Is there a buddy who wants to join?",
     "subjectId": 5
   },
   {
     "studentId": 7,
-    "budget": "low",
+    "priceId": 1,
+    "isTutor": true,
     "description": "I am passionate about coding and want a tutor who can make me better",
     "subjectId": 6
   },
   {
     "studentId": 2,
-    "budget": "medium",
+    "priceId": 2,
+    "isTutor": true,
     "description": "I need maths to meet my offer for uni but I do not think that is attainable. I would like a tutor that has experience improving their tutee's grade in a short time span. Thank you.",
     "subjectId": 1
   },
   {
     "studentId": 10,
-    "budget": null,
+    "isTutor": false,
     "description": "I am currently studying for my chemistry exam, I need someone to study with me and keep me motivated",
     "subjectId": 3
   },
   {
-    "studentId": 3,
-    "budget": null,
+    "studentId": 4,
+    "priceId": 1,
+    "isTutor": true,
     "description": "I enjoy studying chemistry and would like to study with another student",
     "subjectId": 3
   },
   {
     "studentId": 9,
-    "budget": "high",
+    "priceId": 1,
+    "isTutor": true,
     "description": "I need a tutor who would push and challenge me to do well, I want to get into medicine",
     "subjectId": 1
   },
   {
     "studentId": 8,
-    "budget": "medium",
-    "description": "I want to find a tutor who is highly qualified in music",
+    "isTutor": false,
+    "description": "I want to code with anyone else struggling in coding bootcamp. It can't just be me, right?",
     "subjectId": 6
   }
 ]
