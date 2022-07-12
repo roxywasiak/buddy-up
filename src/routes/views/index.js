@@ -4,7 +4,8 @@ const {
   renderHomePage,
   renderTutorLoginPage,
   renderStudentLoginPage,
-  renderCreatePage,
+  renderStudentCreatePage,
+  renderTutorCreatePage,
   renderStudentDashboard,
   renderTutorDashboard,
   renderStudentLogoutPage,
@@ -16,7 +17,9 @@ const router = Router();
 router.get("/", renderHomePage);
 router.get("/tutor-login", renderTutorLoginPage);
 router.get("/student-Login", renderStudentLoginPage);
-router.get("/create", renderCreatePage);
+router.get("/create-student", renderStudentCreatePage);
+router.get("/create-tutor", renderTutorCreatePage);
+
 router.get("/student-dashboard", renderStudentDashboard);
 router.get("/tutor-dashboard", renderTutorDashboard);
 router.get("/student-logout", renderStudentLogoutPage);

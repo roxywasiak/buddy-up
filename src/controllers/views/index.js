@@ -12,8 +12,12 @@ const renderStudentLoginPage = (req, res) => {
   const filePath = path.join(__dirname, "../../../public/student-login.html");
   return res.sendFile(filePath);
 };
-const renderCreatePage = (req, res) => {
-  const filePath = path.join(__dirname, "../../../public/create-login.html");
+const renderStudentCreatePage = (req, res) => {
+  const filePath = path.join(__dirname, "../../../public/create-student.html");
+  return res.sendFile(filePath);
+};
+const renderTutorCreatePage = (req, res) => {
+  const filePath = path.join(__dirname, "../../../public/create-tutor.html");
   return res.sendFile(filePath);
 };
 const renderStudentDashboard = (req, res) => {
@@ -40,7 +44,8 @@ module.exports = {
   renderHomePage,
   renderTutorLoginPage,
   renderStudentLoginPage,
-  renderCreatePage,
+  renderStudentCreatePage,
+  renderTutorCreatePage,
   renderStudentDashboard,
   renderTutorDashboard,
   renderStudentLogoutPage,
