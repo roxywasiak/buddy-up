@@ -76,7 +76,7 @@ const seedTutorSubject = async () => {
 const seedReports = async () => {
   const promises = report.map((report) => Report.create(report));
   await Promise.all(promises);
-  console.log("Successfully seeded tutor subjects");
+  console.log("Successfully seeded reports");
 };
 //promise/map/create
 //await
