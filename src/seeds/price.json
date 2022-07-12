@@ -1,0 +1,14 @@
+[
+  {
+    "budget": "low",
+    "price": 15.0
+  },
+  {
+    "budget": "medium",
+    "price": 25.0
+  },
+  {
+    "budget": "high",
+    "price": 50.0
+  }
+]

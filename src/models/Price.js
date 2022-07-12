@@ -28,8 +28,8 @@ const options = {
   sequelize: connection,
   timestamps: false,
   freezeTableName: true,
-  underscored: true,
-  modelName: "Price",
+  underscored: false,
+  modelName: "price",
 };
 
 Price.init(schema, options);

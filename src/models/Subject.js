@@ -27,7 +27,7 @@ const options = {
   timestamps: false,
   freezeTableName: true,
   underscored: true,
-  modelName: "Subject",
+  modelName: "subject",
 };
 
 Subject.init(schema, options);

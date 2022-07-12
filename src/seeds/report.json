@@ -1,0 +1,18 @@
+[
+  {
+    "studentId": 4,
+    "reportReason": "always late to lessons"
+  },
+  {
+    "studentId": 4,
+    "reportReason": "rude"
+  },
+  {
+    "studentId": 4,
+    "reportReason": "late to buddy session"
+  },
+  {
+    "studentId": 5,
+    "reportReason": " late to lessons"
+  }
+]
