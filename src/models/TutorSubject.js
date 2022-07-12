@@ -16,7 +16,6 @@ const schema = {
   tutorId: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    foreignKey: true,
     references: {
       model: Tutor,
       key: "id",
@@ -25,7 +24,6 @@ const schema = {
   subjectId: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    foreignKey: true,
     references: {
       model: Subject,
       key: "id",
@@ -41,8 +39,8 @@ const options = {
   sequelize: connection,
   timestamps: false,
   freezeTableName: true,
-  underscored: true,
-  modelName: "TutorSubject",
+  underscored: false,
+  modelName: "tutorSubject",
 };
 
 TutorSubject.init(schema, options);

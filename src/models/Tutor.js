@@ -80,10 +80,10 @@ const schema = {
 
 const options = {
   sequelize: connection,
-  timestamps: false,
+  timestamps: true,
   freezeTableName: true,
-  underscored: true,
-  modelName: "Tutor",
+  underscored: false,
+  modelName: "tutor",
   hooks: {
     beforeCreate: hashPassword,
   },

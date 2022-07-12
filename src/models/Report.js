@@ -32,7 +32,7 @@ const options = {
   timestamps: true,
   underscored: false,
   freezeTableName: true,
-  modelName: "Report",
+  modelName: "report",
 };
 
 Report.init(schema, options);

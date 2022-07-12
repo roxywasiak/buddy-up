@@ -109,7 +109,7 @@ const init = async () => {
 
     console.log("Seeding complete!!");
   } catch (error) {
-    console.log(error);
+    console.log(`[ERROR]: Failed to seed | ${error.message}`);
   }
 
   // kill node process

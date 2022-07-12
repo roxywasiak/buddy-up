@@ -73,7 +73,7 @@ const options = {
   timestamps: true,
   underscored: false,
   freezeTableName: true,
-  modelName: "Student",
+  modelName: "student",
   hooks: {
     beforeCreate: hashPassword,
   },

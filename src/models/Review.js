@@ -57,7 +57,7 @@ const options = {
   timestamps: true,
   underscored: false,
   freezeTableName: true,
-  modelName: "Review",
+  modelName: "review",
 };
 
 Review.init(schema, options);

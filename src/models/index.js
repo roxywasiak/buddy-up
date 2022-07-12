@@ -11,36 +11,27 @@ const Report = require("./Report");
 // Associations
 
 // PRICE ASSOCIATIONS
-Tutor.hasOne(Price, {
+Price.hasMany(Tutor, {
   foreignKey: "priceId",
   onDelete: "CASCADE",
 });
 
-Price.belongsTo(Tutor, {
+Tutor.belongsTo(Price, {
   foreignKey: "priceId",
   onDelete: "CASCADE",
 });
 
-Student.hasMany(Price, {
+Student.belongsTo(Price, {
   foreignKey: "priceId",
   onDelete: "CASCADE",
 });
 
-Price.belongsTo(Student, {
+Price.hasMany(Student, {
   foreignKey: "priceId",
   onDelete: "CASCADE",
 });
 
 // AD JUNCTION TABLE
-Tutor.belongsToMany(Subject, {
-  through: Ad,
-  foreignKey: "tutorId",
-});
-
-Subject.belongsToMany(Tutor, {
-  through: Ad,
-  foreignKey: "subjectId",
-});
 
 Student.belongsToMany(Subject, {
   through: Ad,
@@ -64,46 +55,42 @@ Ad.belongsTo(Price, {
 
 // TUTOR-SUBJECT JUNCTION TABLE
 Subject.belongsToMany(Tutor, {
-  through: {
-    model: TutorSubject,
-  },
+  through: TutorSubject,
   foreignKey: "subjectId",
 });
 
 Tutor.belongsToMany(Subject, {
-  through: {
-    model: TutorSubject,
-  },
+  through: TutorSubject,
   foreignKey: "tutorId",
 });
 
 // RESPONSE RELAIONSHIP
 Ad.hasMany(Response, {
-  foreignKey: "addId",
+  foreignKey: "adId",
   onDelete: "CASCADE",
 });
 
-Ad.belongsTo(Response, {
-  foreignKey: "addId",
+Response.belongsTo(Ad, {
+  foreignKey: "adId",
   onDelete: "CASCADE",
 });
 
-Response.hasMany(Tutor, {
+Tutor.hasMany(Response, {
   foreignKey: "tutorId",
   onDelete: "CASCADE",
 });
 
-Tutor.belongsTo(Response, {
+Response.belongsTo(Tutor, {
   foreignKey: "tutorId",
   onDelete: "CASCADE",
 });
 
-Response.hasMany(Student, {
+Student.hasMany(Response, {
   foreignKey: "studentId",
   onDelete: "CASCADE",
 });
 
-Student.belongsTo(Response, {
+Response.belongsTo(Student, {
   foreignKey: "studentId",
   onDelete: "CASCADE",
 });
@@ -129,12 +116,12 @@ Tutor.belongsTo(Review, {
   onDelete: "CASCADE",
 });
 
-Review.hasMany(Student, {
+Student.hasMany(Review, {
   foreignKey: "studentId",
   onDelete: "CASCADE",
 });
 
-Student.belongsTo(Review, {
+Review.belongsTo(Student, {
   foreignKey: "studentId",
   onDelete: "CASCADE",
 });

@@ -51,7 +51,7 @@ const options = {
   timestamps: true,
   underscored: false,
   freezeTableName: true,
-  modelName: "Response",
+  modelName: "response",
 };
 
 Response.init(schema, options);

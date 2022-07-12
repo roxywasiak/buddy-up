@@ -54,7 +54,7 @@ const options = {
   timestamps: false,
   underscored: false,
   freezeTableName: true,
-  modelName: "Ad",
+  modelName: "ad",
 };
 
 Ad.init(schema, options);
