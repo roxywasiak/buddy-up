@@ -106,12 +106,12 @@ Review.belongsTo(Subject, {
   onDelete: "CASCADE",
 });
 
-Review.hasMany(Tutor, {
+Tutor.hasMany(Review, {
   foreignKey: "tutorId",
   onDelete: "CASCADE",
 });
 
-Tutor.belongsTo(Review, {
+Review.belongsTo(Tutor, {
   foreignKey: "tutorId",
   onDelete: "CASCADE",
 });
