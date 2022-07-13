@@ -6,7 +6,7 @@
 /* colors*/
 :root {
   --light-cornflower-blue: #8ecae6ff;
-  --blue-green: #219ebcff;
+  --light-blue: rgb(99, 199, 230);
   --prussian-blue: #023047ff;
   --white: white;
   --bs-gray-700: #495057;
@@ -23,28 +23,83 @@
   background: var(--bs--gray);
 }
 
+/* navbar styles */
 .links {
   margin: 0px 25px;
   font-weight: bold;
-  background-color: var(--white);
   color: var(--bs-gray-700);
-  border-radius: 8px;
-  border: var(--white);
 }
 
 .links:hover {
-  background-color: var(--light-cornflower-blue);
-  color: var(--white);
+  text-decoration: overline;
   cursor: pointer;
-  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
 }
 
-/* logo */
+/* banner styles */
+
+.hero-container {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../images/hero.jpg");
+  background-position: bottom;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero {
+  padding: 180px;
+  text-align: center;
+  background: var(--light-blue);
+  color: white;
+  font-size: 30px;
+  background-size: cover;
+  position: relative;
+}
+
+.hero-content {
+  text-align: center;
+}
+
+.hero-title {
+  margin-bottom: 30px;
+  font-size: 55px;
+  font-weight: 700;
+  line-height: 56px;
+  color: var(--white);
+}
+
+.web-name:hover {
+  border-bottom: 4px solid #3498db;
+}
+
+.hero-message {
+  color: var(--white);
+  margin-bottom: 80px;
+  font-weight: 500;
+  font-size: 30px;
+}
+
+.create-btn {
+  background-color: var(--black);
+  color: var(--white);
+  font-weight: bold;
+  border-radius: 8px;
+  border: var(--light-blue);
+}
+
+.create-btn:hover {
+  background-color: var(--white);
+  color: var(--black);
+}
+
 .uk-logo {
   font-family: "Bayon", sans-serif;
   margin-left: 20px;
   font-weight: bold;
-  color: var(--black);
+  color: var(--prussian-blue);
   letter-spacing: 0.1rem;
   transition: 0.6s;
 }
@@ -59,6 +114,35 @@
   margin: 10px 20px;
 }
 
+/* responsivness  */
+
+@media (max-width: 992px) {
+  .banner {
+    height: calc(100vh - 70px);
+  }
+}
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 30px;
+    line-height: 36px;
+  }
+  .hero-message {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 30px;
+  }
+}
+
+/* review section styles */
+
+.line {
+  width: 150px;
+  height: 4px;
+  background: var(--black);
+  margin: 10px auto;
+  border-radius: 5px;
+}
+
 /* responsivness feature */
 @media screen {
   .view-card {
@@ -71,9 +155,4 @@
 
 .rating {
   margin-top: 15px;
-}
-
-.footer-design {
-  color: var(--light-cornflower-blue);
-  opacity: 1;
 }
