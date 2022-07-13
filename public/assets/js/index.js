@@ -1,8 +1,10 @@
 const signupForm = $("#signup-form");
 
 const handleSignup = (event) => {
+  console.log("Submitted");
   event.preventDefault();
-  console.log("Here");
+  const firstName = $("#firstName").val();
+  console.log(firstName);
 };
 
 signupForm.submit(handleSignup);
