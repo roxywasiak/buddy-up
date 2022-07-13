@@ -1,7 +1,5 @@
 const { Router } = require("express");
 
-const homePage = require("./homePage.js");
-const authPage = require("./authPage.js");
 const studentDashboard = require("./studentDashboard");
 const tutorDashboard = require("./tutorDashboard");
 
