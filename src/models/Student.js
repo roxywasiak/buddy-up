@@ -1,5 +1,4 @@
-// import sequelize
-// import bcrypt
+const bcrypt = require("bcrypt");
 const { Model, DataTypes } = require("sequelize");
 
 const connection = require("../config/connection");
@@ -17,6 +16,10 @@ class Student extends Model {
       email: this.email,
       userType: this.userType,
     };
+  }
+  async checkPassword(password) {
+    const isValid = await bcrypt.compare(password, this.password);
+    return isValid;
   }
 }
 
@@ -64,14 +67,14 @@ const schema = {
   },
   lat: {
     type: DataTypes.DECIMAL(15, 8),
-    allowNull: false,
+    allowNull: true,
     validate: {
       isDecimal: true,
     },
   },
   long: {
     type: DataTypes.DECIMAL(15, 8),
-    allowNull: false,
+    allowNull: true,
     validate: {
       isDecimal: true,
     },
