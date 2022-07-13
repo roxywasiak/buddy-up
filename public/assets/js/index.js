@@ -18,14 +18,8 @@ const handleSignup = async (event) => {
   const email = $("#email").val();
   const password = $("#password").val();
   const confirmPassword = $("#confirmPassword").val();
-  const accountType = $("input[name='radio-choice']:checked").val();
+  const userType = $("input[name='radio-choice']:checked").val();
   const termsAndConditions = $("#termsAndConditions").is(":checked");
-  console.log(firstName);
-  console.log(lastName);
-  console.log(email), console.log(password);
-  console.log(confirmPassword);
-  console.log(accountType);
-  console.log(termsAndConditions);
 
   if (
     firstName &&
@@ -38,11 +32,11 @@ const handleSignup = async (event) => {
     if (password === confirmPassword) {
       try {
         const payload = {
+          userType,
           firstName,
           lastName,
           email,
           password,
-          accountType,
         };
 
         const response = await fetch("/apiAuth/signup", {
@@ -72,9 +66,40 @@ const handleSignup = async (event) => {
   }
 };
 
-const handleLogin = (event) => {
+const handleLogin = async (event) => {
   event.preventDefault();
-  console.log("Login Submitted");
+
+  const email = $("#login-email").val();
+  const password = $("#login-password").val();
+
+  if (email && password) {
+    try {
+      const payload = {
+        email,
+        password,
+      };
+
+      const response = await fetch("/apiAuth/login", {
+        method: "POST",
+        body: JSON.stringify(payload),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        window.location.assign("/dashboard");
+      } else {
+        renderError("login-error", "Failed to login. Try again.");
+      }
+    } catch (error) {
+      renderError("login-error", "Failed to login. Try again.");
+    }
+  } else {
+    renderError("login-error", "Please complete all required fields.");
+  }
 };
 
 signupForm.submit(handleSignup);
