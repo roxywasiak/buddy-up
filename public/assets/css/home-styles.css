@@ -156,3 +156,10 @@
 .rating {
   margin-top: 15px;
 }
+
+.review-title {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 45px;
+  font-weight: 500;
+}
