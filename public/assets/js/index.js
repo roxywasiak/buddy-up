@@ -1,6 +1,14 @@
 const signupForm = $("#signup-form");
 
-const handleSignup = (event) => {
+const renderError = (id, message) => {
+  const errorDiv = $(`#${id}`);
+  errorDiv.empty();
+  errorDiv.append(`<div class="uk-text-danger">
+      ${message}
+    </div>`);
+};
+
+const handleSignup = async (event) => {
   console.log("Submitted");
   event.preventDefault();
   const firstName = $("#firstName").val();
@@ -16,6 +24,49 @@ const handleSignup = (event) => {
   console.log(confirmPassword);
   console.log(accountType);
   console.log(termsAndConditions);
+
+  if (
+    firstName &&
+    lastName &&
+    email &&
+    password &&
+    confirmPassword &&
+    termsAndConditions
+  ) {
+    if (password === confirmPassword) {
+      try {
+        const payload = {
+          firstName,
+          lastName,
+          email,
+          password,
+          termsAndConditions,
+        };
+
+        const response = await fetch("/apiAuth/signup", {
+          method: "POST",
+          body: JSON.stringify(payload),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          window.location.assign("/login");
+        } else {
+          renderError("signup-error", "Failed to create account. Try again.");
+        }
+      } catch (error) {
+        renderError("signup-error", "Failed to create account. Try again.");
+      }
+    } else {
+      renderError("signup-error", "Passwords do not match. Try again.");
+    }
+  } else {
+    renderError("signup-error", "Please complete all required fields.");
+  }
 };
 
 $("#signup-submit").click(handleSignup);
