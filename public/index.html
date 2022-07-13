@@ -27,6 +27,12 @@
       href="https://fonts.googleapis.com/css2?family=Chau+Philomene+One&display=swap"
       rel="stylesheet"
     />
+
+    <!-- animate css -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
     <!-- author's CSS link -->
     <link rel="stylesheet" href="./assets/css/home-styles.css" />
     <title>Home Page</title>
@@ -57,11 +63,10 @@
 
       <section class="hero-container">
         <div class="hero-content">
-          <h1 class="hero-title">
+          <h1 class="hero-title animate__backInDown">
             Welcome to <span class="web-name">Buddy Up</span>
           </h1>
           <p class="hero-message">Find your perfect study buddy</p>
-          <div class="line"></div>
           <div class="uk-navbar-item">
             <button class="uk-button uk-button-default create-btn" href="./">
               Start Now
@@ -74,9 +79,12 @@
       <section>
         <!-- reviews section title-->
         <h1 class="review-title">Our Reviews</h1>
+        <div class="line"></div>
         <div class="uk-flex uk-flex-wrap uk-flex-center cards-container">
           <!-- review card 1 -->
-          <div class="uk-card uk-card-default uk-card-body view-card">
+          <div
+            class="uk-card uk-card-default uk-card-secondary uk-card-body view-card"
+          >
             <h3 class="uk-card-title">Adam Ress</h3>
             <img
               class="user-image"
@@ -98,7 +106,9 @@
 
           <!-- review card 2 -->
 
-          <div class="uk-card uk-card-default uk-card-body view-card">
+          <div
+            class="uk-card uk-card-default uk-card-secondary uk-card-body view-card"
+          >
             <h3 class="uk-card-title">Alex Saxon</h3>
             <img
               class="user-image"
@@ -120,7 +130,9 @@
 
           <!-- review card 3 -->
 
-          <div class="uk-card uk-card-default uk-card-body view-card">
+          <div
+            class="uk-card uk-card-default uk-card-secondary uk-card-body view-card"
+          >
             <h3 class="uk-card-title">Emily woodland</h3>
             <img
               class="user-image"
@@ -141,7 +153,9 @@
           </div>
 
           <!-- review card 4 -->
-          <div class="uk-card uk-card-default uk-card-body view-card">
+          <div
+            class="uk-card uk-card-default uk-card-secondary uk-card-body view-card"
+          >
             <h3 class="uk-card-title">Ainsley Harriott</h3>
             <img
               class="user-image"
@@ -163,6 +177,16 @@
         </div>
       </section>
     </main>
+    <footer>
+      Download
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path
+          fill="#f3f4f5"
+          fill-opacity="1"
+          d="M0,192L48,181.3C96,171,192,149,288,160C384,171,480,213,576,197.3C672,181,768,107,864,112C960,117,1056,203,1152,218.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+        ></path>
+      </svg>
+    </footer>
     <!-- UIkit JS -->
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.0/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.0/dist/js/uikit-icons.min.js"></script>

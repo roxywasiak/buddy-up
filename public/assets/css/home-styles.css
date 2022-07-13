@@ -88,11 +88,13 @@
   font-weight: bold;
   border-radius: 8px;
   border: var(--light-blue);
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
 }
 
 .create-btn:hover {
   background-color: var(--white);
   color: var(--black);
+  box-shadow: 0 15px 15px 0 rgb(0 0 0 / 20%);
 }
 
 .uk-logo {
