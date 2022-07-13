@@ -56,11 +56,11 @@ const schema = {
   },
   location: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   isRemote: {
     type: DataTypes.BOOLEAN,
-    defaultValue: false,
+    defaultValue: true,
   },
   lat: {
     type: DataTypes.DECIMAL(15, 8),
