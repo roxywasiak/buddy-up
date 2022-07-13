@@ -1,4 +1,5 @@
 const signupForm = $("#signup-form");
+const loginForm = $("#login-form");
 
 const renderError = (id, message) => {
   const errorDiv = $(`#${id}`);
@@ -9,8 +10,9 @@ const renderError = (id, message) => {
 };
 
 const handleSignup = async (event) => {
-  console.log("Submitted");
   event.preventDefault();
+  console.log("Signup Submitted");
+
   const firstName = $("#firstName").val();
   const lastName = $("#lastName").val();
   const email = $("#email").val();
@@ -40,7 +42,7 @@ const handleSignup = async (event) => {
           lastName,
           email,
           password,
-          termsAndConditions,
+          accountType,
         };
 
         const response = await fetch("/apiAuth/signup", {
@@ -55,6 +57,7 @@ const handleSignup = async (event) => {
 
         if (data.success) {
           window.location.assign("/login");
+          console.log("User Created");
         } else {
           renderError("signup-error", "Failed to create account. Try again.");
         }
@@ -69,4 +72,10 @@ const handleSignup = async (event) => {
   }
 };
 
-$("#signup-submit").click(handleSignup);
+const handleLogin = (event) => {
+  event.preventDefault();
+  console.log("Login Submitted");
+};
+
+signupForm.submit(handleSignup);
+loginForm.submit(handleLogin);
