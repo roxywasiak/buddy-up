@@ -1,8 +1,9 @@
+const bcrypt = require("bcrypt");
 const { Model, DataTypes } = require("sequelize");
-
 const connection = require("../config/connection");
 const { hashPassword } = require("../hooks");
 // import references
+
 const Price = require("./Price");
 
 class Tutor extends Model {
@@ -12,10 +13,12 @@ class Tutor extends Model {
       firstName: this.firstName,
       lastName: this.lastName,
       email: this.email,
-      socialMedia: this.socialMedia,
-      calendlyLink: this.calendlyLink,
       userType: this.userType,
     };
+  }
+  async checkPassword(password) {
+    const isValid = await bcrypt.compare(password, this.password);
+    return isValid;
   }
 }
 
@@ -48,22 +51,22 @@ const schema = {
   },
   socialMedia: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   calendlyLink: {
     type: DataTypes.STRING,
     validate: { isURL: true },
-    allowNull: false,
+    allowNull: true,
   },
 
   location: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
 
   priceId: {
     type: DataTypes.INTEGER,
-    allowNull: false,
+    allowNull: true,
     references: {
       model: Price,
       key: "id",
@@ -71,7 +74,7 @@ const schema = {
   },
   isRemote: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
 
   lat: {
