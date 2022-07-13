@@ -1,7 +1,3 @@
-const {
-  getTutorPayload,
-  getStudentPayload,
-} = require("../../helpers/signupHelpers");
 const { Student, Tutor } = require("../../models");
 
 const login = async (req, res) => {
@@ -47,20 +43,15 @@ const login = async (req, res) => {
 
 const signup = async (req, res) => {
   try {
-    let payload;
     let user;
-    const { userType } = req.body;
+    console.log(req.body);
+    const { userType, firstName, lastName, email, password } = req.body;
+
     if (userType === "tutor") {
-      payload = getTutorPayload(req.body);
-      user = await Tutor.findOne({ where: { email: payload.email } });
+      user = await Tutor.findOne({ where: { email } });
     }
     if (userType === "student") {
-      payload = getStudentPayload(req.body);
-      user = await Student.findOne({ where: { email: payload.email } });
-    }
-    if (!payload) {
-      console.log(`[ERROR]: Bad Request | No payload`);
-      return res.status(402).json({ success: false });
+      user = await Student.findOne({ where: { email } });
     }
 
     if (user) {
@@ -70,8 +61,16 @@ const signup = async (req, res) => {
 
       return res.status(500).json({ success: false });
     }
+    if (!firstName || !lastName || !email || !password || !userType) {
+      return res.status(404).json({ success: false });
+    }
 
-    await user.create(payload);
+    if (userType === "tutor") {
+      await Tutor.create({ firstName, lastName, email, password, userType });
+    }
+    if (userType === "student") {
+      await Student.create({ firstName, lastName, email, password, userType });
+    }
     return res.json({ success: true });
   } catch (error) {
     console.log(`[ERROR]: Failed to create user | ${error.message}`);
