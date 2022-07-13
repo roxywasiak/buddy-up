@@ -1,8 +1,7 @@
-const getTutorPayload = (payload) => {
-  const { firstName, lastName, email, password, socialMedia, calendlyLink } =
-    payload;
+const get = (payload) => {
+  const { firstName, lastName, email, password } = payload;
 
-  return { firstName, lastName, email, password, socialMedia, calendlyLink };
+  return { firstName, lastName, email, password };
 };
 
 const getStudentPayload = (payload) => {
