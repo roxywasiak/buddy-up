@@ -7,8 +7,6 @@ const tutorDashboard = require("./tutorDashboard");
 
 const router = Router();
 
-router.use("/homePage", homePage);
-router.use("/authPage", authPage);
 router.use("/studentDashboard", studentDashboard);
 router.use("/tutorDashboard", tutorDashboard);
 
