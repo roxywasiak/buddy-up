@@ -143,6 +143,13 @@
   border-radius: 5px;
 }
 
+.review-title {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 45px;
+  font-weight: 500;
+}
+
 /* responsivness feature */
 @media screen {
   .view-card {
@@ -157,9 +164,10 @@
   margin-top: 15px;
 }
 
-.review-title {
-  text-align: center;
-  margin-top: 30px;
-  font-size: 45px;
+.uk-card-title {
   font-weight: 500;
+}
+
+.view-card {
+  align-content: center;
 }
