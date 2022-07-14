@@ -7,11 +7,13 @@ const {
   renderTutorDashboard,
 } = require("../../controllers/views");
 
+const auth = require("../../middlewares/auth");
+
 const router = Router();
 
 router.get("/", renderHomePage);
 router.get("/auth", renderAuthPage);
-router.get("/student-dashboard", renderStudentDashboard);
-router.get("/tutor-dashboard", renderTutorDashboard);
+router.get("/student-dashboard", auth, renderStudentDashboard);
+router.get("/tutor-dashboard", auth, renderTutorDashboard);
 
 module.exports = router;
