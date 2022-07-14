@@ -10,7 +10,12 @@ const getStudentPayload = (payload) => {
   return { firstName, lastName, email, password };
 };
 
+const isEqualTo = (data, equalToString) => {
+  return data === equalToString;
+};
+
 module.exports = {
   getTutorPayload,
   getStudentPayload,
+  isEqualTo,
 };
