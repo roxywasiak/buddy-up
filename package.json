@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/roxywasiak/buddy-up#readme",
   "dependencies": {
+    "animate.css": "^4.1.1",
     "bcrypt": "^5.0.1",
     "connect-session-sequelize": "^7.1.4",
     "dotenv": "^16.0.1",

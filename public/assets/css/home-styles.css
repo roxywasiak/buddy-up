@@ -1,0 +1,216 @@
+* {
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+/* colors*/
+:root {
+  --light-cornflower-blue: #8ecae6ff;
+  --light-blue: #39f;
+  --dark-blue: rgb(38, 175, 216);
+  --prussian-blue: #2a58ac;
+  --blue: #1e87f0;
+  --white: white;
+  --bs-gray-700: #495057;
+  --bs-gray-500: #adb5bd;
+  --bs-gray-800: #343a40;
+  --bs-gray-300: #f0f3f7;
+  --bs--gray: #f8f8f8;
+  --black: black;
+  --selective-yellow: #ffb703ff;
+}
+
+/* main */
+.body {
+  background: var(--bs--gray);
+  font-family: "Raleway", sans-serif;
+}
+
+/* navbar styles */
+.uk-logo {
+  margin-left: 20px;
+  font-weight: 700;
+  font-size: 25px;
+  letter-spacing: 0.1rem;
+  color: var(--dark-blue);
+  font-style: italic;
+}
+
+.fa-color :hover {
+  color: var(--black);
+}
+
+.link {
+  margin: 0px 25px;
+  font-weight: bold;
+}
+
+.link :hover {
+  text-decoration: overline var(--prussian-blue);
+  cursor: pointer;
+}
+
+/* banner styles */
+
+.hero-container {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../images/hero.jpg");
+  background-position: bottom;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero {
+  padding: 180px;
+  text-align: center;
+  background: var(--light-blue);
+  color: white;
+  font-size: 30px;
+  background-size: cover;
+  position: relative;
+}
+
+.hero-content {
+  text-align: center;
+}
+
+.hero-title {
+  margin-bottom: 30px;
+  font-size: 55px;
+  font-weight: 700;
+  line-height: 56px;
+  color: var(--white);
+}
+
+.web-name:hover {
+  border-bottom: 4px solid #3498db;
+  color: var(--black);
+}
+
+.hero-message {
+  color: var(--white);
+  margin-bottom: 50px;
+  font-weight: 500;
+  font-size: 30px;
+}
+
+.create-btn {
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background-color: var(--light-blue);
+  color: var(--white);
+  border: var(--light-blue);
+  transition: ease-in-out 0.3s;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+}
+
+.create-btn:hover {
+  background-color: var(--white);
+  color: var(--light-blue);
+  box-shadow: 0 15px 15px 0 rgb(0 0 0 / 20%);
+}
+
+.user-image {
+  border-radius: 100%;
+  width: 8rem;
+}
+
+/* responsivness  */
+
+@media (max-width: 992px) {
+  .nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .nav-links {
+    justify-content: center;
+    font-size: 10px;
+  }
+  .banner {
+    height: calc(100vh - 70px);
+  }
+}
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 30px;
+    line-height: 36px;
+  }
+  .hero-message {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 30px;
+  }
+}
+
+/* review section styles */
+
+.line {
+  width: 150px;
+  height: 4px;
+  background: var(--light-blue);
+  margin: 10px auto;
+  border-radius: 5px;
+}
+
+.review-title {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 45px;
+  font-weight: 500;
+  color: var(--bs-gray-700);
+}
+
+.checked {
+  color: var(--selective-yellow);
+}
+
+.rating {
+  margin-top: 15px;
+}
+
+.uk-card-title {
+  font-weight: 500;
+}
+
+.view-card {
+  text-align: center;
+  border-radius: 4px;
+  width: 17rem;
+  margin: 20px 30px;
+}
+
+.view-card:hover {
+  box-shadow: 0 8px 10px 0 var(--bs-gray-700);
+}
+
+/* footer styles */
+
+.footer-section {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bs-gray-300);
+}
+
+.footer-text {
+  color: var(--bs-gray-700);
+  font-size: 10px;
+  text-align: center;
+}
+
+.info-links {
+  margin-top: 10px;
+  color: var(--blue);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  cursor: pointer;
+}
