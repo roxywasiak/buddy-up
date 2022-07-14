@@ -6,9 +6,9 @@
 /* colors*/
 :root {
   --light-cornflower-blue: #8ecae6ff;
-  --light-blue: rgb(109, 203, 231);
+  --light-blue: #39f;
   --dark-blue: rgb(38, 175, 216);
-  --prussian-blue: #023047ff;
+  --prussian-blue: #2a58ac;
   --white: white;
   --bs-gray-700: #495057;
   --bs-gray-500: #adb5bd;
@@ -22,6 +22,7 @@
 /* main */
 .body {
   background: var(--bs--gray);
+  font-family: "Raleway", sans-serif;
 }
 
 /* navbar styles */
@@ -87,23 +88,28 @@
 
 .hero-message {
   color: var(--white);
-  margin-bottom: 80px;
+  margin-bottom: 50px;
   font-weight: 500;
   font-size: 30px;
 }
 
 .create-btn {
-  background-color: var(--black);
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background-color: var(--light-blue);
   color: var(--white);
-  font-weight: bold;
-  border-radius: 8px;
   border: var(--light-blue);
+  transition: ease-in-out 0.3s;
+  border-radius: 8px;
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
 }
 
 .create-btn:hover {
   background-color: var(--white);
-  color: var(--black);
+  color: var(--light-blue);
   box-shadow: 0 15px 15px 0 rgb(0 0 0 / 20%);
 }
 
@@ -151,6 +157,7 @@
   margin-top: 30px;
   font-size: 45px;
   font-weight: 500;
+  color: var(--bs-gray-700);
 }
 
 /* responsivness feature */
