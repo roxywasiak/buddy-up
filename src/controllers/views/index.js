@@ -1,7 +1,6 @@
 const path = require("path");
 
 const renderHomePage = (req, res) => {
-  console.log("home");
   return res.render("home", { currentPage: "home" });
 };
 
