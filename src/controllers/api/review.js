@@ -1,5 +1,5 @@
 //require models
-const { Review, Tutor, Student } = require("../../models");
+const { Review } = require("../../models");
 //create controllers
 
 //get all the reviews
