@@ -90,7 +90,12 @@ const handleLogin = async (event) => {
       const data = await response.json();
 
       if (data.success) {
-        window.location.assign("/student-dashboard");
+        const { userType } = data;
+        if (userType === "student") {
+          window.location.assign("/student-dashboard");
+        } else if (userType === "tutor") {
+          window.location.assign("/tutor-dashboard");
+        }
       } else {
         renderError("login-error", "Failed to login. Try again.");
       }
