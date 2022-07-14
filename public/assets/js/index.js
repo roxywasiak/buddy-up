@@ -90,7 +90,7 @@ const handleLogin = async (event) => {
       const data = await response.json();
 
       if (data.success) {
-        window.location.assign("/dashboard");
+        window.location.assign("/student-dashboard");
       } else {
         renderError("login-error", "Failed to login. Try again.");
       }
@@ -99,6 +99,23 @@ const handleLogin = async (event) => {
     }
   } else {
     renderError("login-error", "Please complete all required fields.");
+  }
+};
+
+const handleLogout = async () => {
+  try {
+    const response = await fetch("/apiAuth/logout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (response.ok) {
+      window.location.assign("/");
+    }
+  } catch (error) {
+    console.log("Failed to logout");
   }
 };
 
