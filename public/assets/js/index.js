@@ -1,5 +1,6 @@
 const signupForm = $("#signup-form");
 const loginForm = $("#login-form");
+const logout = $("#logout-btn");
 
 const renderError = (id, message) => {
   const errorDiv = $(`#${id}`);
