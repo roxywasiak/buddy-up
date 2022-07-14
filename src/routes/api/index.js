@@ -1,7 +1,7 @@
 const { Router } = require("express");
 
-const studentDashboard = require("./studentDashboard");
-const tutorDashboard = require("./tutorDashboard");
+const studentDashboard = require(".");
+const tutorDashboard = require("../tutorDashboard");
 
 const router = Router();
 
