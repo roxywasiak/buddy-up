@@ -3,15 +3,19 @@ const { Student, Tutor } = require("../../models");
 const login = async (req, res) => {
   try {
     let user;
-    const { email, password, userType } = req.body;
+    const { email, password } = req.body;
+    let userType;
 
-    if (userType === "student") {
-      user = await Student.findOne({ where: { email } });
+    isStudent = await Student.findOne({ where: { email } });
+    isTutor = await Tutor.findOne({ where: { email } });
+
+    if (isStudent) {
+      userType = "student";
+      user = isStudent;
+    } else if (isTutor) {
+      userType = "tutor";
+      user = isTutor;
     } else {
-      user = await Tutor.findOne({ where: { email } });
-    }
-
-    if (!user) {
       console.log(
         `[ERROR]: Failed to login | No user found with email: ${email}`
       );
@@ -25,7 +29,8 @@ const login = async (req, res) => {
       req.session.save(() => {
         req.session.isLoggedIn = true;
         req.session.user = user.getUser();
-        return res.json({ success: true });
+
+        return res.json({ success: true, userType: userType });
       });
     } else {
       console.log(
