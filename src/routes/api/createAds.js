@@ -1,7 +1,10 @@
 const { Router } = require("express");
 
-const { createAd } = require("../../controllers/api/createAds");
+const { createAd, updateAd } = require("../../controllers/api/createAds");
 
 const router = Router();
 
-router.put("/:id", createAd);
+router.create("/", createAd);
+router.put("/:id", updateAd);
+
+module.exports = router;
