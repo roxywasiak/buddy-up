@@ -1,4 +1,4 @@
-const { Student, Tutor } = require("../../models");
+const { Student, Tutor, Ad } = require("../../models");
 
 const createAd = async () => {
   try {
@@ -6,14 +6,10 @@ const createAd = async () => {
     const userType = req.sessions.user.userType;
     if (userType === "student") {
       const data = await Student.findByPk(id);
-      const { priceId, location, isRemote, lat, long } = req.body;
-      await Student.update({
-        priceId,
-        location,
-        isRemote,
-        lat,
-        long,
-      });
+      if (data) {
+        //create the new add for student
+        Ad.create();
+      }
       return res.json({ success: true, data });
     }
     if (userType === "tutor") {
@@ -22,7 +18,7 @@ const createAd = async () => {
       return res.json({ success: true, data });
     }
     if (userType !== "tutor" && userType !== "student") {
-      return res.status(404).json({ success: false });
+      return res.status(500).json({ success: false });
     }
   } catch (error) {
     console.log(`[ERROR]: Failed to get user| ${error.message}`);
