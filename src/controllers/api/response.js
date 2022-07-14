@@ -1,56 +1,34 @@
 const { Student, Tutor, Response } = require("../../models");
 
-const createResponse = async () => {
+const createResponse = async (req, res) => {
   try {
-    const id = req.sessions.user.id;
-    const userType = req.sessions.user.userType;
-    if (userType === "student") {
-      const data = await Student.findByPk(id);
-      if (data) {
-        //create response for student
-        await Response.create();
-      }
-      return res.json({ success: true, data });
-    }
-    if (userType === "tutor") {
-      const data = await Tutor.findByPk(id);
+    // create new add
+    const response = req.body;
 
-      return res.json({ success: true, data });
-    }
-    if (userType !== "tutor" && userType !== "student") {
-      return res.status(500).json({ success: false });
-    }
+    // create new ad
+    const newResponse = await Response.create(response);
+
+    // send response
+    return res.json(newResponse);
   } catch (error) {
-    console.log(`[ERROR]: Failed to get user| ${error.message}`);
-
-    return res.status(500).json({ success: false });
+    console.log(`[ERROR]: Failed to create response | ${error.message}`);
+    return res.status(500).json({ success: false, error: error.message });
   }
 };
 
-const updateResponse = async () => {
+const updateResponse = async (req, res) => {
   try {
-    const id = req.sessions.user.id;
-    const userType = req.sessions.user.userType;
-    if (userType === "student") {
-      const data = await Student.findByPk(id);
-      if (data) {
-        //update response
-        Response.update();
-      }
-      return res.json({ success: true, data });
-    }
-    if (userType === "tutor") {
-      const data = await Tutor.findByPk(id);
+    // update response
+    const newResponse = req.body;
 
-      return res.json({ success: true, data });
-    }
-    if (userType !== "tutor" && userType !== "student") {
-      return res.status(500).json({ success: false });
-    }
+    // update new response to db
+    const updatedResponse = await Book.update(newResponse);
+
+    // send response
+    return res.json(updatedResponse);
   } catch (error) {
-    console.log(`[ERROR]: Failed to get user| ${error.message}`);
-
-    return res.status(500).json({ success: false });
+    console.log(`[ERROR]: Failed to create book | ${error.message}`);
+    return res.status(500).json({ success: false, error: error.message });
   }
 };
 
