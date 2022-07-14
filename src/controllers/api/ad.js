@@ -1,13 +1,13 @@
 const { Student, Tutor, Ad } = require("../../models");
 
-const createAd = async () => {
+const getAllAds = async () => {
   try {
     const id = req.sessions.user.id;
     const userType = req.sessions.user.userType;
     if (userType === "student") {
       const data = await Student.findByPk(id);
       if (data) {
-        //create the new add for student
+        //create the new advert for student
         Ad.create();
       }
       return res.json({ success: true, data });
@@ -28,5 +28,5 @@ const createAd = async () => {
 };
 
 module.exports = {
-  createAd,
+  getAllAds,
 };
