@@ -84,6 +84,7 @@
 
 .web-name:hover {
   border-bottom: 4px solid #3498db;
+  color: var(--black);
 }
 
 .hero-message {
