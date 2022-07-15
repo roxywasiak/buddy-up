@@ -16,5 +16,5 @@ const createTutorSubject = async (req, res) => {
   }
 };
 
-const updateSubject = () => {};
+const updateSubject = async (req, res) => {};
 module.exports = { createTutorSubject, updateSubject };
