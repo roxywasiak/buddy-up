@@ -76,14 +76,19 @@ const updateAd = async (req, res) => {
 
 const deleteAd = async (req, res) => {
   try {
-    // delete ad
-    await Ad.destroy({
-      where: {
-        id: req.params.id,
-      },
-    });
+    const { id } = req.params;
+    const adExist = await Ad.findByPk(id);
 
-    return res.json({ message: "Successfully deleted ad" });
+    // delete ad
+    if (adExist) {
+      await Ad.destroy({
+        where: {
+          id,
+        },
+      });
+      return res.status(200).json({ message: "Successfully deleted ad" });
+    }
+    return res.status(404).json({ error: "Failed to delete ad" });
   } catch (error) {
     // catch error and return status 500
     console.log(`[ERROR]: Failed to delete ad | ${error.message}`);
