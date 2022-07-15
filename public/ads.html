@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- UIkit CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/uikit@3.15.0/dist/css/uikit.min.css"
+    />
+    <!-- icon library -->
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Google Font CSS link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chau+Philomene+One&display=swap"
+      rel="stylesheet"
+    />
+    <!-- author's CSS link -->
+    <link rel="stylesheet" href="./assets/css/home-styles.css" />
+    <title>ads page</title>
+  </head>
+  <body>
+    <main>
+      <div
+        class="uk-section uk-section-muted uk-flex uk-flex-middle uk-animation-fade"
+        uk-height-viewport
+      >
+        <div class="uk-width-1-1">
+          <div class="uk-container">
+            <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid>
+              <div class="uk-width-1-1@m">
+                <div
+                  class="uk-margin uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large"
+                >
+                  <ul
+                    class="uk-tab uk-flex-center"
+                    uk-grid
+                    uk-switcher="animation: uk-animation-fade"
+                  >
+                    <li class="uk-hidden">Forgot Password?</li>
+                  </ul>
+                  <ul class="uk-switcher">
+                    <li>
+                      <h3 class="uk-card-title uk-text-center">
+                        Create an advert
+                      </h3>
+                      <h4 class="uk-text-center">
+                        Please fill in the following details
+                      </h4>
+
+                      <!--ABS FORM SECTION-->
+                      <form class="uk-form-stacked uk-margin">
+                        <div class="card-info uk-margin">
+                          <label
+                            class="uk-form-label uk-text-bold"
+                            for="form-stacked-text"
+                            >Title
+                          </label>
+                          <div class="uk-form-controls">
+                            <input
+                              class="uk-input"
+                              id="form-stacked-text"
+                              type="text"
+                              placeholder="enter Title..."
+                            />
+                          </div>
+                        </div>
+
+                        <!-- form title section  -->
+                        <div class="card-info uk-margin">
+                          <label
+                            class="uk-form-label uk-text-bold"
+                            for="form-stacked-text"
+                            >Advert Description
+                          </label>
+                          <div class="uk-form-controls">
+                            <input
+                              class="uk-input"
+                              id="form-stacked-text"
+                              type="text"
+                              placeholder="enter Description..."
+                            />
+                          </div>
+
+                          <!-- form subject section  -->
+                          <div class="uk-margin">
+                            <label
+                              class="uk-form-label uk-text-bold"
+                              for="form-horizontal-select"
+                              >Subject</label
+                            >
+                            <div class="uk-form-controls">
+                              <select
+                                class="uk-select"
+                                uk-form-custom="target: true"
+                                id="form-horizontal-select"
+                              >
+                                <option id="subject-choices">select</option>
+                                <option id="subject-choices">Math</option>
+                              </select>
+                            </div>
+                          </div>
+
+                          <!-- budget section  -->
+                          <div class="uk-margin">
+                            <label
+                              class="uk-form-label uk-text-bold"
+                              for="form-horizontal-select"
+                              >Budget</label
+                            >
+                            <div class="uk-form-controls">
+                              <select
+                                class="uk-select"
+                                id="form-horizontal-select"
+                              >
+                                <option id="subject-choices">Low</option>
+                                <option id="subject-choices">Medium</option>
+                                <option id="subject-choices">High</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- button section  -->
+                        <div class="uk-card-body">
+                          <button
+                            class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom"
+                          >
+                            Button
+                          </button>
+                        </div>
+                      </form>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.0/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.0/dist/js/uikit-icons.min.js"></script>
+    <!-- Jquery JavaScript link -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <!-- author's JavaScript link -->
+    <script src="./assets/js/index.js"></script>
+  </body>
+</html>
