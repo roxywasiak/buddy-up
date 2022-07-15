@@ -113,7 +113,7 @@ const getAdById = async (req, res) => {
   }
 };
 
-const getAdsbySubjectAndType = async (req, res) => {
+const getAdsbySubjectAndUserType = async (req, res) => {
   try {
     const { isTutor, subjectId } = req.body;
 
@@ -182,6 +182,6 @@ module.exports = {
   updateAd,
   deleteAd,
   getAdById,
-  getAdsbySubjectAndType,
+  getAdsbySubjectAndUserType,
   getAllAds,
 };
