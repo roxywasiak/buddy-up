@@ -65,12 +65,13 @@
                           <label
                             class="uk-form-label uk-text-bold"
                             for="form-stacked-text"
-                            >Title
+                            >Ad Title
                           </label>
                           <div class="uk-form-controls">
                             <input
+                              id="ads-title"
                               class="uk-input"
-                              id="form-stacked-text"
+                              class="form-stacked-text"
                               type="text"
                               placeholder="enter Title..."
                             />
@@ -82,10 +83,11 @@
                           <label
                             class="uk-form-label uk-text-bold"
                             for="form-stacked-text"
-                            >Advert Description
+                            >Ad Description
                           </label>
                           <div class="uk-form-controls">
                             <input
+                              id="ads-description"
                               class="uk-input"
                               id="form-stacked-text"
                               type="text"
@@ -102,6 +104,7 @@
                             >
                             <div class="uk-form-controls">
                               <select
+                                id="ads-subject"
                                 class="uk-select"
                                 uk-form-custom="target: true"
                                 id="form-horizontal-select"
@@ -121,8 +124,9 @@
                             >
                             <div class="uk-form-controls">
                               <select
+                                id="ads-budget"
                                 class="uk-select"
-                                id="form-horizontal-select"
+                                class="form-horizontal-select"
                               >
                                 <option id="subject-choices">Low</option>
                                 <option id="subject-choices">Medium</option>
@@ -130,12 +134,33 @@
                               </select>
                             </div>
                           </div>
+
+                          <!-- TUTOR PRICE SELECTIONS -->
+                          <div class="uk-margin">
+                            <label
+                              class="uk-form-label uk-text-bold"
+                              for="form-horizontal-select"
+                              >Price</label
+                            >
+                            <div class="uk-form-controls">
+                              <select
+                                id="ads-budget"
+                                class="uk-select"
+                                class="form-horizontal-select"
+                              >
+                                <option id="subject-choices">£10</option>
+                                <option id="subject-choices">£25</option>
+                                <option id="subject-choices">£50</option>
+                              </select>
+                            </div>
+                          </div>
                         </div>
                         <!-- button section  -->
                         <div class="uk-card-body">
                           <button
-                            id
+                            id="ads=btn"
                             class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom"
+                            type="submit"
                           >
                             Button
                           </button>
