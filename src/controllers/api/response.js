@@ -19,12 +19,17 @@ const createResponse = async (req, res) => {
 const updateResponse = async (req, res) => {
   try {
     // update response
-    const newResponse = req.body;
-
-    // update new response to db
-    const updatedResponse = await Response.update(newResponse);
-
-    // send response
+    const { status, userType, id } = req.body;
+    if (userType !== "tutor" && userType !== "student") {
+      return res.status(500).json({ success: false, error: error.message });
+    }
+    if (
+      status === "pending" ||
+      status === "completed" ||
+      status === "rejected"
+    ) {
+      const updatedResponse = await Response.update({ status, id });
+    }
     return res.json(updatedResponse);
   } catch (error) {
     console.log(`[ERROR]: Failed to create Response | ${error.message}`);
@@ -32,7 +37,25 @@ const updateResponse = async (req, res) => {
   }
 };
 
+const getResponseById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const data = await Response.findByPk(id);
+
+    if (!data) {
+      return res.status(404).json({ success: false });
+    }
+
+    return res.json({ success: true, data });
+  } catch (error) {
+    console.log(`[ERROR]: Failed to get all reports| ${error.message}`);
+
+    return res.status(500).json({ success: false });
+  }
+};
+
 module.exports = {
   createResponse,
   updateResponse,
+  getResponseById,
 };
