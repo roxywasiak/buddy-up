@@ -3,38 +3,37 @@ const { Student, Tutor } = require("../../models");
 const login = async (req, res) => {
   try {
     let user;
-    const { email, password } = req.body;
-    let userType;
+    const { email, password, userType } = req.body;
 
-    isStudent = await Student.findOne({ where: { email } });
-    isTutor = await Tutor.findOne({ where: { email } });
+    console.log(userType);
 
-    if (isStudent) {
-      userType = "student";
-      user = isStudent;
-    } else if (isTutor) {
-      userType = "tutor";
-      user = isTutor;
+    if (email && password && userType === "student") {
+      user = await Student.findOne({ where: { email } });
+    }
+    if (email && password && userType === "tutor") {
+      user = await Tutor.findOne({ where: { email } });
+    }
+
+    if (user) {
+      const isAuthorised = await user.checkPassword(password);
+
+      if (isAuthorised) {
+        req.session.save(() => {
+          req.session.isLoggedIn = true;
+          req.session.user = user.getUser();
+
+          return res.json({ success: true });
+        });
+      } else {
+        console.log(
+          `[ERROR]: Failed to login | Incorrect password for email: ${email}`
+        );
+
+        return res.status(500).json({ success: false });
+      }
     } else {
       console.log(
         `[ERROR]: Failed to login | No user found with email: ${email}`
-      );
-
-      return res.status(500).json({ success: false });
-    }
-
-    const isAuthorised = await user.checkPassword(password);
-
-    if (isAuthorised) {
-      req.session.save(() => {
-        req.session.isLoggedIn = true;
-        req.session.user = user.getUser();
-
-        return res.json({ success: true, userType: userType });
-      });
-    } else {
-      console.log(
-        `[ERROR]: Failed to login | Incorrect password for email: ${email}`
       );
 
       return res.status(500).json({ success: false });

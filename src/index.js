@@ -27,7 +27,7 @@ const sessionOptions = {
   }),
 };
 
-const hbs = exphbs.create({});
+const hbs = exphbs.create({ helpers: require("./helpers/handlebarsHelpers") });
 const app = express();
 
 app.engine("handlebars", hbs.engine);

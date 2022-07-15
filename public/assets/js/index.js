@@ -1,6 +1,7 @@
 const signupForm = $("#signup-form");
 const loginForm = $("#login-form");
 const logoutBtn = $("#logout-btn");
+const completeProfile = $("#complete-profile-btn");
 
 const renderError = (id, message) => {
   const errorDiv = $(`#${id}`);
@@ -72,12 +73,14 @@ const handleLogin = async (event) => {
 
   const email = $("#login-email").val();
   const password = $("#login-password").val();
+  const userType = $("input[name='login-choice']:checked").val();
 
   if (email && password) {
     try {
       const payload = {
         email,
         password,
+        userType,
       };
 
       const response = await fetch("/apiAuth/login", {
@@ -91,12 +94,7 @@ const handleLogin = async (event) => {
       const data = await response.json();
 
       if (data.success) {
-        const { userType } = data;
-        if (userType === "student") {
-          window.location.assign("/student-dashboard");
-        } else if (userType === "tutor") {
-          window.location.assign("/tutor-dashboard");
-        }
+        window.location.assign("/dashboard");
       } else {
         renderError("login-error", "Failed to login. Try again.");
       }
@@ -125,6 +123,11 @@ const handleLogout = async () => {
   }
 };
 
+const handleCompleteProfileClick = () => {
+  window.location.assign("/completeProfile");
+};
+
 signupForm.submit(handleSignup);
 loginForm.submit(handleLogin);
 logoutBtn.click(handleLogout);
+completeProfile.click(handleCompleteProfileClick);
