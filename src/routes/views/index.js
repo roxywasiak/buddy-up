@@ -16,8 +16,9 @@ const router = Router();
 
 router.get("/", renderHomePage);
 router.get("/auth", renderAuthPage);
-router.get("/student-dashboard", auth, renderStudentDashboard);
-router.get("/tutor-dashboard", auth, renderTutorDashboard);
+router.get("/dashboard", auth, renderDashboard);
+// router.get("/student-dashboard", auth, renderStudentDashboard);
+// router.get("/tutor-dashboard", auth, renderTutorDashboard);
 router.get("/dashboard", auth, renderDashboard);
 router.get("/createAds", auth, renderCreateAdsPage);
 router.get("/viewAds", auth, renderViewAdsPage);

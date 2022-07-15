@@ -110,7 +110,7 @@ const getAdById = async (req, res) => {
 
 const getAdsbySubjectAndType = async (req, res) => {
   try {
-    const { id, isTutor, subjectId } = req.body;
+    const { isTutor, subjectId } = req.body;
 
     if (!isTutor && subjectId) {
       const selectedAds = await Ad.findAll({
