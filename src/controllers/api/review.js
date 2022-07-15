@@ -37,7 +37,6 @@ const newReview = async (req, res) => {
   try {
     // get new review data from request body
     const review = req.body;
-
     // insert review into the DB
     const createReview = await Review.create(review);
 

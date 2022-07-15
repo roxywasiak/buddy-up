@@ -1,5 +1,5 @@
 const { Ad } = require("../../models");
-
+//post
 const createAd = async (req, res) => {
   try {
     const { studentId, isTutor, priceId, description, subjectId } = req.body;
@@ -50,7 +50,7 @@ const cleanupPayload = (payload) => {
     return acc;
   }, {});
 };
-
+//put
 const updateAd = async (req, res) => {
   try {
     const payload = cleanupPayload(req.body);
