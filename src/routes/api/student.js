@@ -1,7 +1,7 @@
 const { Router } = require("express");
 
 const {
-  getStudent,
+  getAllStudents,
   getStudentById,
   updateStudent,
   deleteStudent,
@@ -10,7 +10,7 @@ const {
 const router = Router();
 
 router.get("/:id", getStudentById);
-router.get("/", getStudent);
+router.get("/", getAllStudents);
 
 router.put("/:id", updateStudent);
 router.delete("/:id", deleteStudent);
