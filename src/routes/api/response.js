@@ -3,7 +3,7 @@ const { Router } = require("express");
 const {
   createResponse,
   updateResponse,
-} = require("../../controllers/api/review");
+} = require("../../controllers/api/response");
 
 const router = Router();
 
