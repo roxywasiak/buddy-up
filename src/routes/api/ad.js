@@ -15,7 +15,7 @@ router.post("/", createAd);
 router.put("/:id", updateAd);
 router.delete("/:id", deleteAd);
 router.get("/:id", getAdById);
-router.get("/categor", getAdsbySubjectAndUserType);
+router.get("/category", getAdsbySubjectAndType);
 router.get("/", getAllAds);
 
 module.exports = router;
