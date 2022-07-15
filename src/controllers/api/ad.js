@@ -1,5 +1,5 @@
 const { Ad } = require("../../models");
-
+//post
 const createAd = async (req, res) => {
   try {
     const { studentId, isTutor, priceId, description, subjectId } = req.body;
@@ -50,7 +50,7 @@ const cleanupPayload = (payload) => {
     return acc;
   }, {});
 };
-
+//put
 const updateAd = async (req, res) => {
   try {
     const payload = cleanupPayload(req.body);
@@ -116,55 +116,52 @@ const getAdById = async (req, res) => {
 const getAdsbySubjectAndUserType = async (req, res) => {
   try {
     const { isTutor, subjectId } = req.body;
-
+    let selectedAds;
     if (!isTutor && subjectId) {
-      const selectedAds = await Ad.findAll({
+      selectedAds = await Ad.findAll({
         where: {
           isTutor: !isTutor,
           subjectId,
         },
       });
-      return res.json({ success: true, selectedAds });
     }
     if (!isTutor) {
-      const selectedAds = await Ad.findAll({
+      selectedAds = await Ad.findAll({
         where: {
           isTutor: !isTutor,
         },
       });
-      return res.json({ success: true, selectedAds });
     }
     if (isTutor && subjectId) {
-      const selectedAds = await Ad.findAll({
+      selectedAds = await Ad.findAll({
         where: {
           isTutor: isTutor,
           subjectId,
         },
       });
-      return res.json({ success: true, selectedAds });
     }
     if (isTutor) {
-      const selectedAds = await Ad.findAll({
+      selectedAds = await Ad.findAll({
         where: {
           isTutor: isTutor,
         },
       });
-      return res.json({ success: true, selectedAds });
     }
     if (subjectId) {
-      const selectedAds = await Ad.findAll({
+      selectedAds = await Ad.findAll({
         where: {
           subjectId,
         },
       });
-      return res.json({ success: true, selectedAds });
     }
+    return res.json({ success: true, selectedAds });
   } catch (error) {
     console.log(`[ERROR]: Failed to get ads | ${error.message}`);
 
     return res.status(500).json({ success: false });
   }
 };
+
 const getAllAds = async (req, res) => {
   try {
     const data = await Ad.findAll({});

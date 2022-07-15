@@ -1,16 +1,13 @@
 const { Router } = require("express");
 
 const {
-  getReviews,
-  reviewById,
-  newReview,
+  createResponse,
+  updateResponse,
 } = require("../../controllers/api/review");
 
 const router = Router();
 
-router.get("/", getReviews);
-router.get("/:id", reviewById);
-
-router.post("/", newReview);
+router.post("/", createResponse);
+router.put("/:id", updateResponse);
 
 module.exports = router;
