@@ -5,7 +5,7 @@ const {
   updateAd,
   deleteAd,
   getAdById,
-  getAdsbySubjectAndType,
+  getAdsbySubjectAndUserType,
   getAllAds,
 } = require("../../controllers/api/ad");
 

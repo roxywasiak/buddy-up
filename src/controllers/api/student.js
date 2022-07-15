@@ -31,7 +31,8 @@ const getStudentById = async (req, res) => {
 const updateStudent = async (req, res) => {
   try {
     const { priceId, location, isRemote, lat, long } = req.body;
-    const id = req.sessions.user.id;
+    // const id = req.sessions.user.id;
+    const id = 1;
     const data = await Student.findByPk(id);
     if (!data) {
       return res.status(404).json({ success: false });
@@ -47,18 +48,23 @@ const updateStudent = async (req, res) => {
 
 const deleteStudent = async (req, res) => {
   try {
-    // delete Student
-    await Student.destroy({
-      where: {
-        id: req.params.id,
-      },
-    });
+    const { id } = req.params;
+    const studentExist = await Student.findByPk(id);
 
-    return res.json({ message: "Successfully deleted Student" });
+    // delete student
+    if (studentExist) {
+      await Student.destroy({
+        where: {
+          id,
+        },
+      });
+      return res.status(200).json({ message: "Successfully deleted student" });
+    }
+    return res.status(404).json({ error: "Failed to delete student" });
   } catch (error) {
     // catch error and return status 500
-    console.log(`[ERROR]: Failed to delete Student | ${error.message}`);
-    return res.status(500).json({ error: "Failed to delete Student" });
+    console.log(`[ERROR]: Failed to delete student | ${error.message}`);
+    return res.status(500).json({ error: "Failed to delete student" });
   }
 };
 
