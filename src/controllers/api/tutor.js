@@ -22,7 +22,7 @@ const getTutorById = async (req, res) => {
 
     return res.json({ success: true, data });
   } catch (error) {
-    console.log(`[ERROR]: Failed to get all Tutors | ${error.message}`);
+    console.log(`[ERROR]: Failed to get tutor | ${error.message}`);
 
     return res.status(500).json({ success: false });
   }
@@ -64,13 +64,18 @@ const updateTutor = async (req, res) => {
 const deleteTutor = async (req, res) => {
   try {
     // delete Tutor
-    await Tutor.destroy({
-      where: {
-        id: req.params.id,
-      },
-    });
+    const { id } = req.params;
+    const tutorExist = await Tutor.findByPk(id);
 
-    return res.json({ message: "Successfully deleted Tutor" });
+    // delete tutor
+    if (tutorExist) {
+      await Tutor.destroy({
+        where: {
+          id,
+        },
+      });
+      return res.status(200).json({ message: "Successfully deleted tutor" });
+    }
   } catch (error) {
     // catch error and return status 500
     console.log(`[ERROR]: Failed to delete Tutor | ${error.message}`);
