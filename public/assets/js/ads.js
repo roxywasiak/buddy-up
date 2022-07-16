@@ -1,3 +1,5 @@
+const { Subject } = require("../../../src/models");
+
 // ~ DECLARATIONS
 const adsBtn = $("#ads-btn");
 const adsBudget = $("#ads-budget");
@@ -21,22 +23,28 @@ const handleFormSubmit = async (event) => {
   // verification user input for all fields
   if (title && description && subject && budget) {
     try {
+      // get all subject
+      const getSubjects = () => {
+        // send query for all subjects 
+        const subjects = await Subject.findAll()
+      };
+
       // create payload
       const payload = {
         description,
         subject,
         budget,
       };
-      console.log(payload);
 
       //   create response
-      const response = await fetch("/views/createAds", {
+      const response = await fetch("/api/ad/", {
         method: "POST",
         body: JSON.stringify(payload),
         headers: {
           "Content-Type": "application/json",
         },
       });
+      console.log(response);
 
       const data = await response.json();
 
@@ -47,7 +55,7 @@ const handleFormSubmit = async (event) => {
   } else {
     btnContainer.append(`<div class="uk-alert-danger" uk-alert>
     <a class="uk-alert-close" uk-close></a>
-    <p> Please complete all the fields </p>
+    <p> Please complete all fields </p>
 </div>`);
   }
 };
