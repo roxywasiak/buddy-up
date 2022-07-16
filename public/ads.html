@@ -1,5 +1,39 @@
-{{> privateNavBar }}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- UIkit CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/uikit@3.15.0/dist/css/uikit.min.css"
+    />
+    <!-- icon library -->
 
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+
+
+
+    <!-- Google Font CSS link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chau+Philomene+One&display=swap"
+      rel="stylesheet"
+    />
+    <!-- author's CSS link -->
+    <link rel="stylesheet" href="./assets/css/home-styles.css" />
+    <title>ads page</title>
+  </head>
+  <body>
     <main>
       <div
         class="uk-section uk-section-muted uk-flex uk-flex-middle uk-animation-fade"
@@ -12,7 +46,7 @@
                 <div
                   class="uk-margin uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large"
                 >
-                    <h3 class="uk-card-title uk-text-center">
+                <h3 class="uk-card-title uk-text-center">
                   Create an advert
                 </h3>
                   <ul
@@ -79,7 +113,7 @@
                                 uk-form-custom="target: true"
                                 id="form-horizontal-select"
                               >
-                                <option id="subject-choices">select</option>
+                                <option id="subject">Math</option>
                               </select>
                             </div>
                           </div>
@@ -97,33 +131,13 @@
                                 class="uk-select"
                                 class="form-horizontal-select"
                               >
-                                <option id="budget-low">Low</option>
-                                <option id="budget-medium">Medium</option>
-                                <option id="budget-high">High</option>
+                                <option id="subject-choices">Low</option>
+                                <option id="subject-choices">Medium</option>
+                                <option id="subject-choices">High</option>
                               </select>
                             </div>
                           </div>
 
-                          <!-- TUTOR PRICE SELECTIONS -->
-                          {{!-- <div class="uk-margin">
-                            <label
-                              class="uk-form-label uk-text-bold"
-                              for="form-horizontal-select"
-                              >Price</label
-                            >
-                            <div class="uk-form-controls">
-                              <select
-                                id="ads-price"
-                                class="uk-select"
-                                class="form-horizontal-select"
-                              >
-                                <option id="price-low">£10</option>
-                                <option id="price-medium">£25</option>
-                                <option id="price-low">£50</option>
-                              </select>
-                            </div>
-                          </div>
-                        </div> --}}
                         <!-- button section  -->
                         <div class="uk-card-body" id="btn-container">
                           <button
@@ -133,6 +147,7 @@
                           >
                             Button
                           </button>
+                          
                         </div>
                       </form>
                     </li>
@@ -144,3 +159,17 @@
         </div>
       </div>
     </main>
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.0/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.0/dist/js/uikit-icons.min.js"></script>
+    <!-- Jquery JavaScript link -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <!-- author's JavaScript link -->
+    <script src="./assets/js/ads.js"></script>
+  </body>
+</html>
