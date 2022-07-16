@@ -44,18 +44,13 @@ const updateTutor = async (req, res) => {
     if (!data) {
       return res.status(404).json({ success: false });
     }
-    await Tutor.update({
-      socialMedia,
-      calendlyLink,
-      priceId,
-      location,
-      isRemote,
-      lat,
-      long,
-    });
+    await Tutor.update(
+      { socialMedia, calendlyLink, priceId, location, isRemote, lat, long },
+      { where: { id: id } }
+    );
     return res.json({ success: true });
   } catch (error) {
-    console.log(`[ERROR]: Failed to create Tutor | ${error.message}`);
+    console.log(`[ERROR]: Failed to update Tutor | ${error.message}`);
 
     return res.status(500).json({ success: false });
   }
