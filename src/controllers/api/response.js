@@ -40,19 +40,22 @@ const updateResponse = async (req, res) => {
 const getResponseByUserId = async (req, res) => {
   try {
     const { userType, studentId, tutorId } = req.body;
+    let data;
 
     if (userType === "student") {
-      const data = await Response.findAll({ where: {} });
+      data = await Response.findAll({ where: { studentId: studentId } });
+      return res.json({ success: true, data });
     }
 
     if (userType === "tutor") {
+      data = await Response.findAll({
+        where: { tutorId: tutorId },
+      });
+      return res.json({ success: true, data });
     }
-
     if (!data) {
       return res.status(404).json({ success: false });
     }
-
-    return res.json({ success: true, data });
   } catch (error) {
     console.log(`[ERROR]: Failed to get all reports| ${error.message}`);
 
