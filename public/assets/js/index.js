@@ -140,19 +140,19 @@ const submitProfile = async (event) => {
   const levelChoice = $("#levelChoice option:selected").val();
   const location = $("#locationInput").val();
   const isRemote = $("#isRemote").is(":checked");
-  const priceId = $("#priceRange").val();
+  const priceId = 2;
   const socialMedia = $("#socialMediaLink").val();
   const calendlyLink = $("#calendlyLink").val();
 
   const payload = {
-    // socialMedia,
-    // calendlyLink,
+    socialMedia,
+    calendlyLink,
     priceId,
     location,
     isRemote,
   };
 
-  const response = await fetch("/api/student/11", {
+  const response = await fetch("/api/tutor/12", {
     method: "PUT",
     body: JSON.stringify(payload),
     headers: {
