@@ -22,7 +22,7 @@ const handleSessionCard = async () => {
   }
 };
 
-createProjectForm.on("submit", handleSessionCard);
+createSession.on("submit", handleSessionCard);
 
 // display ones that are complete as cards
 
