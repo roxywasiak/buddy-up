@@ -39,7 +39,8 @@ const updateTutor = async (req, res) => {
       lat,
       long,
     } = req.body;
-    const id = req.sessions.user.id;
+    // const id = req.sessions.user.id;
+    const id = 12;
     const data = await Tutor.findByPk(id);
     if (!data) {
       return res.status(404).json({ success: false });
