@@ -1,4 +1,5 @@
-const { Response } = require("../../models");
+const { Response, Ad } = require("../../models");
+const { findOne, findAll } = require("../../models/Subject");
 
 const createResponse = async (req, res) => {
   try {
@@ -39,21 +40,37 @@ const updateResponse = async (req, res) => {
 
 const getResponseByUserId = async (req, res) => {
   try {
-    const { userType, studentId, tutorId } = req.body;
     let data;
 
-    if (userType === "student") {
-      data = await Response.findAll({ where: { studentId: studentId } });
-      return res.json({ success: true, data });
-    }
-
-    if (userType === "tutor") {
-      data = await Response.findAll({
-        where: { tutorId: tutorId },
+    if (req.session.userType === "student") {
+      const getAd = await Ad.findAll({
+        where: { studentId: req.session.user.id },
+      });
+      const { id } = getAd;
+      data = await Response.findOne({
+        where: { studentId: req.session.id, adId: id, status: "completed" },
       });
       return res.json({ success: true, data });
     }
-    if (!data) {
+
+    if (req.session.userType === "tutor") {
+      data = await Ad.findAll({
+        where: { tutorId: req.session.id },
+      });
+      const { id } = getAd;
+      data = await Response.findOne({
+        where: {
+          tutorId: req.session.user.id,
+          adId: id,
+          status: "completed",
+        },
+      });
+      return res.json({ success: true, data });
+    }
+    if (
+      !data ||
+      (req.session.userType !== "student" && req.session.userType !== "tutor")
+    ) {
       return res.status(404).json({ success: false });
     }
   } catch (error) {
