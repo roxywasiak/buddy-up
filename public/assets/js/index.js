@@ -107,6 +107,8 @@ const handleLogin = async (event) => {
   }
 };
 
+console.log("Hi");
+
 const handleLogout = async () => {
   try {
     const response = await fetch("/apiAuth/logout", {
@@ -143,14 +145,14 @@ const submitProfile = async (event) => {
   const calendlyLink = $("#calendlyLink").val();
 
   const payload = {
-    socialMedia,
-    calendlyLink,
+    // socialMedia,
+    // calendlyLink,
     priceId,
     location,
     isRemote,
   };
 
-  const response = await fetch("/api/tutor/12", {
+  const response = await fetch("/api/student/11", {
     method: "PUT",
     body: JSON.stringify(payload),
     headers: {
