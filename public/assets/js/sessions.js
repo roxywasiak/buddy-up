@@ -1,14 +1,13 @@
 // responses - pull all the responses for user id
-const handleCreateProject = async (event) => {
-  event.preventDefault();
-
-  const tutorCard = $("#tutor-card").val();
+const handleSessionCard = async () => {
+  const tutorCard = $("#tutor-card").append();
+  // append to card then do for each to append to each card
 
   const payload = JSON.stringify({
     tutorCard,
   });
 
-  const response = await fetch("/api/projects", {
+  const response = await fetch("/api/response", {
     method: "GET",
     body: payload,
     headers: {
@@ -17,13 +16,13 @@ const handleCreateProject = async (event) => {
   });
 
   if (response.ok) {
-    window.location.replace("/profile");
+    window.location.replace("/response");
   } else {
-    alert("Failed to create project");
+    alert("Failed to get response");
   }
 };
 
-createProjectForm.on("submit", handleCreateProject);
+createProjectForm.on("submit", handleSessionCard);
 
 // display ones that are complete as cards
 
@@ -32,12 +31,12 @@ createProjectForm.on("submit", handleCreateProject);
 // id code from Amirtha
 
 // turn this rep - look through api/response
-const response = await fetch("/apiAuth/signup", {
-  method: "GET",
-  body: JSON.stringify(payload),
-  headers: {
-    "Content-Type": "application/json",
-  },
-});
+// const response = await fetch("/apiAuth/signup", {
+//   method: "GET",
+//   body: JSON.stringify(payload),
+//   headers: {
+//     "Content-Type": "application/json",
+//   },
+// });
 
-tutorCard();
+handleSessionCard();
