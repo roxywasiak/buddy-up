@@ -22,7 +22,9 @@ const handleSessionCard = async () => {
   }
 };
 
-createSession.on("submit", handleSessionCard);
+// function to generate new card
+
+// renderSession.on("submit", handleSessionCard);
 
 // display ones that are complete as cards
 
