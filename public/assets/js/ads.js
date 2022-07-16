@@ -19,14 +19,27 @@ const getSubjects = async () => {
       },
     });
     console.log(response);
-    console;
+
+    // await data
+    const data = await response.json();
+
+    // loop through array and map
+
+    const subjectArray = () => {};
+
+    console.log(data);
+
+    if (data.success) {
+      // loop through array and map
+    } else {
+      console.log(`[ERROR]: Failed to get data| ${error.message}`);
+    }
+
     // send query for all subjects
 
     const subjects = await Subject.findAll();
   } catch (error) {
-    console.log(
-      `[ERROR]: Failed to create get subjects from API| ${error.message}`
-    );
+    console.log(`[ERROR]: Failed to get subjects from API| ${error.message}`);
   }
 };
 // fn to handle form submit
