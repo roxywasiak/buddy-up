@@ -1,5 +1,4 @@
 // const { Subject } = require("../../../src/models");
-console.log("hi");
 
 // ~ DECLARATIONS
 const adsBtn = $("#ads-btn");
@@ -8,9 +7,31 @@ const adSubject = $("#ads-subject");
 const adsDescription = $("#ads-description");
 const adsTitle = $("#ads-title");
 
+// function to get fetch data from subject api
+const getSubjects = async () => {
+  console.log("hi");
+  // send a GET request to get subjects from subject API
+  try {
+    const response = await fetch("api/subject/", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    console.log(response);
+    console;
+    // send query for all subjects
+
+    const subjects = await Subject.findAll();
+  } catch (error) {
+    console.log(
+      `[ERROR]: Failed to create get subjects from API| ${error.message}`
+    );
+  }
+};
 // fn to handle form submit
 const handleFormSubmit = async (event) => {
-  console.log("clicked");
+  console.log("form fn");
   // prevent url form default
   event.preventDefault();
 
@@ -24,20 +45,9 @@ const handleFormSubmit = async (event) => {
   // verification user input for all fields
   if (title && description && subject && budget) {
     try {
-      const getSubjects = async () => {
-        // get request to api
-        const response = await fetch("/api/subject/", {
-          method: "GET",
-          body: JSON.stringify(),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-        console.log(response);
-        // send query for all subjects
+      // get subjects from subjects db
 
-        const subjects = await Subject.findAll();
-      };
+      getSubjects();
 
       // create payload
       const payload = {
