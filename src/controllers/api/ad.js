@@ -1,4 +1,7 @@
 const { Ad } = require("../../models");
+const querystring = require("node:querystring");
+const url = require("url");
+
 //post
 const createAd = async (req, res) => {
   try {
@@ -115,9 +118,9 @@ const getAdById = async (req, res) => {
 
 const getAdsbySubjectAndUserType = async (req, res) => {
   try {
-    const { isTutor, subjectId } = req.body;
+    const { isTutor, subjectId } = url.parse(req.url, true).query;
     let selectedAds;
-    if (!isTutor && subjectId) {
+    if (isTutor === false && subjectId) {
       selectedAds = await Ad.findAll({
         where: {
           isTutor: !isTutor,
@@ -125,14 +128,14 @@ const getAdsbySubjectAndUserType = async (req, res) => {
         },
       });
     }
-    if (!isTutor) {
+    if (isTutor === false) {
       selectedAds = await Ad.findAll({
         where: {
           isTutor: !isTutor,
         },
       });
     }
-    if (isTutor && subjectId) {
+    if (isTutor === true && subjectId) {
       selectedAds = await Ad.findAll({
         where: {
           isTutor: isTutor,
@@ -140,14 +143,14 @@ const getAdsbySubjectAndUserType = async (req, res) => {
         },
       });
     }
-    if (isTutor) {
+    if (isTutor === true && !subjectId) {
       selectedAds = await Ad.findAll({
         where: {
           isTutor: isTutor,
         },
       });
     }
-    if (subjectId) {
+    if (subjectId || !isTutor) {
       selectedAds = await Ad.findAll({
         where: {
           subjectId,
