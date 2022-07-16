@@ -41,12 +41,13 @@
 }
 
 .link {
-  margin: 0px 25px;
+  margin: 0px 30px;
   font-weight: bold;
 }
 
 .link :hover {
-  text-decoration: overline var(--prussian-blue);
+  text-decoration: overline var(--blue);
+  color: var(--bs-gray-700);
   cursor: pointer;
 }
 
@@ -128,7 +129,7 @@
 @media (max-width: 992px) {
   .nav {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
   }
   .nav-links {

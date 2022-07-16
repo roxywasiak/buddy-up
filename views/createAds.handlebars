@@ -79,7 +79,10 @@
                               uk-form-custom="target: true"
                               id="form-horizontal-select"
                             >
-                              <option id="subject">Math</option>
+                            {{#each subjects}}
+                            <option id="subject"value={{id}}>{{subjectName}}</option>
+                            {{/each}}
+                          
                             </select>
                           </div>
                         </div>

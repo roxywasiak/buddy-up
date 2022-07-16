@@ -7,41 +7,6 @@ const adSubject = $("#ads-subject");
 const adsDescription = $("#ads-description");
 const adsTitle = $("#ads-title");
 
-// function to get fetch data from subject api
-const getSubjects = async () => {
-  console.log("hi");
-  // send a GET request to get subjects from subject API
-  try {
-    const response = await fetch("api/subject/", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    console.log(response);
-
-    // await data
-    const data = await response.json();
-
-    // loop through array and map
-
-    const subjectArray = () => {};
-
-    console.log(data);
-
-    if (data.success) {
-      // loop through array and map
-    } else {
-      console.log(`[ERROR]: Failed to get data| ${error.message}`);
-    }
-
-    // send query for all subjects
-
-    const subjects = await Subject.findAll();
-  } catch (error) {
-    console.log(`[ERROR]: Failed to get subjects from API| ${error.message}`);
-  }
-};
 // fn to handle form submit
 const handleFormSubmit = async (event) => {
   console.log("form fn");

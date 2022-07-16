@@ -1,4 +1,4 @@
-const { Subject } = require("../../models");
+const { Subject, Price } = require("../../models");
 
 const renderHomePage = (req, res) => {
   return res.render("home", { currentPage: "home" });
@@ -12,9 +12,25 @@ const renderAuthPage = (req, res) => {
   return res.render("auth", { currentPage: "auth" });
 };
 
-const renderCreateAdsPage = (req, res) => {
-  return res.render("createAds", { currentPage: "createAds" });
+const renderCreateAdsPage = async (req, res) => {
+  const subjectsFromDb = await Subject.findAll();
+
+  const subjects = subjectsFromDb.map((subject) => {
+    return subject.get({ plain: true });
+  });
+
+  // const budgetFromDb = await Price.findAll();
+
+  // console.log(budgetFromDb);
+
+  // const budgets = budgetFromDb.map((budget) => {
+  //   return budget.get({ plain: true });
+  // });
+
+  return res.render("createAds", { currentPage: "createAds", subjects });
 };
+
+renderCreateAdsPage();
 
 const renderViewAdsPage = (req, res) => {
   return res.render("viewAds", { currentPage: "viewAds" });
