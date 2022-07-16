@@ -37,10 +37,16 @@ const updateResponse = async (req, res) => {
   }
 };
 
-const getResponseById = async (req, res) => {
+const getResponseByUserId = async (req, res) => {
   try {
-    const { id } = req.params;
-    const data = await Response.findByPk(id);
+    const { userType, studentId, tutorId } = req.body;
+
+    if (userType === "student") {
+      const data = await Response.findAll({ where: {} });
+    }
+
+    if (userType === "tutor") {
+    }
 
     if (!data) {
       return res.status(404).json({ success: false });
@@ -57,5 +63,5 @@ const getResponseById = async (req, res) => {
 module.exports = {
   createResponse,
   updateResponse,
-  getResponseById,
+  getResponseByUserId,
 };
