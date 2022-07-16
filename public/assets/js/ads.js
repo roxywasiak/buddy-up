@@ -1,4 +1,4 @@
-const { Subject } = require("../../../src/models");
+// const { Subject } = require("../../../src/models");
 console.log("hi");
 
 // ~ DECLARATIONS
