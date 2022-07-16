@@ -127,6 +127,16 @@ const handleCompleteProfileClick = () => {
   window.location.assign("/completeProfile");
 };
 
+const onReady = () => {
+  console.log($("#priceRange").val());
+};
+
+const change = () => {
+  $("#priceValueText").text(`£${$("#priceRange").val()}`);
+};
+
+onReady();
+$("#priceRange").change(change);
 signupForm.submit(handleSignup);
 loginForm.submit(handleLogin);
 logoutBtn.click(handleLogout);
