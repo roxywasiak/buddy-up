@@ -19,9 +19,6 @@
       referrerpolicy="no-referrer"
     />
 
-
-
-
     <!-- Google Font CSS link -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -46,9 +43,7 @@
                 <div
                   class="uk-margin uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large"
                 >
-                <h3 class="uk-card-title uk-text-center">
-                  Create an advert
-                </h3>
+                  <h3 class="uk-card-title uk-text-center">Create an advert</h3>
                   <ul
                     class="uk-tab uk-flex-center"
                     uk-grid
@@ -58,11 +53,9 @@
                   </ul>
                   <ul class="uk-switcher">
                     <li>
-                     
                       <h4 class="uk-text-center">
                         Please fill in the following details
                       </h4>
-
                       <!--ABS FORM SECTION-->
                       <form class="uk-form-stacked uk-margin">
                         <div class="card-info uk-margin">
@@ -98,47 +91,47 @@
                               placeholder="enter Description..."
                             />
                           </div>
+                        </div>
 
-                          <!-- form subject section  -->
-                          <div class="uk-margin">
-                            <label
-                              class="uk-form-label uk-text-bold"
-                              for="form-horizontal-select"
-                              >Subject</label
+                        <!-- form subject section  -->
+                        <div class="uk-margin">
+                          <label
+                            class="uk-form-label uk-text-bold"
+                            for="form-horizontal-select"
+                            >Subject</label
+                          >
+                          <div class="uk-form-controls">
+                            <select
+                              id="ads-subject"
+                              class="uk-select"
+                              uk-form-custom="target: true"
+                              id="form-horizontal-select"
                             >
-                            <div class="uk-form-controls">
-                              <select
-                                id="ads-subject"
-                                class="uk-select"
-                                uk-form-custom="target: true"
-                                id="form-horizontal-select"
-                              >
-                                <option id="subject">Math</option>
-                              </select>
-                            </div>
+                              <option id="subject">Math</option>
+                            </select>
                           </div>
+                        </div>
 
-                          <!-- budget section  -->
-                          <div class="uk-margin">
-                            <label
-                              class="uk-form-label uk-text-bold"
-                              for="form-horizontal-select"
-                              >Budget</label
+                        <!-- budget section  -->
+                        <div class="uk-margin">
+                          <label
+                            class="uk-form-label uk-text-bold"
+                            for="form-horizontal-select"
+                            >Budget</label
+                          >
+                          <div class="uk-form-controls">
+                            <select
+                              id="ads-budget"
+                              class="uk-select"
+                              class="form-horizontal-select"
                             >
-                            <div class="uk-form-controls">
-                              <select
-                                id="ads-budget"
-                                class="uk-select"
-                                class="form-horizontal-select"
-                              >
-                                <option id="subject-choices">Low</option>
-                                <option id="subject-choices">Medium</option>
-                                <option id="subject-choices">High</option>
-                              </select>
-                            </div>
+                              <option id="subject-choices">Low</option>
+                              <option id="subject-choices">Medium</option>
+                              <option id="subject-choices">High</option>
+                            </select>
                           </div>
+                        </div>
 
-                        <!-- button section  -->
                         <div class="uk-card-body" id="btn-container">
                           <button
                             id="ads-btn"
@@ -147,7 +140,6 @@
                           >
                             Button
                           </button>
-                          
                         </div>
                       </form>
                     </li>
