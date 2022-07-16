@@ -37,16 +37,25 @@ const updateResponse = async (req, res) => {
   }
 };
 
-const getResponseById = async (req, res) => {
+const getResponseByUserId = async (req, res) => {
   try {
-    const { id } = req.params;
-    const data = await Response.findByPk(id);
+    const { userType, studentId, tutorId } = req.body;
+    let data;
 
+    if (userType === "student") {
+      data = await Response.findAll({ where: { studentId: studentId } });
+      return res.json({ success: true, data });
+    }
+
+    if (userType === "tutor") {
+      data = await Response.findAll({
+        where: { tutorId: tutorId },
+      });
+      return res.json({ success: true, data });
+    }
     if (!data) {
       return res.status(404).json({ success: false });
     }
-
-    return res.json({ success: true, data });
   } catch (error) {
     console.log(`[ERROR]: Failed to get all reports| ${error.message}`);
 
@@ -57,5 +66,5 @@ const getResponseById = async (req, res) => {
 module.exports = {
   createResponse,
   updateResponse,
-  getResponseById,
+  getResponseByUserId,
 };
