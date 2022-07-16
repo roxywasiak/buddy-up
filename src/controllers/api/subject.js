@@ -16,4 +16,16 @@ const createSubject = async (req, res) => {
   }
 };
 
-module.exports = { createSubject };
+const getAllSubjects = async (req, res) => {
+  try {
+    const data = await Subject.findAll({});
+
+    return res.json({ success: true, data });
+  } catch (error) {
+    console.log(`[ERROR]: Failed to get all students | ${error.message}`);
+
+    return res.status(500).json({ success: false });
+  }
+};
+
+module.exports = { createSubject, getAllSubjects };
