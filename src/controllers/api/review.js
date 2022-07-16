@@ -41,7 +41,7 @@ const newReview = async (req, res) => {
     const createReview = await Review.create(review);
 
     // send response
-    return res.json(reviewById);
+    return res.json(createReview);
   } catch (error) {
     console.log(`[ERROR]: Failed to create review | ${error.message}`);
     return res.status(500).json({ success: false, error: error.message });
