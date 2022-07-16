@@ -22,8 +22,9 @@
                   <form id="profile1">
                     <div class="uk-margin">
                         <select id="subjectChoice" class="uk-select">
-                            <option value="subject1">Subject 01</option>
-                            <option value="subject2">Subject 02</option>
+                            {{#each subjects}}
+                            <option value={{id}}>{{subjectName}}</option>
+                            {{/each}}
                         </select>
                     </div>
                     <div class="uk-margin">
