@@ -1,6 +1,29 @@
-const tutorCard = $("#tutor-card");
-
 // responses - pull all the responses for user id
+const handleCreateProject = async (event) => {
+  event.preventDefault();
+
+  const tutorCard = $("#tutor-card").val();
+
+  const payload = JSON.stringify({
+    tutorCard,
+  });
+
+  const response = await fetch("/api/projects", {
+    method: "GET",
+    body: payload,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (response.ok) {
+    window.location.replace("/profile");
+  } else {
+    alert("Failed to create project");
+  }
+};
+
+createProjectForm.on("submit", handleCreateProject);
 
 // display ones that are complete as cards
 
