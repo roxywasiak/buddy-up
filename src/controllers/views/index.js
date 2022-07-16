@@ -1,4 +1,4 @@
-const path = require("path");
+const { Subject } = require("../../models");
 
 const renderHomePage = (req, res) => {
   return res.render("home", { currentPage: "home" });
@@ -24,8 +24,17 @@ const renderSessionsPage = (req, res) => {
   return res.render("sessions", { currentPage: "sessions" });
 };
 
-const renderCompleteProfilePage = (req, res) => {
-  return res.render("completeProfile", { currentPage: "completeProfile" });
+const renderCompleteProfilePage = async (req, res) => {
+  const subjectsFromDb = await Subject.findAll();
+
+  const subjects = subjectsFromDb.map((subject) => {
+    return subject.get({ plain: true });
+  });
+
+  return res.render("completeProfile", {
+    currentPage: "completeProfile",
+    subjects,
+  });
 };
 
 module.exports = {
