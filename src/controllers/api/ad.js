@@ -1,4 +1,7 @@
 const { Ad } = require("../../models");
+const querystring = require("node:querystring");
+const url = require("url");
+
 //post
 const createAd = async (req, res) => {
   try {
@@ -113,54 +116,54 @@ const getAdById = async (req, res) => {
   }
 };
 
-// const getAdsbySubjectAndUserType = async (req, res) => {
-//   try {
-//     const { isTutor, subjectId } = req.body;
-//     let selectedAds;
-//     if (!isTutor && subjectId) {
-//       selectedAds = await Ad.findAll({
-//         where: {
-//           isTutor: !isTutor,
-//           subjectId,
-//         },
-//       });
-//     }
-//     if (!isTutor) {
-//       selectedAds = await Ad.findAll({
-//         where: {
-//           isTutor: !isTutor,
-//         },
-//       });
-//     }
-//     if (isTutor && subjectId) {
-//       selectedAds = await Ad.findAll({
-//         where: {
-//           isTutor: isTutor,
-//           subjectId,
-//         },
-//       });
-//     }
-//     if (isTutor) {
-//       selectedAds = await Ad.findAll({
-//         where: {
-//           isTutor: isTutor,
-//         },
-//       });
-//     }
-//     if (subjectId) {
-//       selectedAds = await Ad.findAll({
-//         where: {
-//           subjectId,
-//         },
-//       });
-//     }
-//     return res.json({ success: true, selectedAds });
-//   } catch (error) {
-//     console.log(`[ERROR]: Failed to get ads | ${error.message}`);
+const getAdsbySubjectAndUserType = async (req, res) => {
+  try {
+    const { isTutor, subjectId } = url.parse(req.url, true).query;
+    let selectedAds;
+    if (isTutor === false && subjectId) {
+      selectedAds = await Ad.findAll({
+        where: {
+          isTutor: !isTutor,
+          subjectId,
+        },
+      });
+    }
+    if (isTutor === false) {
+      selectedAds = await Ad.findAll({
+        where: {
+          isTutor: !isTutor,
+        },
+      });
+    }
+    if (isTutor === true && subjectId) {
+      selectedAds = await Ad.findAll({
+        where: {
+          isTutor: isTutor,
+          subjectId,
+        },
+      });
+    }
+    if (isTutor === true && !subjectId) {
+      selectedAds = await Ad.findAll({
+        where: {
+          isTutor: isTutor,
+        },
+      });
+    }
+    if (subjectId || !isTutor) {
+      selectedAds = await Ad.findAll({
+        where: {
+          subjectId,
+        },
+      });
+    }
+    return res.json({ success: true, selectedAds });
+  } catch (error) {
+    console.log(`[ERROR]: Failed to get ads | ${error.message}`);
 
-//     return res.status(500).json({ success: false });
-//   }
-// };
+    return res.status(500).json({ success: false });
+  }
+};
 
 const getAllAds = async (req, res) => {
   try {

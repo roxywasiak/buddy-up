@@ -22,7 +22,7 @@ const getStudentById = async (req, res) => {
 
     return res.json({ success: true, data });
   } catch (error) {
-    console.log(`[ERROR]: Failed to get all students | ${error.message}`);
+    console.log(`[ERROR]: Failed to get student | ${error.message}`);
 
     return res.status(500).json({ success: false });
   }
@@ -31,16 +31,18 @@ const getStudentById = async (req, res) => {
 const updateStudent = async (req, res) => {
   try {
     const { priceId, location, isRemote, lat, long } = req.body;
-    // const id = req.sessions.user.id;
-    const id = 1;
+    const id = req.sessions.user.id;
     const data = await Student.findByPk(id);
     if (!data) {
       return res.status(404).json({ success: false });
     }
-    await Student.update({ priceId, location, isRemote, lat, long });
+    await Student.update(
+      { priceId, location, isRemote, lat, long },
+      { where: { id: id } }
+    );
     return res.json({ success: true });
   } catch (error) {
-    console.log(`[ERROR]: Failed to create student | ${error.message}`);
+    console.log(`[ERROR]: Failed to update student | ${error.message}`);
 
     return res.status(500).json({ success: false });
   }

@@ -29,8 +29,8 @@ const updateResponse = async (req, res) => {
       status === "rejected"
     ) {
       const updatedResponse = await Response.update({ status, id });
+      return res.json(updatedResponse);
     }
-    return res.json(updatedResponse);
   } catch (error) {
     console.log(`[ERROR]: Failed to create Response | ${error.message}`);
     return res.status(500).json({ success: false, error: error.message });

@@ -1,14 +1,23 @@
-const { TutorSubject } = require("../../models");
+const { TutorSubject, Subject } = require("../../models");
 
 const createTutorSubject = async (req, res) => {
   try {
-    const { subjectId } = req.body;
+    const { userType, subjectName, level } = req.body;
 
-    const userId = req.session.user.id;
+    if (userType === "tutor") {
+      const tutorId = req.session.user.id;
 
-    await TutorSubject.create({ userId, subjectId, level });
+      const subject = await Subject.findOne({ where: { subjectName } });
 
-    return res.json({ success: true });
+      if (!subject) {
+        return res.status(404).json({ success: false });
+      }
+      const { id } = subject;
+
+      await TutorSubject.create({ tutorId, subjectId: id, level });
+
+      return res.json({ success: true });
+    }
   } catch (error) {
     console.log(`[ERROR]: Failed to create TutorSubject | ${error.message}`);
 
@@ -16,5 +25,4 @@ const createTutorSubject = async (req, res) => {
   }
 };
 
-const updateSubject = async (req, res) => {};
-module.exports = { createTutorSubject, updateSubject };
+module.exports = { createTutorSubject };
