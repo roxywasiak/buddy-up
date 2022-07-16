@@ -18,7 +18,7 @@ const createSubject = async (req, res) => {
 
 const getAllSubjects = async (req, res) => {
   try {
-    const data = await Student.findAll({});
+    const data = await Subject.findAll({});
 
     return res.json({ success: true, data });
   } catch (error) {
