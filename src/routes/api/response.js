@@ -3,13 +3,13 @@ const { Router } = require("express");
 const {
   createResponse,
   updateResponse,
-  getResponseById,
+  getResponseByUserId,
 } = require("../../controllers/api/response");
 
 const router = Router();
 
 router.post("/", createResponse);
 router.put("/:id", updateResponse);
-router.get("/:id", getResponseById);
+router.get("/id", getResponseByUserId);
 
 module.exports = router;
