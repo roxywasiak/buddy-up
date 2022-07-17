@@ -140,23 +140,4 @@ const handleSessionCard = async () => {
   }
 };
 
-// function to generate new card
-
-// renderSession.on("submit", handleSessionCard);
-
-// display ones that are complete as cards
-
-// init
-
-// id code from Amirtha
-
-// turn this rep - look through api/response
-// const response = await fetch("/apiAuth/signup", {
-//   method: "GET",
-//   body: JSON.stringify(payload),
-//   headers: {
-//     "Content-Type": "application/json",
-//   },
-// });
-
 handleSessionCard();
