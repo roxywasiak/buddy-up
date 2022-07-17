@@ -39,6 +39,10 @@ const renderCompleteProfilePage = async (req, res) => {
   });
 };
 
+const renderProfilePage = (req, res) => {
+  return res.render("profile", {currentPage: "profile"})
+}
+
 module.exports = {
   renderHomePage,
   renderDashboard,
@@ -47,4 +51,5 @@ module.exports = {
   renderViewAdsPage,
   renderSessionsPage,
   renderCompleteProfilePage,
+  renderProfilePage
 };
