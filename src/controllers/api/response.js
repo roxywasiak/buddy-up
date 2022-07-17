@@ -1,5 +1,4 @@
 const { Response, Ad } = require("../../models");
-const { findOne, findAll } = require("../../models/Subject");
 
 const createResponse = async (req, res) => {
   try {
@@ -40,37 +39,39 @@ const updateResponse = async (req, res) => {
 
 const getResponseByUserId = async (req, res) => {
   try {
+    //declare a changeable variable
     let data;
-    // i
     if (req.session.user.userType === "student") {
+      //find buddy from response
       data = await Response.findOne({
         where: {
           studentId: req.session.user.id,
           status: "completed",
         },
       });
-      // const getAd = await Ad.findOne({
-      //   where: { studentId: req.session.user.id },
-      // });
-      //       data = await Response.findOne({
-      //         where: {
-      //           adId: getAd.dataValues.id,
-      //           status: "completed",
-      //         },
-      //       });
-
-      console.log(data.dataValues);
+      if (!data) {
+        //find user who created the ad
+        const getAd = await Ad.findOne({
+          where: { studentId: req.session.user.id },
+        });
+        data = await Response.findOne({
+          where: {
+            adId: getAd.dataValues.id,
+            status: "completed",
+          },
+        });
+      }
       const { dataValues } = data;
       return res.json({ success: true, dataValues });
     }
     if (req.session.user.userType === "tutor") {
+      //find Tutor
       data = await Response.findOne({
         where: {
           tutorId: req.session.user.id,
           status: "completed",
         },
       });
-      console.log(data.dataValues);
       const { dataValues } = data;
       return res.json({ success: true, dataValues });
     }

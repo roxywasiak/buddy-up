@@ -109,19 +109,19 @@ const handleSessionCard = async () => {
   const data = await response.json();
   console.log(response);
   console.log(data);
+  const studentId = data.dataValues.studentId;
+  const tutorId = data.dataValues.tutorId;
   if (data.success) {
-    const studentId = data.dataValues.studentId;
-    const tutorId = data.dataValues.tutorId;
     if (studentId !== null) {
       console.log(data.dataValues);
-      const response = await fetch(`/api/student/${{ studentId }} `, {
+      const response = await fetch(`/api/student/${studentId} `, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
         },
       });
-      const data = await response.json();
-      await renderStudentCard(data.data);
+      const student = await response.json();
+      await renderStudentCard(student.data);
     }
 
     if (tutorId !== null) {
@@ -131,17 +131,13 @@ const handleSessionCard = async () => {
           "Content-Type": "application/json",
         },
       });
-      const data = await response.json();
+      const tutor = await response.json();
       console.log(data);
-      await renderTutorCard(data.data);
+      await renderTutorCard(tutor.data);
     }
   } else {
     alert("Failed to get response");
   }
 };
 
-const onReady = () => {
-  window.onload(handleSessionCard);
-};
-
-$(document).ready(onReady);
+$(document).ready(handleSessionCard);
