@@ -152,7 +152,7 @@ const submitProfile = async (event) => {
     isRemote,
   };
 
-  const response = await fetch("/api/tutor/12", {
+  const response = await fetch("/api/tutor/", {
     method: "PUT",
     body: JSON.stringify(payload),
     headers: {

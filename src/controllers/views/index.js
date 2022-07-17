@@ -25,6 +25,7 @@ const renderSessionsPage = (req, res) => {
 };
 
 const renderCompleteProfilePage = async (req, res) => {
+  const { user } = req.session;
   const subjectsFromDb = await Subject.findAll();
 
   const subjects = subjectsFromDb.map((subject) => {
@@ -34,6 +35,7 @@ const renderCompleteProfilePage = async (req, res) => {
   return res.render("completeProfile", {
     currentPage: "completeProfile",
     subjects,
+    user,
   });
 };
 

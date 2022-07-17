@@ -29,9 +29,9 @@
                     </div>
                     <div class="uk-margin">
                         <select id="levelChoice" class="uk-select">
-                            <option>Beginner</option>
-                            <option>Intermediate</option>
-                            <option>Advance</option>
+                            <option value=1>Beginner</option>
+                            <option value=2>Intermediate</option>
+                            <option value=3>Advance</option>
                         </select>
                     </div>
                     <div class="uk-margin">
@@ -60,8 +60,11 @@
                     </div>
                   </form>
                 </li>
-                  {{> tutorCompleteProfile }}
-                  {{> studentCompleteProfile }}
+                  {{#if  (isEqualTo user.userType "student") }}
+                    {{> studentCompleteProfile }}
+                  {{else}}
+                    {{> tutorCompleteProfile }}
+                  {{/if}}
                   </form>
                 </li>
               </ul>
