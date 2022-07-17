@@ -140,4 +140,8 @@ const handleSessionCard = async () => {
   }
 };
 
-handleSessionCard();
+const onReady = () => {
+  window.onload(handleSessionCard);
+};
+
+$(document).ready(onReady);
