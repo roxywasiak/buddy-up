@@ -40,7 +40,8 @@ const renderCompleteProfilePage = async (req, res) => {
 };
 
 const renderProfilePage = (req, res) => {
-  return res.render("profile", {currentPage: "profile"})
+  const {user} = req.session;
+  return res.render("profile", {currentPage: "profile", user})
 }
 
 module.exports = {
