@@ -51,7 +51,7 @@ const schema = {
 
 const options = {
   sequelize: connection,
-  timestamps: false,
+  timestamps: true,
   underscored: false,
   freezeTableName: true,
   modelName: "ad",

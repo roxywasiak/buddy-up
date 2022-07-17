@@ -19,18 +19,20 @@ const renderCreateAdsPage = async (req, res) => {
     return subject.get({ plain: true });
   });
 
-  // const budgetFromDb = await Price.findAll();
+  const priceFromDb = await Price.findAll();
 
-  // console.log(budgetFromDb);
+  const prices = priceFromDb.map((price) => {
+    return price.get({ plain: true });
+  });
 
-  // const budgets = budgetFromDb.map((budget) => {
-  //   return budget.get({ plain: true });
-  // });
-
-  return res.render("createAds", { currentPage: "createAds", subjects });
+  return res.render("createAds", {
+    currentPage: "createAds",
+    subjects,
+    prices,
+  });
 };
 
-renderCreateAdsPage();
+// renderCreateAdsPage();
 
 const renderViewAdsPage = (req, res) => {
   return res.render("viewAds", { currentPage: "viewAds" });

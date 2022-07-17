@@ -7,35 +7,38 @@ const adSubject = $("#ads-subject");
 const adsDescription = $("#ads-description");
 const adsTitle = $("#ads-title");
 
+const alertMessage = `<div class="uk-alert-danger" uk-alert id="alert-div">
+<a class="uk-alert-close" uk-close></a>
+<p> Please complete all fields </p>
+</div>`;
+
 // fn to handle form submit
 const handleFormSubmit = async (event) => {
-  console.log("form fn");
   // prevent url form default
   event.preventDefault();
 
   // get input from form
   const title = $("#ads-title").val();
   const description = $("#ads-description").val();
-  const subject = $("#ads-subject").val();
-  const budget = $("#ads-budget").val();
+  const subjectId = $("#ads-subject").val();
+  const priceId = $("#ads-budget").val();
   const btnContainer = $("#btn-container");
 
   // verification user input for all fields
-  if (title && description && subject && budget) {
+  if (title && description && subjectId && priceId) {
     try {
-      // get subjects from subjects db
-
-      getSubjects();
-
       // create payload
       const payload = {
+        isTutor: false,
         description,
-        subject,
-        budget,
+        subjectId,
+        priceId,
       };
+      console.log(subject);
+      // console.log(payload);
 
       //   create response
-      const response = await fetch("/api/ad/", {
+      const response = await fetch("/api/ad", {
         method: "POST",
         body: JSON.stringify(payload),
         headers: {
@@ -50,10 +53,7 @@ const handleFormSubmit = async (event) => {
       console.log(`[ERROR]: Failed to create an ad | ${error.message}`);
     }
   } else {
-    btnContainer.append(`<div class="uk-alert-danger" uk-alert>
-    <a class="uk-alert-close" uk-close></a>
-    <p> Please complete all fields </p>
-</div>`);
+    btnContainer.append(alertMessage);
   }
 };
 

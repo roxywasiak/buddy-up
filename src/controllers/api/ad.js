@@ -5,11 +5,11 @@ const url = require("url");
 //post
 const createAd = async (req, res) => {
   try {
-    const { studentId, isTutor, priceId, description, subjectId } = req.body;
+    const { isTutor, priceId, description, subjectId } = req.body;
 
     if (isTutor === false && !priceId) {
       const createdAd = Ad.create({
-        studentId,
+        studentId: req.session.user.id,
         isTutor,
         description,
         subjectId,

@@ -100,9 +100,9 @@
                               class="uk-select"
                               class="form-horizontal-select"
                             >
-                              <option id="subject-choices">Low</option>
-                              <option id="subject-choices">Medium</option>
-                              <option id="subject-choices">High</option>
+                            {{#each prices}}
+                            <option id="subject-choices" value={{id}} >{{budget}}</option>
+                            {{/each}}
                             </select>
                           </div>
                         </div>
