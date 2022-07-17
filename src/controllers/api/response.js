@@ -41,35 +41,25 @@ const updateResponse = async (req, res) => {
 const getResponseByUserId = async (req, res) => {
   try {
     let data;
-
-    if (req.session.userType === "student") {
-      const getAd = await Ad.findAll({
+    if (req.session.user.userType === "student") {
+      const getAd = await Ad.findOne({
         where: { studentId: req.session.user.id },
       });
-      const { id } = getAd;
-      data = await Response.findOne({
-        where: { studentId: req.session.id, adId: id, status: "completed" },
-      });
-      return res.json({ success: true, data });
-    }
-
-    if (req.session.userType === "tutor") {
-      data = await Ad.findAll({
-        where: { tutorId: req.session.id },
-      });
-      const { id } = getAd;
       data = await Response.findOne({
         where: {
-          tutorId: req.session.user.id,
-          adId: id,
+          adId: getAd.dataValues.id,
           status: "completed",
         },
       });
-      return res.json({ success: true, data });
+      console.log(data.dataValues);
+      const { dataValues } = data;
+      return res.json({ success: true, dataValues });
     }
+
     if (
       !data ||
-      (req.session.userType !== "student" && req.session.userType !== "tutor")
+      (req.user.session.userType !== "student" &&
+        req.user.session.userType !== "tutor")
     ) {
       return res.status(404).json({ success: false });
     }
