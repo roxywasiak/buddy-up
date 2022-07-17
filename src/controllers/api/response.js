@@ -41,13 +41,32 @@ const updateResponse = async (req, res) => {
 const getResponseByUserId = async (req, res) => {
   try {
     let data;
+    // i
     if (req.session.user.userType === "student") {
-      const getAd = await Ad.findOne({
-        where: { studentId: req.session.user.id },
-      });
       data = await Response.findOne({
         where: {
-          adId: getAd.dataValues.id,
+          studentId: req.session.user.id,
+          status: "completed",
+        },
+      });
+      // const getAd = await Ad.findOne({
+      //   where: { studentId: req.session.user.id },
+      // });
+      //       data = await Response.findOne({
+      //         where: {
+      //           adId: getAd.dataValues.id,
+      //           status: "completed",
+      //         },
+      //       });
+
+      console.log(data.dataValues);
+      const { dataValues } = data;
+      return res.json({ success: true, dataValues });
+    }
+    if (req.session.user.userType === "tutor") {
+      data = await Response.findOne({
+        where: {
+          tutorId: req.session.user.id,
           status: "completed",
         },
       });
@@ -57,14 +76,13 @@ const getResponseByUserId = async (req, res) => {
     }
 
     if (
-      !data ||
-      (req.user.session.userType !== "student" &&
-        req.user.session.userType !== "tutor")
+      req.user.session.userType !== "student" &&
+      req.user.session.userType !== "tutor"
     ) {
       return res.status(404).json({ success: false });
     }
   } catch (error) {
-    console.log(`[ERROR]: Failed to get all reports| ${error.message}`);
+    console.log(`[ERROR]: Failed to get all responses| ${error.message}`);
 
     return res.status(500).json({ success: false });
   }
