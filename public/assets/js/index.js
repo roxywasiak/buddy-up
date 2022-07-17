@@ -152,17 +152,19 @@ const submitProfile = async (event) => {
     isRemote,
   };
 
-  const response = await fetch("/api/tutor/", {
-    method: "PUT",
-    body: JSON.stringify(payload),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+  console.log(req)
 
-  if (response.ok) {
-    window.location.assign("/dashboard");
-  }
+  // const response = await fetch("/api/tutor/12", {
+  //   method: "PUT",
+  //   body: JSON.stringify(payload),
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  // });
+
+  // if (response.ok) {
+  //   window.location.assign("/dashboard");
+  // }
 };
 
 $("#priceRange").on("input", change);
