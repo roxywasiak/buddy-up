@@ -114,7 +114,7 @@ const handleSessionCard = async () => {
     const tutorId = data.dataValues.tutorId;
     if (studentId !== null) {
       console.log(data.dataValues);
-      const response = await fetch(`/api/student/${{ id: studentId }} `, {
+      const response = await fetch(`/api/student/${{ studentId }} `, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
