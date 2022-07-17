@@ -14,6 +14,7 @@ const alertMessage = `<div class="uk-alert-danger" uk-alert id="alert-div">
 
 // fn to handle form submit
 const handleFormSubmit = async (event) => {
+  // remove alert message
   // prevent url form default
   event.preventDefault();
 
@@ -34,11 +35,9 @@ const handleFormSubmit = async (event) => {
         subjectId,
         priceId,
       };
-      console.log(subject);
-      // console.log(payload);
 
       //   create response
-      const response = await fetch("/api/ad", {
+      const response = await fetch("/api/ad/", {
         method: "POST",
         body: JSON.stringify(payload),
         headers: {
@@ -46,14 +45,21 @@ const handleFormSubmit = async (event) => {
         },
       });
 
+      // return the response
       const data = await response.json();
 
-      console.log(data);
+      // validation for duplicate error
+      if (data) {
+      }
     } catch (error) {
       console.log(`[ERROR]: Failed to create an ad | ${error.message}`);
     }
   } else {
-    btnContainer.append(alertMessage);
+    // append alert div
+    const alert = document.querySelector("#alert-div");
+    if (!alert) {
+      btnContainer.append(alertMessage);
+    }
   }
 };
 

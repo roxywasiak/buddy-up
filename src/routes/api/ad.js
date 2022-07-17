@@ -5,7 +5,7 @@ const {
   updateAd,
   deleteAd,
   getAdById,
-  getAdsbySubjectAndUserType,
+  getAdsBySubjectAndUserType,
   getAllAds,
 } = require("../../controllers/api/ad");
 
@@ -15,7 +15,7 @@ router.post("/", createAd);
 router.put("/:id", updateAd);
 router.delete("/:id", deleteAd);
 router.get("/:id", getAdById);
-router.get("/query/category", getAdsbySubjectAndUserType);
+router.get("/query/category", getAdsBySubjectAndUserType);
 router.get("/", getAllAds);
 
 module.exports = router;

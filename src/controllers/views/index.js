@@ -32,9 +32,10 @@ const renderCreateAdsPage = async (req, res) => {
   });
 };
 
-// renderCreateAdsPage();
-
 const renderViewAdsPage = (req, res) => {
+  // get user ads (where user id === to user id) - user ads
+  // get all ads and filter - filtered ads
+  // use handlebars to render cards
   return res.render("viewAds", { currentPage: "viewAds" });
 };
 
