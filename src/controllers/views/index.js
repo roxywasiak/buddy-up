@@ -1,4 +1,4 @@
-const { Subject, Price } = require("../../models");
+const { Subject, Price, Ad, Student } = require("../../models");
 
 const renderHomePage = (req, res) => {
   return res.render("home", { currentPage: "home" });
@@ -34,8 +34,23 @@ const renderCreateAdsPage = async (req, res) => {
   });
 };
 
-const renderViewAdsPage = (req, res) => {
-  // get user ads (where user id === to user id) - user ads
+const renderViewAdsPage = async (req, res) => {
+  try {
+    // get all ads / get user ads
+    const adsFromDb = await (
+      await Ad.findAll()
+    ).map((ad) => {
+      return ad.get({ plain: true });
+    });
+
+    console.log(adsFromDb);
+
+    // filter the ads
+  } catch (error) {
+    console.log(`[ERROR]: Failed to get ads | ${error.message}`);
+    return res.status(500).json({ error: "Failed to get ads" });
+  }
+
   // get all ads and filter - filtered ads
   // use handlebars to render cards
   return res.render("viewAds", { currentPage: "viewAds" });

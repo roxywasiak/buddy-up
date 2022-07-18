@@ -64,7 +64,7 @@ Tutor.belongsToMany(Subject, {
   foreignKey: "tutorId",
 });
 
-// RESPONSE RELAIONSHIP
+// RESPONSE RELATIONSHIP
 Ad.hasMany(Response, {
   foreignKey: "adId",
   onDelete: "CASCADE",
