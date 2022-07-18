@@ -5,15 +5,17 @@ const url = require("url");
 //post
 const createAd = async (req, res) => {
   try {
-    const { studentId, isTutor, priceId, description, subjectId } = req.body;
-
-    if (isTutor === false && !priceId) {
-      const createdAd = Ad.create({
-        studentId,
+    const { isTutor, priceId, description, subjectId } = req.body;
+    console.log({ isTutor, priceId, description, subjectId });
+    if (isTutor === false && priceId) {
+      const createdAd = await Ad.create({
+        studentId: req.session.user.id,
+        priceId,
         isTutor,
         description,
         subjectId,
       });
+
       return res.json({ success: true, createdAd });
     }
 
@@ -27,11 +29,12 @@ const createAd = async (req, res) => {
       });
       return res.json({ success: true, createdAd });
     }
-    if (isTutor === false && priceId) {
+
+    if (isTutor === false && !priceId) {
       return res.status(500).json({ success: false });
     }
   } catch (error) {
-    console.log(`[ERROR]: Failed to create Ad| ${error.message}`);
+    console.log(`[ERROR]: Failed to create Ad| ${error}`);
 
     return res.status(500).json({ success: false });
   }
@@ -107,7 +110,7 @@ const getAdById = async (req, res) => {
     if (!data) {
       return res.status(404).json({ success: false });
     }
-
+    S;
     return res.json({ success: true, data });
   } catch (error) {
     console.log(`[ERROR]: Failed to get all ads | ${error.message}`);
@@ -116,7 +119,7 @@ const getAdById = async (req, res) => {
   }
 };
 
-const getAdsbySubjectAndUserType = async (req, res) => {
+const getAdsBySubjectAndUserType = async (req, res) => {
   try {
     const { isTutor, subjectId } = url.parse(req.url, true).query;
     let selectedAds;
@@ -182,6 +185,6 @@ module.exports = {
   updateAd,
   deleteAd,
   getAdById,
-  getAdsbySubjectAndUserType,
+  getAdsBySubjectAndUserType,
   getAllAds,
 };

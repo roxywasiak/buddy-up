@@ -53,7 +53,7 @@ const handleSignup = async (event) => {
         const data = await response.json();
 
         if (data.success) {
-          window.location.assign("/login");
+          window.location.assign("/dashboard");
           console.log("User Created");
         } else {
           renderError("signup-error", "Failed to create account. Try again.");
@@ -106,8 +106,6 @@ const handleLogin = async (event) => {
     renderError("login-error", "Please complete all required fields.");
   }
 };
-
-console.log("Hi");
 
 const handleLogout = async () => {
   try {
