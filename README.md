@@ -33,3 +33,15 @@ ONCE they have responded I will be alerted that I have a match and can choose to
 [Amirtha Muthirulandi](https://github.com/amirtha-coder)
 
 [Tanveer Bassi](https://github.com/TanveerBassi)
+
+# Technologies Used
+
+Application uses a Node.js and Express.js back end and uses both GET and POST routes for retrieving and adding new data.
+
+Application has a folder structure that meets the MVC paradigm and uses Handlebars.js as the template engine.
+
+Application is backed by a MySQL database with a Sequelize ORM and protects API keys and sensitive information with environment variables.
+
+Application includes user authentication (express-session and cookies).
+
+Application uses at least one new library, package, or technology not covered in class.
