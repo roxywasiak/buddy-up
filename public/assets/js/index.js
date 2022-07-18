@@ -107,8 +107,6 @@ const handleLogin = async (event) => {
   }
 };
 
-console.log("Hi");
-
 const handleLogout = async () => {
   try {
     const response = await fetch("/apiAuth/logout", {

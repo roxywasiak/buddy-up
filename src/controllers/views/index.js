@@ -13,12 +13,14 @@ const renderAuthPage = (req, res) => {
 };
 
 const renderCreateAdsPage = async (req, res) => {
+  // GET subject data
   const subjectsFromDb = await Subject.findAll();
 
   const subjects = subjectsFromDb.map((subject) => {
     return subject.get({ plain: true });
   });
 
+  // GET price data
   const priceFromDb = await Price.findAll();
 
   const prices = priceFromDb.map((price) => {

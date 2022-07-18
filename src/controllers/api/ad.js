@@ -15,23 +15,21 @@ const createAd = async (req, res) => {
         description,
         subjectId,
       });
-      console.log(createdAd);
-      if (!createdAd) {
-        console.log("no add created");
-      }
+
       return res.json({ success: true, createdAd });
     }
 
-    if (isTutor === true) {
-      const createdAd = Ad.create({
-        studentId,
-        isTutor,
-        priceId,
-        description,
-        subjectId,
-      });
-      return res.json({ success: true, createdAd });
-    }
+    // if (isTutor === true) {
+    //   const createdAd = Ad.create({
+    //     studentId,
+    //     isTutor,
+    //     priceId,
+    //     description,
+    //     subjectId,
+    //   });
+    //   return res.json({ success: true, createdAd });
+    // }
+
     if (isTutor === false && !priceId) {
       return res.status(500).json({ success: false });
     }

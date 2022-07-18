@@ -7,14 +7,12 @@ const adSubject = $("#ads-subject");
 const adsDescription = $("#ads-description");
 const adsTitle = $("#ads-title");
 
-const alertMessage = `<div class="uk-alert-danger" uk-alert id="alert-div">
-<a class="uk-alert-close" uk-close></a>
-<p> Please complete all fields </p>
-</div>`;
+// const alertMessage = `<div class="uk-alert-danger" uk-alert id="alert-div"> <a class="uk-alert-close" uk-close></a>
+// <p> Please complete all fields </p>
+// </div>`;
 
 // fn to handle form submit
 const handleFormSubmit = async (event) => {
-  // remove alert message
   // prevent url form default
   event.preventDefault();
 
@@ -48,8 +46,25 @@ const handleFormSubmit = async (event) => {
       // return the response
       const data = await response.json();
 
-      // validation for duplicate error
-      if (data) {
+      // validation for duplicates subject entry
+      const alert = document.querySelector("#alert-div");
+      if (!response.ok) {
+        if (!alert) {
+          btnContainer.append(`<div class="uk-alert-danger" uk-alert id="alert-div"> <a class="uk-alert-close" uk-close></a>
+      <p> Ad already created for subject</p>
+      </div>`);
+        }
+      }
+
+      // render page when data response status is ok
+      if (response.ok) {
+        // display spinner before page load
+        // <div uk-spinner></div>
+
+        //  change window location
+        window.location.assign("/viewAds");
+      } else {
+        renderError("response not ok ", "Failed to render page");
       }
     } catch (error) {
       console.log(`[ERROR]: Failed to create an ad | ${error.message}`);
@@ -58,7 +73,9 @@ const handleFormSubmit = async (event) => {
     // append alert div
     const alert = document.querySelector("#alert-div");
     if (!alert) {
-      btnContainer.append(alertMessage);
+      btnContainer.append(`<div class="uk-alert-danger" uk-alert id="alert-div"> <a class="uk-alert-close" uk-close></a>
+      <p> Please complete all fields </p>
+      </div>`);
     }
   }
 };
