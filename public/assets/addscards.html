@@ -27,46 +27,69 @@
       rel="stylesheet"
     />
     <!-- author's CSS link -->
-    <link rel="stylesheet" href="./assets/css/addscards.css" />
+    <link rel="stylesheet" href="./css/addscards.css" />
     <title>ads page</title>
   </head>
+
+  <!-- body section -->
   <body>
-    <div class="uk-card uk-card-default uk-width-1-2@m uk-position-center">
-      <div class="uk-card-header">
-        <div class="uk-grid-small uk-flex-middle" uk-grid>
-          <div class="uk-width-auto"></div>
-          <div class="uk-width-expand">
-            <h3 class="uk-card-title uk-margin-remove-bottom">Title</h3>
-            <p class="uk-text-meta uk-margin-remove-top">
-              <time datetime="2016-04-01T19:00">April 01, 2016</time>
+    <!-- MAIN -->
+    <main>
+      <!-- MY ADS CARD -->
+      <section>
+        <h1 class="title">My Ads</h1>
+        <div class="ads-collapsable-container">
+          <div class="uk-flex ads-flex-container">
+            <!-- card starts here -->
+            <div
+              class="uk-card uk-card-default uk-width-1-1@m uk-position-center"
+            >
+              <div class="uk-card-header">
+                <div class="uk-grid-small uk-flex-middle" uk-grid>
+                  <div class="uk-width-auto"></div>
+                  <div class="uk-width-expand">
+                    <h3 class="uk-card-title uk-margin-remove-bottom">Title</h3>
+                    <p class="uk-text-meta uk-margin-remove-top">
+                      <time datetime="2016-04-01T19:00">April 01, 2016</time>
+                      <br />
+                      Advanced Music
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="uk-card-body">
+                <h3>Description</h3>
+                <p>
+                  "I want to practice music with someone who has advanced
+                  musical instruments skills. Is there a buddy who wants to
+                  join?"
+                </p>
+              </div>
+              <div class="uk-card-footer">
+                <a href="#" class="uk-button uk-button-text">
+                  <h3>Budget</h3>
+                  <p>£30.00</p></a
+                >
+              </div>
               <br />
-              Advanced Music
-            </p>
+              <br />
+              <div
+                class="uk-card uk-card-default uk-width-1-2@m uk-position-bottom-center uk-margin-bottom"
+              >
+                <button class="uk-button uk-button-primary">Accept</button>
+                <button class="uk-button uk-button-secondary">Reject</button>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="uk-card-body">
-        <h3>Description</h3>
-        <p>
-          "I want to practice music with someone who has advanced musical
-          instruments skills. Is there a buddy who wants to join?"
-        </p>
-      </div>
-      <div class="uk-card-footer">
-        <a href="#" class="uk-button uk-button-text">
-          <h3>Budget</h3>
-          <p>£30.00</p></a
-        >
-      </div>
-      <br />
-      <br />
-      <div
-        class="uk-card uk-card-default uk-width-1-2@m uk-position-bottom-center uk-margin-bottom"
-      >
-        <button class="uk-button uk-button-primary">Accept</button>
-        <button class="uk-button uk-button-secondary">Reject</button>
-      </div>
-    </div>
+      </section>
+
+      <!-- RECEIVED ADS CARD  -->
+      <section>
+        <h1 class="title">Received Ads collapsable</h1>
+        <div class="ads-collapsable-container"></div>
+      </section>
+    </main>
 
     <!-- UIkit JS -->
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.0/dist/js/uikit.min.js"></script>
