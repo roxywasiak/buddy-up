@@ -1,4 +1,4 @@
-const { Subject } = require("../../models");
+const { Subject, Tutor, Student } = require("../../models");
 
 const renderHomePage = (req, res) => {
   return res.render("home", { currentPage: "home" });
@@ -39,10 +39,18 @@ const renderCompleteProfilePage = async (req, res) => {
   });
 };
 
-const renderProfilePage = (req, res) => {
-  const {user} = req.session;
-  return res.render("profile", {currentPage: "profile", user})
-}
+const renderProfilePage = async (req, res) => {
+  const { userType, id } = req.session.user;
+  if (userType === "tutor") {
+    const userDetails = (await Tutor.findAll({ where: { id }, raw: true }))[0];
+    return res.render("profile", { currentPage: "profile", userDetails });
+  } else if (userType === "student") {
+    const userDetails = (
+      await Student.findAll({ where: { id }, raw: true })
+    )[0];
+    return res.render("profile", { currentPage: "profile", userDetails });
+  }
+};
 
 module.exports = {
   renderHomePage,
@@ -52,5 +60,5 @@ module.exports = {
   renderViewAdsPage,
   renderSessionsPage,
   renderCompleteProfilePage,
-  renderProfilePage
+  renderProfilePage,
 };
