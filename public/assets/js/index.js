@@ -136,15 +136,15 @@ const change = () => {
 
 const submitProfile = async (event) => {
   event.preventDefault();
-  const subjectChoice = $("#subjectChoice option:selected").val();
-  const levelChoice = $("#levelChoice option:selected").val();
+  const subjectName = $("#subjectChoice option:selected").val();
+  const level = $("#levelChoice option:selected").val();
   const location = $("#locationInput").val();
   const isRemote = $("#isRemote").is(":checked");
   const priceId = 2;
   const socialMedia = $("#socialMediaLink").val();
   const calendlyLink = $("#calendlyLink").val();
 
-  const payload = {
+  const tutorPayload = {
     socialMedia,
     calendlyLink,
     priceId,
@@ -152,19 +152,33 @@ const submitProfile = async (event) => {
     isRemote,
   };
 
-  console.log(req)
+  const subjectPayload = {
+    userType: "tutor",
+    subjectName,
+    level,
+  };
 
-  // const response = await fetch("/api/tutor/12", {
-  //   method: "PUT",
-  //   body: JSON.stringify(payload),
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  // });
+  const tutorResponse = await fetch("/api/tutor/12", {
+    method: "PUT",
+    body: JSON.stringify(tutorPayload),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 
-  // if (response.ok) {
-  //   window.location.assign("/dashboard");
-  // }
+  if (tutorResponse.ok) {
+    const subjectResponse = await fetch("/api/tutorSubject", {
+      method: "POST",
+      body: JSON.stringify(subjectPayload),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (subjectResponse.ok) {
+      window.location.assign("/dashboard");
+    }
+  }
 };
 
 $("#priceRange").on("input", change);
