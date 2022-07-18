@@ -41,12 +41,13 @@
 }
 
 .link {
-  margin: 0px 25px;
+  margin: 0px 30px;
   font-weight: bold;
 }
 
 .link :hover {
-  text-decoration: overline var(--prussian-blue);
+  text-decoration: overline var(--blue);
+  color: var(--bs-gray-700);
   cursor: pointer;
 }
 
@@ -112,6 +113,10 @@
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
 }
 
+.btn-href {
+  text-decoration: none !important;
+  color: var(--white);
+}
 .create-btn:hover {
   background-color: var(--white);
   color: var(--light-blue);
@@ -128,7 +133,7 @@
 @media (max-width: 992px) {
   .nav {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
   }
   .nav-links {
@@ -185,11 +190,27 @@
   text-align: center;
   border-radius: 4px;
   width: 17rem;
-  margin: 20px 30px;
+  margin: 30px 150px;
+}
+@media (max-width: 768px) {
+  .view-card {
+    margin: 20px;
+  }
+  .card-flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
 }
 
 .view-card:hover {
   box-shadow: 0 8px 10px 0 var(--bs-gray-700);
+}
+
+.slide {
+  color: var(--blue) !important;
+  font-weight: bold;
+  width: 50px;
 }
 
 /* footer styles */

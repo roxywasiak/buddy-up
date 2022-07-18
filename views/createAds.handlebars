@@ -1,6 +1,6 @@
 {{> privateNavBar }}
 
-    <main>
+       <main>
       <div
         class="uk-section uk-section-muted uk-flex uk-flex-middle uk-animation-fade"
         uk-height-viewport
@@ -12,9 +12,7 @@
                 <div
                   class="uk-margin uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large"
                 >
-                    <h3 class="uk-card-title uk-text-center">
-                  Create an advert
-                </h3>
+                  <h3 class="uk-card-title uk-text-center">Create an advert</h3>
                   <ul
                     class="uk-tab uk-flex-center"
                     uk-grid
@@ -24,18 +22,17 @@
                   </ul>
                   <ul class="uk-switcher">
                     <li>
-                     
                       <h4 class="uk-text-center">
                         Please fill in the following details
                       </h4>
-
                       <!--ABS FORM SECTION-->
+                      <!-- title -->
                       <form class="uk-form-stacked uk-margin">
                         <div class="card-info uk-margin">
                           <label
                             class="uk-form-label uk-text-bold"
                             for="form-stacked-text"
-                            >Ad Title
+                            >Title
                           </label>
                           <div class="uk-form-controls">
                             <input
@@ -43,95 +40,80 @@
                               class="uk-input"
                               class="form-stacked-text"
                               type="text"
-                              placeholder="enter Title..."
+                              placeholder="Enter title..."
                             />
                           </div>
                         </div>
 
-                        <!-- form title section  -->
+                        <!-- description  -->
                         <div class="card-info uk-margin">
                           <label
                             class="uk-form-label uk-text-bold"
                             for="form-stacked-text"
-                            >Ad Description
+                            >Description
                           </label>
                           <div class="uk-form-controls">
-                            <input
-                              id="ads-description"
-                              class="uk-input"
-                              id="form-stacked-text"
-                              type="text"
-                              placeholder="enter Description..."
-                            />
-                          </div>
-
-                          <!-- form subject section  -->
-                          <div class="uk-margin">
-                            <label
-                              class="uk-form-label uk-text-bold"
-                              for="form-horizontal-select"
-                              >Subject</label
-                            >
-                            <div class="uk-form-controls">
-                              <select
-                                id="ads-subject"
-                                class="uk-select"
-                                uk-form-custom="target: true"
-                                id="form-horizontal-select"
-                              >
-                                <option id="subject-choices">select</option>
-                              </select>
+                            <div class="uk-margin">
+                              <textarea
+                                id="ads-description"
+                                class="uk-textarea"
+                                rows="5"
+                                type="text"
+                                placeholder="Enter Description..."
+                              ></textarea>
                             </div>
                           </div>
+                        </div>
 
-                          <!-- budget section  -->
-                          <div class="uk-margin">
-                            <label
-                              class="uk-form-label uk-text-bold"
-                              for="form-horizontal-select"
-                              >Budget</label
+                        <!-- form subject section  -->
+                        <div class="uk-margin">
+                          <label
+                            class="uk-form-label uk-text-bold"
+                            for="form-horizontal-select"
+                            >Subject</label
+                          >
+                          <div class="uk-form-controls">
+                            <select
+                              id="ads-subject"
+                              class="uk-select"
+                              uk-form-custom="target: true"
+                              id="form-horizontal-select"
                             >
-                            <div class="uk-form-controls">
-                              <select
-                                id="ads-budget"
-                                class="uk-select"
-                                class="form-horizontal-select"
-                              >
-                                <option id="budget-low">Low</option>
-                                <option id="budget-medium">Medium</option>
-                                <option id="budget-high">High</option>
-                              </select>
-                            </div>
+                            {{#each subjects}}
+                            <option value={{id}}>{{subjectName}}</option>
+                            {{/each}}
+                          
+                            </select>
                           </div>
+                        </div>
 
-                          <!-- TUTOR PRICE SELECTIONS -->
-                          {{!-- <div class="uk-margin">
-                            <label
-                              class="uk-form-label uk-text-bold"
-                              for="form-horizontal-select"
-                              >Price</label
+                        <!-- budget section  -->
+                        <div class="uk-margin">
+                          <label
+                            class="uk-form-label uk-text-bold"
+                            for="form-horizontal-select"
+                            >Budget</label
+                          >
+                          <div class="uk-form-controls">
+                            <select
+                              id="ads-budget"
+                              class="uk-select"
+                              class="form-horizontal-select"
                             >
-                            <div class="uk-form-controls">
-                              <select
-                                id="ads-price"
-                                class="uk-select"
-                                class="form-horizontal-select"
-                              >
-                                <option id="price-low">£10</option>
-                                <option id="price-medium">£25</option>
-                                <option id="price-low">£50</option>
-                              </select>
-                            </div>
+                            {{#each prices}}
+                            <option id="subject-choices" value={{id}} >{{budget}}</option>
+                            {{/each}}
+                            </select>
                           </div>
-                        </div> --}}
-                        <!-- button section  -->
+                        </div>
+
                         <div class="uk-card-body" id="btn-container">
                           <button
                             id="ads-btn"
                             class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom"
                             type="submit"
                           >
-                            Button
+                            Submit
                           </button>
                         </div>
                       </form>

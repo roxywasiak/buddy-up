@@ -1,13 +1,17 @@
-const { Subject } = require("../../../src/models");
+// const { Subject } = require("../../../src/models");
 
 // ~ DECLARATIONS
 const adsBtn = $("#ads-btn");
 const adsBudget = $("#ads-budget");
-// const adsPrice = $("#ads-price");
 const adSubject = $("#ads-subject");
 const adsDescription = $("#ads-description");
 const adsTitle = $("#ads-title");
 
+// const alertMessage = `<div class="uk-alert-danger" uk-alert id="alert-div"> <a class="uk-alert-close" uk-close></a>
+// <p> Please complete all fields </p>
+// </div>`;
+
+// fn to handle form submit
 const handleFormSubmit = async (event) => {
   // prevent url form default
   event.preventDefault();
@@ -15,25 +19,19 @@ const handleFormSubmit = async (event) => {
   // get input from form
   const title = $("#ads-title").val();
   const description = $("#ads-description").val();
-  const subject = $("#ads-subject").val();
-  const budget = $("#ads-budget").val();
+  const subjectId = $("#ads-subject").val();
+  const priceId = $("#ads-budget").val();
   const btnContainer = $("#btn-container");
-  //   const price = $("#ads-price").val();
 
   // verification user input for all fields
-  if (title && description && subject && budget) {
+  if (title && description && subjectId && priceId) {
     try {
-      // get all subject
-      const getSubjects = () => {
-        // send query for all subjects 
-        const subjects = await Subject.findAll()
-      };
-
       // create payload
       const payload = {
+        isTutor: false,
         description,
-        subject,
-        budget,
+        subjectId,
+        priceId,
       };
 
       //   create response
@@ -44,19 +42,41 @@ const handleFormSubmit = async (event) => {
           "Content-Type": "application/json",
         },
       });
-      console.log(response);
 
+      // return the response
       const data = await response.json();
 
-      console.log(data);
+      // validation for duplicates subject entry
+      const alert = document.querySelector("#alert-div");
+      if (!response.ok) {
+        if (!alert) {
+          btnContainer.append(`<div class="uk-alert-danger" uk-alert id="alert-div"> <a class="uk-alert-close" uk-close></a>
+      <p> Ad already created for subject</p>
+      </div>`);
+        }
+      }
+
+      // render page when data response status is ok
+      if (response.ok) {
+        // display spinner before page load
+        // <div uk-spinner></div>
+
+        //  change window location
+        window.location.assign("/viewAds");
+      } else {
+        renderError("response not ok ", "Failed to render page");
+      }
     } catch (error) {
       console.log(`[ERROR]: Failed to create an ad | ${error.message}`);
     }
   } else {
-    btnContainer.append(`<div class="uk-alert-danger" uk-alert>
-    <a class="uk-alert-close" uk-close></a>
-    <p> Please complete all fields </p>
-</div>`);
+    // append alert div
+    const alert = document.querySelector("#alert-div");
+    if (!alert) {
+      btnContainer.append(`<div class="uk-alert-danger" uk-alert id="alert-div"> <a class="uk-alert-close" uk-close></a>
+      <p> Please complete all fields </p>
+      </div>`);
+    }
   }
 };
 

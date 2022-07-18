@@ -13,7 +13,7 @@ const schema = {
   },
   price: {
     type: DataTypes.DECIMAL(8, 2),
-    allowNull: false,
+    allowNull: true,
     validate: {
       isDecimal: true,
     },
