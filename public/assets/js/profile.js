@@ -86,29 +86,49 @@ const submitProfile = async (event) => {
       renderError("profile-error", "Failed to update. Please try again.");
     }
   } else if (contactNumber) {
-    const studentPayload = {
-      priceId: budget,
-      location,
-      isRemote,
-      isProfileComplete,
-      contactNumber,
-    };
+    isContact = validateContactNumber(contactNumber);
 
-    const studentResponse = await fetch("/api/student", {
-      method: "PUT",
-      body: JSON.stringify(studentPayload),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    console.log(isContact);
 
-    if (studentResponse.ok) {
-      window.location.assign("/dashboard");
+    if (isContact) {
+      const studentPayload = {
+        priceId: budget,
+        location,
+        isRemote,
+        isProfileComplete,
+        contactNumber,
+      };
+
+      const studentResponse = await fetch("/api/student", {
+        method: "PUT",
+        body: JSON.stringify(studentPayload),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (studentResponse.ok) {
+        window.location.assign("/dashboard");
+      } else {
+        renderError("profile-error", "Failed to update. Please try again.");
+      }
     } else {
-      renderError("profile-error", "Failed to update. Please try again.");
+      renderError(
+        "profile-error",
+        "Failed to update. Please enter a valid contact number."
+      );
     }
   } else {
-    renderError("profile-error", "Failed to update. Please enter valid links.");
+    renderError("profile-error", "Failed to update. Please enter valid info.");
+  }
+};
+
+const validateContactNumber = (contactNumber) => {
+  const validate = /^\d{11}$/;
+  if (contactNumber.match(validate)) {
+    return true;
+  } else {
+    return false;
   }
 };
 
