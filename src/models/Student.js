@@ -61,6 +61,10 @@ const schema = {
     type: DataTypes.STRING,
     allowNull: true,
   },
+  contactNumber: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
   isRemote: {
     type: DataTypes.BOOLEAN,
     defaultValue: true,

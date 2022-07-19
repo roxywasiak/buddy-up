@@ -91,6 +91,7 @@ const submitProfile = async (event) => {
       location,
       isRemote,
       isProfileComplete,
+      contactNumber,
     };
 
     const studentResponse = await fetch("/api/student", {
