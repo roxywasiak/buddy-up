@@ -31,6 +31,9 @@ const getStudentById = async (req, res) => {
 const updateStudent = async (req, res) => {
   try {
     const {
+      firstName,
+      lastName,
+      email,
       priceId,
       location,
       isRemote,
@@ -46,6 +49,9 @@ const updateStudent = async (req, res) => {
     }
     await Student.update(
       {
+        firstName,
+        lastName,
+        email,
         priceId,
         location,
         isRemote,

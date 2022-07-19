@@ -151,6 +151,7 @@ const validateInputs = (pageNumber) => {
 
 const updateProfile = async (event) => {
   event.preventDefault();
+  const userType = $("#formUserType").val();
   const firstName = $("#updateFirstName").val();
   const lastName = $("#updateLastName").val();
   const email = $("#updateEmail").val();
@@ -158,6 +159,7 @@ const updateProfile = async (event) => {
   const socialMedia = $("#updateSocialMedia").val();
   const calendlyLink = $("#updateCalendlyLink").val();
   const priceAmount = $("#updatePriceAmount").val();
+  const contactNumber = $("#updateContactNumber").val();
 
   let payload = {};
 
@@ -183,22 +185,44 @@ const updateProfile = async (event) => {
   if (priceAmount) {
     Object.assign(payload, { priceAmount });
   }
+  if (contactNumber) {
+    Object.assign(payload, { contactNumber });
+  }
 
-  try {
-    const response = await fetch("/api/tutor", {
-      method: "PUT",
-      body: JSON.stringify(payload),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+  if (userType === "student") {
+    try {
+      const response = await fetch("/api/student", {
+        method: "PUT",
+        body: JSON.stringify(payload),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-    if (response.ok) {
-      window.location.reload();
-    } else {
+      if (response.ok) {
+        window.location.reload();
+      } else {
+      }
+    } catch {
+      console.log("FAILED");
     }
-  } catch {
-    console.log("FAILED");
+  } else {
+    try {
+      const response = await fetch("/api/tutor", {
+        method: "PUT",
+        body: JSON.stringify(payload),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (response.ok) {
+        window.location.reload();
+      } else {
+      }
+    } catch {
+      console.log("FAILED");
+    }
   }
 };
 
