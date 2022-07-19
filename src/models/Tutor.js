@@ -64,6 +64,11 @@ const schema = {
     allowNull: true,
   },
 
+  priceAmount: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+  },
+
   priceId: {
     type: DataTypes.INTEGER,
     allowNull: true,
