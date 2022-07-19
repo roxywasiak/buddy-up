@@ -4,9 +4,19 @@ const renderHomePage = (req, res) => {
   return res.render("home", { currentPage: "home" });
 };
 
-const renderDashboard = (req, res) => {
+const renderDashboard = async (req, res) => {
   const { user } = req.session;
-  return res.render("dashboard", { currentPage: "dashboard", user });
+  if (user.userType === "tutor") {
+    const userDetails = (
+      await Tutor.findAll({ where: { id: user.id }, raw: true })
+    )[0];
+    return res.render("dashboard", { currentPage: "dashboard", userDetails });
+  } else if (user.userType === "student") {
+    const userDetails = (
+      await Student.findAll({ where: { id: user.id }, raw: true })
+    )[0];
+    return res.render("dashboard", { currentPage: "dashboard", userDetails });
+  }
 };
 const renderAuthPage = (req, res) => {
   return res.render("auth", { currentPage: "auth" });
