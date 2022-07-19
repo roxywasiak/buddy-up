@@ -14,7 +14,10 @@ const payload = {
 //this function is when a buddy/tutor responds to an add
 const handleAcceptedAd = async (event) => {
   event.preventDefault();
-
+  const clickAcceptButton = $("acceptButton").val();
+  if (clickAcceptButton) {
+    data = await Response.findAll({ where: {} });
+  }
   //post request to controller api/response with ad id req.session.user.id
   // const response = await fetch("/api/response", {
   //   method: "POST",
@@ -48,5 +51,5 @@ const handleRejectAdClick = async (event) => {
 //   //post request
 // };
 
-acceptAd.onClick("handleAcceptedAd");
-rejectAd.onClick("handleRejectAdClick");
+acceptAd.click("handleAcceptedAd");
+rejectAd.click("handleRejectAdClick");
