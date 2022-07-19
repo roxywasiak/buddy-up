@@ -34,60 +34,79 @@ const submitProfile = async (event) => {
   const calendlyLink = $("#calendlyLink").val();
   const isProfileComplete = true;
 
-  const tutorPayload = {
-    socialMedia,
-    calendlyLink,
-    priceAmount,
-    priceId,
-    location,
-    isRemote,
-    isProfileComplete,
-  };
+  if (socialMedia && calendlyLink) {
+    try {
+      const tutorPayload = {
+        socialMedia,
+        calendlyLink,
+        priceAmount,
+        priceId,
+        location,
+        isRemote,
+        isProfileComplete,
+      };
 
-  const subjectPayload = {
-    userType: "tutor",
-    subjectId,
-    level,
-  };
+      const subjectPayload = {
+        userType: "tutor",
+        subjectId,
+        level,
+      };
 
-  const tutorResponse = await fetch("/api/tutor", {
-    method: "PUT",
-    body: JSON.stringify(tutorPayload),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+      const tutorResponse = await fetch("/api/tutor", {
+        method: "PUT",
+        body: JSON.stringify(tutorPayload),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-  if (tutorResponse.ok) {
-    const subjectResponse = await fetch("/api/tutorSubject", {
-      method: "POST",
-      body: JSON.stringify(subjectPayload),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    if (subjectResponse.ok) {
-      window.location.assign("/dashboard");
+      if (tutorResponse.ok) {
+        const subjectResponse = await fetch("/api/tutorSubject", {
+          method: "POST",
+          body: JSON.stringify(subjectPayload),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        if (subjectResponse.ok) {
+          window.location.assign("/dashboard");
+        } else {
+          renderError("profile-error", "Failed to update. Please try again.");
+        }
+      } else {
+        renderError(
+          "profile-error",
+          "Failed to update. Please enter valid links."
+        );
+      }
+    } catch (error) {
+      renderError("profile-error", "Failed to update. Please try again.");
     }
+  } else {
+    renderError("profile-error", "Failed to update. Please enter valid links.");
   }
 };
 
 const validateInputs = (pageNumber) => {
   const page = pageNumber.data.pageNumber;
-  console.log(page);
   if (page === "1") {
     page1Submit.attr("uk-switcher-item", "1");
   } else if (page === "2") {
-    page2Submit.attr("uk-switcher-item", "2");
+    const location = $("#locationInput").val();
+    if (!location) {
+      renderError("location-error", "Please enter a valid location");
+      page2Submit.attr("uk-switcher-item", "1");
+    } else {
+      page2Submit.attr("uk-switcher-item", "2");
+    }
   } else if (page === "3") {
     page3Submit.attr("uk-switcher-item", "3");
   }
 };
 
 $("#priceRange").on("input", change);
-profileSubmit.submit(submitProfile);
 completeProfile.click(handleCompleteProfileClick);
 page1Submit.click({ pageNumber: "1" }, validateInputs);
 page2Submit.click({ pageNumber: "2" }, validateInputs);
 page3Submit.click({ pageNumber: "3" }, validateInputs);
+profileSubmit.submit(submitProfile);
