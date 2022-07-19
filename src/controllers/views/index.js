@@ -52,15 +52,25 @@ const renderViewAdsPage = async (req, res) => {
       (ad) => ad.student.email === req.session.user.email
     );
 
+    // GET subject data
+    const subjectsFromDb = await Subject.findAll();
+
+    const subjects = subjectsFromDb.map((subject) => {
+      return subject.get({ plain: true });
+    });
+
     // filtered all the ads by subjects
 
-    const allAds = adsFromDb.filter(
-      (ad) => ad.student.email !== req.session.user.email
-    );
+    // const selectedAdsBySubject = () => {
+    //   // get all ads
+    //   const allAds = adsFromDb.filter(
+    //     (ad) => ad.student.email !== req.session.user.email
+    //   );
 
-    console.log(allAds);
+    //   // filter ads by subject
+    // };
 
-    return res.render("viewAds", { currentPage: "viewAds", userAds, allAds });
+    return res.render("viewAds", { currentPage: "viewAds", userAds, subjects });
   } catch (error) {
     console.log(`[ERROR]: Failed to get ads | ${error.message}`);
     return res.status(500).json({ error: "Failed to get ads" });
