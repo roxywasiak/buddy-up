@@ -5,11 +5,12 @@ const url = require("url");
 //post
 const createAd = async (req, res) => {
   try {
-    const { isTutor, priceId, description, subjectId } = req.body;
+    const { isTutor, title, priceId, description, subjectId } = req.body;
     console.log({ isTutor, priceId, description, subjectId });
     if (isTutor === false && priceId) {
       const createdAd = await Ad.create({
         studentId: req.session.user.id,
+        title,
         priceId,
         isTutor,
         description,

@@ -38,22 +38,33 @@ const renderViewAdsPage = async (req, res) => {
   try {
     // get all ads / get user ads
     const adsFromDb = await (
-      await Ad.findAll()
+      await Ad.findAll({
+        include: [{ model: Student }, { model: Subject }, { model: Price }],
+      })
     ).map((ad) => {
       return ad.get({ plain: true });
     });
 
     console.log(adsFromDb);
 
-    // filter the ads
+    // filter the ads for user
+    const userAds = adsFromDb.filter(
+      (ad) => ad.student.email === req.session.user.email
+    );
+
+    // filtered all the ads by subjects
+
+    const allAds = adsFromDb.filter(
+      (ad) => ad.student.email !== req.session.user.email
+    );
+
+    console.log(allAds);
+
+    return res.render("viewAds", { currentPage: "viewAds", userAds, allAds });
   } catch (error) {
     console.log(`[ERROR]: Failed to get ads | ${error.message}`);
     return res.status(500).json({ error: "Failed to get ads" });
   }
-
-  // get all ads and filter - filtered ads
-  // use handlebars to render cards
-  return res.render("viewAds", { currentPage: "viewAds" });
 };
 
 const renderSessionsPage = (req, res) => {

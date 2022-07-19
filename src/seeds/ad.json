@@ -2,6 +2,7 @@
   {
     "studentId": 4,
     "priceId": 1,
+    "title": "title",
     "isTutor": true,
     "description": "I really need help with chemistry A-level please can anyone help",
     "subjectId": 2
@@ -9,6 +10,7 @@
   {
     "studentId": 5,
     "priceId": 2,
+    "title": "title",
     "isTutor": true,
     "description": "I want to become a journalist in the future and I need more advanced sessions with a tutor - please help!",
     "subjectId": 3
@@ -16,12 +18,14 @@
   {
     "studentId": 1,
     "isTutor": false,
+    "title": "title",
     "description": "I want to practise music with someone who has advanced musical instruments skills. Is there a buddy who wants to join?",
     "subjectId": 5
   },
   {
     "studentId": 7,
     "priceId": 1,
+    "title": "title",
     "isTutor": true,
     "description": "I am passionate about coding and want a tutor who can make me better",
     "subjectId": 6
@@ -29,12 +33,15 @@
   {
     "studentId": 2,
     "priceId": 2,
+    "title": "title",
     "isTutor": true,
     "description": "I need maths to meet my offer for uni but I do not think that is attainable. I would like a tutor that has experience improving their tutee's grade in a short time span. Thank you.",
     "subjectId": 1
   },
   {
     "studentId": 10,
+    "priceId": 1,
+    "title": "title",
     "isTutor": false,
     "description": "I am currently studying for my chemistry exam, I need someone to study with me and keep me motivated",
     "subjectId": 3
@@ -42,6 +49,7 @@
   {
     "studentId": 4,
     "priceId": 1,
+    "title": "title",
     "isTutor": true,
     "description": "I enjoy studying chemistry and would like to study with another student",
     "subjectId": 3
@@ -49,12 +57,15 @@
   {
     "studentId": 9,
     "priceId": 1,
+    "title": "title",
     "isTutor": true,
     "description": "I need a tutor who would push and challenge me to do well, I want to get into medicine",
     "subjectId": 1
   },
   {
     "studentId": 8,
+    "priceId": 1,
+    "title": "title",
     "isTutor": false,
     "description": "I want to code with anyone else struggling in coding bootcamp. It can't just be me, right?",
     "subjectId": 6

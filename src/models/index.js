@@ -38,6 +38,14 @@ Student.belongsToMany(Subject, {
   foreignKey: "studentId",
 });
 
+Ad.belongsTo(Subject, {
+  foreignKey: "subjectId",
+});
+
+Ad.belongsTo(Student, {
+  foreignKey: "studentId",
+});
+
 Subject.belongsToMany(Student, {
   through: Ad,
   foreignKey: "subjectId",
