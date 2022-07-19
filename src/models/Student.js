@@ -85,7 +85,8 @@ const schema = {
   },
   userType: {
     type: DataTypes.STRING,
-    default: "student",
+    defaultValue: "student",
+    allowNull: true,
   },
 };
 

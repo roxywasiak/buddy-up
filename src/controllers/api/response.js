@@ -1,4 +1,4 @@
-const { Response } = require("../../models");
+const { Response, Ad } = require("../../models");
 
 const createResponse = async (req, res) => {
   try {
@@ -39,25 +39,75 @@ const updateResponse = async (req, res) => {
 
 const getResponseByUserId = async (req, res) => {
   try {
-    const { userType, studentId, tutorId } = req.body;
+    //declare a changeable variable
     let data;
-
-    if (userType === "student") {
-      data = await Response.findAll({ where: { studentId: studentId } });
-      return res.json({ success: true, data });
-    }
-
-    if (userType === "tutor") {
-      data = await Response.findAll({
-        where: { tutorId: tutorId },
+    if (req.session.user.userType === "student") {
+      //find buddy from response
+      const buddyResponses = await Response.findAll({
+        where: {
+          studentId: req.session.user.id,
+          status: "completed",
+        },
       });
-      return res.json({ success: true, data });
+      const buddyResponsesData = buddyResponses.map(
+        ({ dataValues }) => dataValues
+      );
+      console.log(buddyResponsesData);
+
+      //find user who created the ad
+      const getAd = await Ad.findOne({
+        where: { studentId: req.session.user.id },
+      });
+
+      const adResponses = await Response.findAll({
+        where: {
+          adId: getAd.dataValues.id,
+          status: "completed",
+        },
+      });
+
+      const adResponseData = adResponses.map(({ dataValues }) => dataValues);
+      console.log(adResponseData);
+      const data = [...buddyResponsesData, ...adResponseData];
+      return res.json({
+        success: true,
+        data,
+      });
     }
-    if (!data) {
+    if (req.session.user.userType === "tutor") {
+      //find Tutor
+      const tutorResponse = await Response.findAll({
+        where: {
+          tutorId: req.session.user.id,
+          status: "completed",
+        },
+      });
+      console.log(tutorResponse);
+
+      const tutorResponseData = tutorResponse.map(
+        ({ dataValues }) => dataValues.adId
+      );
+      console.log(tutorResponseData);
+
+      const data = await Ad.findAll({
+        where: { id: tutorResponseData },
+      });
+      console.log(data);
+
+      return res.json({
+        success: true,
+        data,
+      });
+    }
+
+    if (
+      req.user.session.userType !== "student" &&
+      req.user.session.userType !== "tutor"
+    ) {
       return res.status(404).json({ success: false });
     }
   } catch (error) {
-    console.log(`[ERROR]: Failed to get all reports| ${error.message}`);
+    console.log(`[ERROR]: Failed to get all responses| ${error.message}`);
 
     return res.status(500).json({ success: false });
   }
