@@ -79,6 +79,10 @@ const schema = {
       isDecimal: true,
     },
   },
+  isProfileComplete: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+  },
   userType: {
     type: DataTypes.STRING,
     default: "student",

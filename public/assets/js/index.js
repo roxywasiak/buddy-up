@@ -23,6 +23,7 @@ const handleSignup = async (event) => {
   const confirmPassword = $("#confirmPassword").val();
   const userType = $("input[name='radio-choice']:checked").val();
   const termsAndConditions = $("#termsAndConditions").is(":checked");
+  const isProfileComplete = false;
 
   if (
     firstName &&
@@ -40,6 +41,7 @@ const handleSignup = async (event) => {
           lastName,
           email,
           password,
+          isProfileComplete,
         };
 
         const response = await fetch("/apiAuth/signup", {
@@ -160,6 +162,7 @@ const submitProfile = async (event) => {
     priceId,
     location,
     isRemote,
+    isProfileComplete,
   };
 
   const subjectPayload = {

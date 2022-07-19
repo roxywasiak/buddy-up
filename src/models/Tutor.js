@@ -96,6 +96,10 @@ const schema = {
       max: 180,
     },
   },
+  isProfileComplete: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+  },
   userType: {
     type: DataTypes.STRING,
     default: "tutor",

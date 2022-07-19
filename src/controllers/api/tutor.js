@@ -39,6 +39,7 @@ const updateTutor = async (req, res) => {
       isRemote,
       lat,
       long,
+      isProfileComplete,
     } = req.body;
     const id = req.session.user.id;
 
@@ -57,6 +58,7 @@ const updateTutor = async (req, res) => {
         isRemote,
         lat,
         long,
+        isProfileComplete,
       },
       { where: { id: id } }
     );

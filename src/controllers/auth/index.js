@@ -49,7 +49,14 @@ const signup = async (req, res) => {
   try {
     let user;
     console.log(req.body);
-    const { userType, firstName, lastName, email, password } = req.body;
+    const {
+      userType,
+      firstName,
+      lastName,
+      email,
+      password,
+      isProfileComplete,
+    } = req.body;
 
     if (userType === "tutor") {
       user = await Tutor.findOne({ where: { email } });
@@ -70,10 +77,24 @@ const signup = async (req, res) => {
     }
 
     if (userType === "tutor") {
-      await Tutor.create({ firstName, lastName, email, password, userType });
+      await Tutor.create({
+        firstName,
+        lastName,
+        email,
+        password,
+        userType,
+        isProfileComplete,
+      });
     }
     if (userType === "student") {
-      await Student.create({ firstName, lastName, email, password, userType });
+      await Student.create({
+        firstName,
+        lastName,
+        email,
+        password,
+        userType,
+        isProfileComplete,
+      });
     }
     return res.json({ success: true });
   } catch (error) {

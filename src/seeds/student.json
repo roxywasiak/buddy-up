@@ -7,6 +7,7 @@
     "priceId": 1,
     "location": "Birmingham",
     "isRemote": true,
+    "isProfileComplete": true,
     "lat": 33.518589,
     "long": -86.810356
   },
@@ -19,6 +20,7 @@
     "priceId": 1,
     "location": "Birmingham",
     "isRemote": true,
+    "isProfileComplete": true,
     "lat": 33.518589,
     "long": -86.810356
   },
@@ -31,6 +33,7 @@
     "priceId": 3,
     "location": "London",
     "isRemote": false,
+    "isProfileComplete": true,
     "lat": 51.509865,
     "long": -0.118092
   },
@@ -43,6 +46,7 @@
     "location": "Dublin",
     "priceId": 2,
     "isRemote": false,
+    "isProfileComplete": true,
     "lat": 53.349804,
     "long": -6.26031
   },
@@ -55,6 +59,7 @@
     "priceId": 2,
     "location": "London",
     "isRemote": true,
+    "isProfileComplete": true,
     "lat": 51.509865,
     "long": -0.118092
   },
@@ -67,6 +72,7 @@
     "priceId": 2,
     "location": "Dublin",
     "isRemote": true,
+    "isProfileComplete": true,
     "lat": 53.349804,
     "long": -6.26031
   },
@@ -79,6 +85,7 @@
     "priceId": 3,
     "location": "Paris",
     "isRemote": false,
+    "isProfileComplete": true,
     "lat": 48.856613,
     "long": 2.352222
   },
@@ -91,6 +98,7 @@
     "priceId": 2,
     "location": "Manchester",
     "isRemote": true,
+    "isProfileComplete": true,
     "lat": 53.4794892,
     "long": -2.2451148
   },
@@ -103,6 +111,7 @@
     "priceId": 1,
     "location": "Manchester",
     "isRemote": true,
+    "isProfileComplete": true,
     "lat": 53.4794892,
     "long": -2.2451148
   },
@@ -115,6 +124,7 @@
     "priceId": 3,
     "location": "Birmingham",
     "isRemote": true,
+    "isProfileComplete": true,
     "lat": 33.518589,
     "long": -86.810356
   }
