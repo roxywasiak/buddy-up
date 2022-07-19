@@ -45,3 +45,13 @@ Application is backed by a MySQL database with a Sequelize ORM and protects API 
 Application includes user authentication (express-session and cookies).
 
 Application uses at least one new library, package, or technology not covered in class.
+
+# Screenshots
+
+Please see the various screenshots of the different pages in both desktop and mobile viewport below:
+
+# Desktop Viewport
+
+# Mobile Viewport
+
+# Acceptance Criteria
