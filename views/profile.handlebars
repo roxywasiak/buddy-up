@@ -31,6 +31,12 @@
 
 
             {{#if  (isEqualTo userDetails.userType "student") }}
+                <div class="uk-margin">
+                    <div class="uk-inline uk-width-1-1">
+                        <span class="uk-form-icon" uk-icon="icon: receiver"></span>
+                        <input class="uk-input uk-form-large" type="text" id="updateContactNumber" placeholder={{userDetails.contactNumber}}>	
+                    </div>
+                </div>
             {{else}}
                 <div class="uk-margin">
                     <div class="uk-inline uk-width-1-1">

@@ -126,6 +126,10 @@ const validateInputs = (pageNumber) => {
     }
   } else if (page === "3") {
     page3Submit.attr("uk-switcher-item", "3");
+    var cleave = new Cleave($("#contactNumber"), {
+      phone: true,
+      phoneRegionCode: "{country}",
+    });
   }
 };
 
