@@ -105,7 +105,8 @@ const validateInputs = (pageNumber) => {
   }
 };
 
-const updateProfile = () => {
+const updateProfile = async (event) => {
+  event.preventDefault();
   const firstName = $("#updateFirstName").val();
   const lastName = $("#updateLastName").val();
   const email = $("#updateEmail").val();
@@ -113,6 +114,48 @@ const updateProfile = () => {
   const socialMedia = $("#updateSocialMedia").val();
   const calendlyLink = $("#updateCalendlyLink").val();
   const priceAmount = $("#updatePriceAmount").val();
+
+  let payload = {};
+
+  if (firstName) {
+    Object.assign(payload, { firstName });
+  }
+
+  if (lastName) {
+    Object.assign(payload, { lastName });
+  }
+  if (email) {
+    Object.assign(payload, { email });
+  }
+  if (location) {
+    Object.assign(payload, { location });
+  }
+  if (socialMedia) {
+    Object.assign(payload, { socialMedia });
+  }
+  if (calendlyLink) {
+    Object.assign(payload, { calendlyLink });
+  }
+  if (priceAmount) {
+    Object.assign(payload, { priceAmount });
+  }
+
+  try {
+    const response = await fetch("/api/tutor", {
+      method: "PUT",
+      body: JSON.stringify(payload),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (response.ok) {
+      window.location.reload();
+    } else {
+    }
+  } catch {
+    console.log("FAILED");
+  }
 };
 
 $("#priceRange").on("input", change);

@@ -31,6 +31,9 @@ const getTutorById = async (req, res) => {
 const updateTutor = async (req, res) => {
   try {
     const {
+      firstName,
+      lastName,
+      email,
       socialMedia,
       calendlyLink,
       priceAmount,
@@ -50,6 +53,9 @@ const updateTutor = async (req, res) => {
     }
     await Tutor.update(
       {
+        firstName,
+        lastName,
+        email,
         socialMedia,
         calendlyLink,
         priceAmount,
