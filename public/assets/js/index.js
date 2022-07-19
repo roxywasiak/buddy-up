@@ -132,19 +132,31 @@ const change = () => {
   $("#priceValueText").text(`£${$("#priceRange").val()}`);
 };
 
+const getPriceId = (priceAmount) => {
+  if (priceAmount < 15) {
+    return 1;
+  } else if (priceAmount < 25) {
+    return 2;
+  } else {
+    return 3;
+  }
+};
+
 const submitProfile = async (event) => {
   event.preventDefault();
   const subjectId = $("#subjectChoice option:selected").val();
   const level = $("#levelChoice option:selected").val();
   const location = $("#locationInput").val();
   const isRemote = $("#isRemote").is(":checked");
-  const priceId = 2;
+  const priceAmount = $("#priceRange").val();
+  const priceId = getPriceId(priceAmount);
   const socialMedia = $("#socialMediaLink").val();
   const calendlyLink = $("#calendlyLink").val();
 
   const tutorPayload = {
     socialMedia,
     calendlyLink,
+    priceAmount,
     priceId,
     location,
     isRemote,

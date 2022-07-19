@@ -33,6 +33,7 @@ const updateTutor = async (req, res) => {
     const {
       socialMedia,
       calendlyLink,
+      priceAmount,
       priceId,
       location,
       isRemote,
@@ -47,7 +48,16 @@ const updateTutor = async (req, res) => {
       return res.status(404).json({ success: false });
     }
     await Tutor.update(
-      { socialMedia, calendlyLink, priceId, location, isRemote, lat, long },
+      {
+        socialMedia,
+        calendlyLink,
+        priceAmount,
+        priceId,
+        location,
+        isRemote,
+        lat,
+        long,
+      },
       { where: { id: id } }
     );
     return res.json({ success: true });
