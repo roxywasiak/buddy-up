@@ -33,6 +33,8 @@ const submitProfile = async (event) => {
   const priceId = getPriceId(priceAmount);
   const socialMedia = $("#socialMediaLink").val();
   const calendlyLink = $("#calendlyLink").val();
+  const contactNumber = $("#contactNumber").val();
+  const budget = $("#budgetChoice option:selected").val();
   const isProfileComplete = true;
 
   if (socialMedia && calendlyLink) {
@@ -81,6 +83,27 @@ const submitProfile = async (event) => {
         );
       }
     } catch (error) {
+      renderError("profile-error", "Failed to update. Please try again.");
+    }
+  } else if (contactNumber) {
+    const studentPayload = {
+      priceId: budget,
+      location,
+      isRemote,
+      isProfileComplete,
+    };
+
+    const studentResponse = await fetch("/api/student", {
+      method: "PUT",
+      body: JSON.stringify(studentPayload),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (studentResponse.ok) {
+      window.location.assign("/dashboard");
+    } else {
       renderError("profile-error", "Failed to update. Please try again.");
     }
   } else {

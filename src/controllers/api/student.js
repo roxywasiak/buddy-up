@@ -31,7 +31,7 @@ const getStudentById = async (req, res) => {
 const updateStudent = async (req, res) => {
   try {
     const { priceId, location, isRemote, lat, long } = req.body;
-    const id = req.sessions.user.id;
+    const id = req.session.user.id;
     const data = await Student.findByPk(id);
     if (!data) {
       return res.status(404).json({ success: false });
