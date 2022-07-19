@@ -10,6 +10,6 @@ const router = Router();
 
 router.post("/", createResponse);
 router.put("/:id", updateResponse);
-router.get("/id", getResponseByUserId);
+router.get("/", getResponseByUserId);
 
 module.exports = router;
