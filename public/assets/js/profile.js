@@ -3,6 +3,7 @@ const profileSubmit = $("#profile4");
 const page1Submit = $("#page1Submit");
 const page2Submit = $("#page2Submit");
 const page3Submit = $("#page3Submit");
+const updateProfileForm = $("#updateProfileForm");
 
 const handleCompleteProfileClick = () => {
   window.location.assign("/completeProfile");
@@ -104,9 +105,20 @@ const validateInputs = (pageNumber) => {
   }
 };
 
+const updateProfile = () => {
+  const firstName = $("#updateFirstName").val();
+  const lastName = $("#updateLastName").val();
+  const email = $("#updateEmail").val();
+  const location = $("#updateLocation").val();
+  const socialMedia = $("#updateSocialMedia").val();
+  const calendlyLink = $("#updateCalendlyLink").val();
+  const priceAmount = $("#updatePriceAmount").val();
+};
+
 $("#priceRange").on("input", change);
 completeProfile.click(handleCompleteProfileClick);
 page1Submit.click({ pageNumber: "1" }, validateInputs);
 page2Submit.click({ pageNumber: "2" }, validateInputs);
 page3Submit.click({ pageNumber: "3" }, validateInputs);
 profileSubmit.submit(submitProfile);
+updateProfileForm.submit(updateProfile);
