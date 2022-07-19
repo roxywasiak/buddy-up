@@ -7,7 +7,7 @@ const completedAd = $("#completedAd");
 const pendingAd = $("pendingAd");
 
 const payload = {
- adId
+  adId,
   status: "pending",
 };
 
