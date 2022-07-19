@@ -14,7 +14,6 @@ const renderError = (id, message) => {
 
 const handleSignup = async (event) => {
   event.preventDefault();
-  console.log("Signup Submitted");
 
   const firstName = $("#firstName").val();
   const lastName = $("#lastName").val();

@@ -5,8 +5,6 @@ const login = async (req, res) => {
     let user;
     const { email, password, userType } = req.body;
 
-    console.log(userType);
-
     if (email && password && userType === "student") {
       user = await Student.findOne({ where: { email } });
     }
@@ -48,7 +46,6 @@ const login = async (req, res) => {
 const signup = async (req, res) => {
   try {
     let user;
-    console.log(req.body);
     const {
       userType,
       firstName,
