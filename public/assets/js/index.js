@@ -1,8 +1,6 @@
 const signupForm = $("#signup-form");
 const loginForm = $("#login-form");
 const logoutBtn = $("#logout-btn");
-const completeProfile = $("#complete-profile-btn");
-const profileSubmit = $("#profile4");
 
 const renderError = (id, message) => {
   const errorDiv = $(`#${id}`);

@@ -1,3 +1,9 @@
+const completeProfile = $("#complete-profile-btn");
+const profileSubmit = $("#profile4");
+const page1Submit = $("#page1Submit");
+const page2Submit = $("#page2Submit");
+const page3Submit = $("#page3Submit");
+
 const handleCompleteProfileClick = () => {
   window.location.assign("/completeProfile");
 };
@@ -44,7 +50,7 @@ const submitProfile = async (event) => {
     level,
   };
 
-  const tutorResponse = await fetch("/api/tutor/12", {
+  const tutorResponse = await fetch("/api/tutor", {
     method: "PUT",
     body: JSON.stringify(tutorPayload),
     headers: {
@@ -67,6 +73,21 @@ const submitProfile = async (event) => {
   }
 };
 
+const validateInputs = (pageNumber) => {
+  const page = pageNumber.data.pageNumber;
+  console.log(page);
+  if (page === "1") {
+    page1Submit.attr("uk-switcher-item", "1");
+  } else if (page === "2") {
+    page2Submit.attr("uk-switcher-item", "2");
+  } else if (page === "3") {
+    page3Submit.attr("uk-switcher-item", "3");
+  }
+};
+
 $("#priceRange").on("input", change);
 profileSubmit.submit(submitProfile);
 completeProfile.click(handleCompleteProfileClick);
+page1Submit.click({ pageNumber: "1" }, validateInputs);
+page2Submit.click({ pageNumber: "2" }, validateInputs);
+page3Submit.click({ pageNumber: "3" }, validateInputs);
