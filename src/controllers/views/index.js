@@ -1,4 +1,4 @@
-const { Subject, Tutor, Student } = require("../../models");
+const { Subject, Tutor, Student, Price } = require("../../models");
 
 const renderHomePage = (req, res) => {
   return res.render("home", { currentPage: "home" });
@@ -12,11 +12,32 @@ const renderAuthPage = (req, res) => {
   return res.render("auth", { currentPage: "auth" });
 };
 
-const renderCreateAdsPage = (req, res) => {
-  return res.render("createAds", { currentPage: "createAds" });
+const renderCreateAdsPage = async (req, res) => {
+  // GET subject data
+  const subjectsFromDb = await Subject.findAll();
+
+  const subjects = subjectsFromDb.map((subject) => {
+    return subject.get({ plain: true });
+  });
+
+  // GET price data
+  const priceFromDb = await Price.findAll();
+
+  const prices = priceFromDb.map((price) => {
+    return price.get({ plain: true });
+  });
+
+  return res.render("createAds", {
+    currentPage: "createAds",
+    subjects,
+    prices,
+  });
 };
 
 const renderViewAdsPage = (req, res) => {
+  // get user ads (where user id === to user id) - user ads
+  // get all ads and filter - filtered ads
+  // use handlebars to render cards
   return res.render("viewAds", { currentPage: "viewAds" });
 };
 
