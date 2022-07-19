@@ -154,6 +154,7 @@ const submitProfile = async (event) => {
   const priceId = getPriceId(priceAmount);
   const socialMedia = $("#socialMediaLink").val();
   const calendlyLink = $("#calendlyLink").val();
+  const isProfileComplete = true;
 
   const tutorPayload = {
     socialMedia,
