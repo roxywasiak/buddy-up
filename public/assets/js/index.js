@@ -134,7 +134,7 @@ const change = () => {
 
 const submitProfile = async (event) => {
   event.preventDefault();
-  const subjectName = $("#subjectChoice option:selected").val();
+  const subjectId = $("#subjectChoice option:selected").val();
   const level = $("#levelChoice option:selected").val();
   const location = $("#locationInput").val();
   const isRemote = $("#isRemote").is(":checked");
@@ -152,7 +152,7 @@ const submitProfile = async (event) => {
 
   const subjectPayload = {
     userType: "tutor",
-    subjectName,
+    subjectId,
     level,
   };
 

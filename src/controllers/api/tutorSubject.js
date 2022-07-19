@@ -2,19 +2,21 @@ const { TutorSubject, Subject } = require("../../models");
 
 const createTutorSubject = async (req, res) => {
   try {
-    const { userType, subjectName, level } = req.body;
+    console.log(req.body);
+    const { userType, subjectId, level } = req.body;
 
     if (userType === "tutor") {
       const tutorId = req.session.user.id;
 
-      const subject = await Subject.findOne({ where: { subjectName } });
+      const subject = await Subject.findOne({ where: { id: subjectId } });
 
       if (!subject) {
         return res.status(404).json({ success: false });
       }
-      const { id } = subject;
 
-      await TutorSubject.create({ tutorId, subjectId: id, level });
+      console.log(tutorId, subjectId, level);
+
+      await TutorSubject.create({ tutorId, subjectId, level });
 
       return res.json({ success: true });
     }
