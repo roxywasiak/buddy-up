@@ -3,7 +3,15 @@
 const main = $("#mainSessions");
 const tutorCard = $("#tutor-card");
 
-const renderTutorCard = async (data) => {
+const renderErrorDiv = () => {
+  const error = `<div class="uk-alert-warning" uk-alert>
+    <a class="uk-alert-close" uk-close></a>
+    <p>Currently, there are no matches. Matches do not show instantaneously so please refresh the page. </p>
+</div>`;
+  main.append(error);
+};
+
+const renderTutorCard = (data) => {
   const tutorCard = ` <div id="tutor-card">
             <div class="uk-card uk-card-default uk-width-1-2@m">
               <div class="uk-card-header">
@@ -51,7 +59,7 @@ const renderTutorCard = async (data) => {
           </div>`;
   main.append(tutorCard);
 };
-const renderStudentCard = async (data) => {
+const renderStudentCard = (data) => {
   const studentCard = ` <div id="student-card">
             <div class="uk-card uk-card-default uk-width-1-2@m">
               <div class="uk-card-header">
@@ -106,37 +114,39 @@ const handleSessionCard = async () => {
       "Content-Type": "application/json",
     },
   });
-  const data = await response.json();
-  console.log(response);
-  console.log(data);
-  const studentId = data.dataValues.studentId;
-  const tutorId = data.dataValues.tutorId;
-  if (data.success) {
-    if (studentId !== null) {
-      console.log(data.dataValues);
-      const response = await fetch(`/api/student/${studentId} `, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const student = await response.json();
-      await renderStudentCard(student.data);
-    }
+  const { data, success } = await response.json();
 
-    if (tutorId !== null) {
-      const response = await fetch(`/api/tutor/${tutorId} `, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const tutor = await response.json();
-      console.log(data);
-      await renderTutorCard(tutor.data);
-    }
+  if (success) {
+    const promises = data.map(async (response) => {
+      console.log(response);
+      if (response.studentId !== null) {
+        const studentResponse = await fetch(
+          `/api/student/${response.studentId} `,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        const student = await studentResponse.json();
+
+        renderStudentCard(student.data);
+      }
+      if (response.studentId === null && response.tutorId !== null) {
+        const tutorResponse = await fetch(`/api/tutor/${response.tutorId} `, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const tutor = await tutorResponse.json();
+        renderTutorCard(tutor.data);
+      }
+    });
+    await Promise.all(promises);
   } else {
-    alert("Failed to get response");
+    renderErrorDiv();
   }
 };
 

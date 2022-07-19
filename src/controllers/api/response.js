@@ -43,37 +43,61 @@ const getResponseByUserId = async (req, res) => {
     let data;
     if (req.session.user.userType === "student") {
       //find buddy from response
-      data = await Response.findOne({
+      const buddyResponses = await Response.findAll({
         where: {
           studentId: req.session.user.id,
           status: "completed",
         },
       });
-      if (!data) {
-        //find user who created the ad
-        const getAd = await Ad.findOne({
-          where: { studentId: req.session.user.id },
-        });
-        data = await Response.findOne({
-          where: {
-            adId: getAd.dataValues.id,
-            status: "completed",
-          },
-        });
-      }
-      const { dataValues } = data;
-      return res.json({ success: true, dataValues });
+      const buddyResponsesData = buddyResponses.map(
+        ({ dataValues }) => dataValues
+      );
+      console.log(buddyResponsesData);
+
+      //find user who created the ad
+      const getAd = await Ad.findOne({
+        where: { studentId: req.session.user.id },
+      });
+
+      const adResponses = await Response.findAll({
+        where: {
+          adId: getAd.dataValues.id,
+          status: "completed",
+        },
+      });
+
+      const adResponseData = adResponses.map(({ dataValues }) => dataValues);
+      console.log(adResponseData);
+      const data = [...buddyResponsesData, ...adResponseData];
+      return res.json({
+        success: true,
+        data,
+      });
     }
     if (req.session.user.userType === "tutor") {
       //find Tutor
-      data = await Response.findOne({
+      const tutorResponse = await Response.findAll({
         where: {
           tutorId: req.session.user.id,
           status: "completed",
         },
       });
-      const { dataValues } = data;
-      return res.json({ success: true, dataValues });
+      console.log(tutorResponse);
+
+      const tutorResponseData = tutorResponse.map(
+        ({ dataValues }) => dataValues.adId
+      );
+      console.log(tutorResponseData);
+
+      const data = await Ad.findAll({
+        where: { id: tutorResponseData },
+      });
+      console.log(data);
+
+      return res.json({
+        success: true,
+        data,
+      });
     }
 
     if (
