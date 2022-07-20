@@ -40,35 +40,37 @@ const updateResponse = async (req, res) => {
 const getResponseByUserId = async (req, res) => {
   try {
     //declare a changeable variable
-    let data;
     if (req.session.user.userType === "student") {
       //find buddy from response
       const buddyResponses = await Response.findAll({
         where: {
           studentId: req.session.user.id,
-          status: "completed",
         },
       });
       const buddyResponsesData = buddyResponses.map(
         ({ dataValues }) => dataValues
       );
-      console.log(buddyResponsesData);
 
       //find user who created the ad
-      const getAd = await Ad.findOne({
+      const getAd = await Ad.findAll({
         where: { studentId: req.session.user.id },
       });
 
+      const adIds = getAd.map(({ dataValues }) => dataValues.id);
+
       const adResponses = await Response.findAll({
         where: {
-          adId: getAd.dataValues.id,
-          status: "completed",
+          adId: adIds,
         },
       });
+      console.log(adResponses);
 
       const adResponseData = adResponses.map(({ dataValues }) => dataValues);
       console.log(adResponseData);
-      const data = [...buddyResponsesData, ...adResponseData];
+      const data = {
+        userResponses: buddyResponsesData,
+        receivedResponses: adResponseData,
+      };
       return res.json({
         success: true,
         data,
@@ -82,21 +84,18 @@ const getResponseByUserId = async (req, res) => {
           status: "completed",
         },
       });
-      console.log(tutorResponse);
 
       const tutorResponseData = tutorResponse.map(
         ({ dataValues }) => dataValues.adId
       );
-      console.log(tutorResponseData);
 
-      const data = await Ad.findAll({
+      const userResponses = await Ad.findAll({
         where: { id: tutorResponseData },
       });
-      console.log(data);
 
       return res.json({
         success: true,
-        data,
+        data: { userResponses },
       });
     }
 

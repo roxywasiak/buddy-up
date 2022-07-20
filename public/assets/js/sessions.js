@@ -11,7 +11,7 @@ const renderErrorDiv = () => {
   main.append(error);
 };
 
-const renderTutorCard = (data) => {
+const renderTutorCard = (data, id) => {
   const tutorCard = ` <div id="tutor-card">
             <div class="uk-card uk-card-default uk-width-1-2@m">
               <div class="uk-card-header">
@@ -57,9 +57,9 @@ const renderTutorCard = (data) => {
               </div>
             </div>
           </div>`;
-  main.append(tutorCard);
+  $(`#${id}`).append(tutorCard);
 };
-const renderStudentCard = (data) => {
+const renderStudentCard = (data, id) => {
   const studentCard = ` <div id="student-card">
             <div class="uk-card uk-card-default uk-width-1-2@m">
               <div class="uk-card-header">
@@ -102,7 +102,7 @@ const renderStudentCard = (data) => {
               </div>
             </div>
           </div>`;
-  main.append(studentCard);
+  $(`#${id}`).append(studentCard);
 };
 
 const handleSessionCard = async () => {
@@ -117,34 +117,67 @@ const handleSessionCard = async () => {
   const { data, success } = await response.json();
 
   if (success) {
-    const promises = data.map(async (response) => {
-      console.log(response);
-      if (response.studentId !== null) {
-        const studentResponse = await fetch(
-          `/api/student/${response.studentId} `,
-          {
+    if (data.userResponses) {
+      const promises = data.userResponses.map(async (response) => {
+        console.log(response);
+        if (response.studentId !== null) {
+          const studentResponse = await fetch(
+            `/api/student/${response.studentId} `,
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
+          const student = await studentResponse.json();
+
+          renderStudentCard(student.data, "mainSessions");
+        }
+        if (response.studentId === null && response.tutorId !== null) {
+          const tutorResponse = await fetch(`/api/tutor/${response.tutorId} `, {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
             },
-          }
-        );
-        const student = await studentResponse.json();
+          });
+          const tutor = await tutorResponse.json();
+          renderTutorCard(tutor.data, "mainSessions");
+        }
+      });
+      await Promise.all(promises);
+    }
+    if (data.receivedResponses) {
+      const promises = data.receivedResponses.map(async (response) => {
+        console.log(response);
+        if (response.studentId !== null) {
+          const studentResponse = await fetch(
+            `/api/student/${response.studentId} `,
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
+          const student = await studentResponse.json();
 
-        renderStudentCard(student.data);
-      }
-      if (response.studentId === null && response.tutorId !== null) {
-        const tutorResponse = await fetch(`/api/tutor/${response.tutorId} `, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-        const tutor = await tutorResponse.json();
-        renderTutorCard(tutor.data);
-      }
-    });
-    await Promise.all(promises);
+          renderStudentCard(student.data, "receivedRequests");
+        }
+        if (response.studentId === null && response.tutorId !== null) {
+          const tutorResponse = await fetch(`/api/tutor/${response.tutorId} `, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+          const tutor = await tutorResponse.json();
+          console.log(tutor);
+          renderTutorCard(tutor.data, "receivedRequests");
+        }
+      });
+      await Promise.all(promises);
+    }
   } else {
     renderErrorDiv();
   }
