@@ -51,6 +51,7 @@ const schema = {
   },
   socialMedia: {
     type: DataTypes.STRING,
+    validate: { isURL: true },
     allowNull: true,
   },
   calendlyLink: {

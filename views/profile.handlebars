@@ -17,12 +17,12 @@
                         <input class="uk-input uk-form-large" type="text" id="updateLastName" placeholder={{userDetails.lastName}}>
                     </div>
                 </div>
-                <div class="uk-margin">
+                {{!-- <div class="uk-margin">
                     <div class="uk-inline uk-width-1-1">
                         <span class="uk-form-icon" uk-icon="icon: mail"></span>
                         <input class="uk-input uk-form-large" type="text" id="updateEmail" placeholder={{userDetails.email}}>
                     </div>
-                </div>
+                </div> --}}
                 <div class="uk-margin">
                     <div class="uk-inline uk-width-1-1">
                         <span class="uk-form-icon" uk-icon="icon: location"></span>
@@ -38,6 +38,13 @@
                             <span class="uk-form-icon" uk-icon="icon: receiver"></span>
                             <input class="uk-input uk-form-large" type="text" id="updateContactNumber" placeholder={{userDetails.contactNumber}}>	
                         </div>
+                    </div>
+                    <div class="uk-margin">
+                        <select id="budgetChoice" class="uk-select" >
+                            <option value=1 {{#if (isEqualTo userDetails.priceId 1)}} selected {{/if}}>Low</option>
+                            <option value=2 {{#if (isEqualTo userDetails.priceId 2)}} selected {{/if}}>Medium</option>
+                            <option value=3 {{#if (isEqualTo userDetails.priceId 3)}} selected {{/if}}>High</option>
+                        </select>
                     </div>
                 {{else}}
                     <div class="uk-margin">
@@ -55,7 +62,7 @@
                     <div class="uk-margin">
                         <div class="uk-inline uk-width-1-1">
                             <span class="uk-form-icon" uk-icon="icon: tag"></span>
-                            <input class="uk-input uk-form-large" type="text" id="updatePriceAmount" placeholder=£{{userDetails.priceAmount}}>	
+                            <input class="uk-input uk-form-large" type="text" id="updatePriceAmount" placeholder=£{{userDetails.priceAmount}}/session>	
                         </div>
                     </div>
                 {{/if}}
