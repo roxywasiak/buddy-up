@@ -50,17 +50,16 @@
         <button
           class="uk-button uk-button-primary"
           id="acceptButton"
+          data-response={{id}}
         >Accept</button>
         <button
           class="uk-button uk-button-danger"
           id="rejectButton"
+          data-response={{id}}
         >Reject</button>
       {{/if}}
       {{#if (isEqualTo status "completed")}}
-        <div
-          class="uk-button uk-button-primary"
-          id="acceptButton"
-        >Completed</div>
+        <div class="uk-button uk-button-primary">Completed</div>
       {{/if}}
     </div>
   </div>

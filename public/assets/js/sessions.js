@@ -180,5 +180,24 @@ const handleSessionCard = async () => {
     renderErrorDiv();
   }
 };
+const handleAcceptRequest = async (event) => {
+  const responseId = $(event.target).data("response");
+  console.log(responseId);
+  const response = await fetch(`/api/response/${responseId} `, {
+    method: "PUT",
+    body: JSON.stringify({ status: "completed" }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const data = await response.json();
+  console.log(data);
+};
+const handleRejectRequest = (event) => {
+  const responseId = $(event.target).data("response");
+  console.log(responseId);
+};
 
 // $(document).ready(handleSessionCard);
+$("#acceptButton").click(handleAcceptRequest);
+$("#rejectButton").click(handleRejectRequest);

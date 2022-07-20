@@ -36,7 +36,7 @@ const updateResponse = async (req, res) => {
     ) {
       const updatedResponse = await Response.update(
         { status },
-        { where: (id = id) }
+        { where: { id } }
       );
       return res.json(updatedResponse);
     }
