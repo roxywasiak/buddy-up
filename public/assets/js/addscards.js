@@ -18,6 +18,7 @@ const handleAcceptedAd = async (event) => {
   if (clickAcceptButton) {
     data = await Response.findAll({ where: {} });
   }
+  //fire a request to update the status
   //post request to controller api/response with ad id req.session.user.id
   // const response = await fetch("/api/response", {
   //   method: "POST",

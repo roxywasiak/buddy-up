@@ -1,5 +1,3 @@
-// const { Subject } = require("../../../src/models");
-
 // ~ DECLARATIONS
 const adsBtn = $("#ads-btn");
 const adsBudget = $("#ads-budget");
