@@ -3,7 +3,7 @@ const { Response, Ad } = require("../../models");
 const createResponse = async (req, res) => {
   try {
     // create new add
-    const { adId, status } = req.body;
+    const { adId } = req.body;
     if (req.session.user.userType === "student") {
       await Response.create({
         studentId: req.session.user.id,
