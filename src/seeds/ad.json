@@ -17,6 +17,7 @@
   },
   {
     "studentId": 1,
+    "priceId": 2,
     "isTutor": false,
     "title": "title",
     "description": "I want to practise music with someone who has advanced musical instruments skills. Is there a buddy who wants to join?",

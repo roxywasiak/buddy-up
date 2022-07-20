@@ -15,7 +15,7 @@ router.post("/", createAd);
 router.put("/:id", updateAd);
 router.delete("/:id", deleteAd);
 router.get("/:id", getAdById);
-router.get("/view/subject/:subjectName", getAdsBySubjectId);
+router.get("/subject/:id", getAdsBySubjectId);
 router.get("/", getAllAds);
 
 module.exports = router;

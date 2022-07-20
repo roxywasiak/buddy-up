@@ -1,4 +1,4 @@
-const { Ad, Subject } = require("../../models");
+const { Ad, Subject, Price } = require("../../models");
 const querystring = require("node:querystring");
 const url = require("url");
 
@@ -105,15 +105,12 @@ const deleteAd = async (req, res) => {
 
 const getAdsBySubjectId = async (req, res) => {
   const { id } = req.params;
-  const data = await Ad.findAll({ where: { subjectId: { id } } });
-
-  // return res.json({ success: true, data });
-  return res.render("viewAds", {
-    currentPage: "viewAds",
-    userAds,
-    subjects,
-    filteredAdsBySubject,
+  const data = await Ad.findAll({
+    where: { subjectId: id },
+    include: [{ model: Subject }, { model: Price }],
   });
+  // return res.json({ success: true, data });
+  return res.json({ success: true, data });
 };
 
 const getAdById = async (req, res) => {

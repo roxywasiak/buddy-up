@@ -35,8 +35,9 @@
                               uk-form-custom="target: true"
                               id="form-horizontal-select"
                             >
+                            <option id="searchAds" value="">Select an Option</option>
                             {{#each subjects}}
-                            <option id="searchAds" value={{subjectName}}>{{subjectName}}</option>
+                            <option id="searchAds" value={{id}}>{{subjectName}}</option>
                             {{/each}}
 
                             <!-- RECEIVED ADS SECTION -->
@@ -51,10 +52,10 @@
 
         <div class="uk-flex uk-flex-center ads-flex-container" id="subjectAds">
           <!-- card starts here -->
-            {{#each filteredAdsBySubject as | ad | }}
+            {{!-- {{#each filteredAdsBySubject as | ad | }}
                        {{> receivedAdCard}}
                        
-                            {{/each}}
+                            {{/each}} --}}
       
         </div>
       </section>
