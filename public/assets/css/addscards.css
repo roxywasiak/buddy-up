@@ -1,0 +1,39 @@
+* {
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+/* colors*/
+:root {
+  --light-cornflower-blue: #8ecae6ff;
+  --light-blue: #39f;
+  --dark-blue: rgb(38, 175, 216);
+  --prussian-blue: #2a58ac;
+  --blue: #1e87f0;
+  --white: white;
+  --bs-gray-700: #495057;
+  --bs-gray-500: #adb5bd;
+  --bs-gray-800: #343a40;
+  --bs-gray-300: #f0f3f7;
+  --bs--gray: #f8f8f8;
+  --black: black;
+  --selective-yellow: #ffb703ff;
+}
+
+.title {
+  margin-top: 50px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 500;
+  color: var(--bs-gray-700);
+}
+
+/* cards styles */
+.ads-card {
+  margin: 20px;
+  text-align: center;
+  border-radius: 4px;
+  width: 20rem;
+}
+
+/* toggle style here  */

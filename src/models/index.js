@@ -39,6 +39,14 @@ Student.belongsToMany(Subject, {
   foreignKey: "studentId",
 });
 
+Ad.belongsTo(Subject, {
+  foreignKey: "subjectId",
+});
+
+Ad.belongsTo(Student, {
+  foreignKey: "studentId",
+});
+
 Subject.belongsToMany(Student, {
   through: Ad,
   foreignKey: "subjectId",
@@ -65,7 +73,7 @@ Tutor.belongsToMany(Subject, {
   foreignKey: "tutorId",
 });
 
-// RESPONSE RELAIONSHIP
+// RESPONSE RELATIONSHIP
 Ad.hasMany(Response, {
   foreignKey: "adId",
   onDelete: "CASCADE",

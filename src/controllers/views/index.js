@@ -41,11 +41,49 @@ const renderCreateAdsPage = async (req, res) => {
   });
 };
 
-const renderViewAdsPage = (req, res) => {
-  // get user ads (where user id === to user id) - user ads
-  // get all ads and filter - filtered ads
-  // use handlebars to render cards
-  return res.render("viewAds", { currentPage: "viewAds" });
+const renderViewAdsPage = async (req, res) => {
+  try {
+    // get all ads / get user ads
+    const adsFromDb = await (
+      await Ad.findAll({
+        include: [{ model: Student }, { model: Subject }, { model: Price }],
+      })
+    ).map((ad) => {
+      return ad.get({ plain: true });
+    });
+
+    // filter the ads for user
+    const userAds = adsFromDb.filter(
+      (ad) => ad.student.email === req.session.user.email
+    );
+
+    // GET subject data
+    const subjectsFromDb = await Subject.findAll();
+
+    // // get the subjects
+    const subjects = subjectsFromDb.map((subject) => {
+      return subject.get({ plain: true });
+    });
+
+    const defaultSubject = subjects[0];
+
+    // get all ads
+    const filteredAdsBySubject = adsFromDb.filter(
+      (ad) =>
+        ad.student.email !== req.session.user.email &&
+        ad.subject.subjectName === defaultSubject.subjectName
+    );
+
+    return res.render("viewAds", {
+      currentPage: "viewAds",
+      userAds,
+      subjects,
+      filteredAdsBySubject,
+    });
+  } catch (error) {
+    console.log(`[ERROR]: Failed to get ads | ${error.message}`);
+    return res.status(500).json({ error: "Failed to get ads" });
+  }
 };
 
 const renderSessionsPage = async (req, res) => {
