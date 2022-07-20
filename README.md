@@ -53,5 +53,3 @@ Please see the various screenshots of the different pages in both desktop and mo
 # Desktop Viewport
 
 # Mobile Viewport
-
-# Acceptance Criteria
