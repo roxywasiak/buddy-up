@@ -23,6 +23,7 @@ const tutorSubject = require("./tutorSubject.json");
 const report = require("./report.json");
 
 //variables to store the table entity names
+
 const seedAds = async () => {
   const promises = ad.map((ad) => Ad.create(ad));
   await Promise.all(promises);
