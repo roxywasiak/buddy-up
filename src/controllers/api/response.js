@@ -26,16 +26,18 @@ const createResponse = async (req, res) => {
 const updateResponse = async (req, res) => {
   try {
     // update response
-    const { status, userType, id } = req.body;
-    if (userType !== "tutor" && userType !== "student") {
-      return res.status(500).json({ success: false, error: error.message });
-    }
+    const { status } = req.body;
+    const { userType, id: userId } = req.session.user;
+    const { id } = req.params;
     if (
       status === "pending" ||
       status === "completed" ||
       status === "rejected"
     ) {
-      const updatedResponse = await Response.update({ status, id });
+      const updatedResponse = await Response.update(
+        { status },
+        { where: (id = id) }
+      );
       return res.json(updatedResponse);
     }
   } catch (error) {
