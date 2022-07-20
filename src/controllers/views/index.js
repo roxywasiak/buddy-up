@@ -63,12 +63,12 @@ const renderSessionsPage = async (req, res) => {
         where: {
           studentId: req.session.user.id,
         },
-        include: [{ model: Student }],
+        include: [{ model: Student }, { model: Ad }],
       });
-      const buddyResponsesData = buddyResponses.map(
-        ({ dataValues }) => dataValues
-      );
 
+      const buddyResponsesData = buddyResponses.map((each) => {
+        return each.get({ plain: true });
+      });
       //find user who created the ad
       const getAd = await Ad.findAll({
         where: { studentId: req.session.user.id },
@@ -82,9 +82,9 @@ const renderSessionsPage = async (req, res) => {
         },
         include: [{ model: Student }, { model: Tutor }],
       });
-
-      const adResponseData = adResponses.map(({ dataValues }) => dataValues);
-      console.log(adResponseData);
+      const adResponseData = adResponses.map((each) => {
+        return each.get({ plain: true });
+      });
 
       userResponses = buddyResponsesData;
       receivedResponses = adResponseData;
@@ -103,9 +103,12 @@ const renderSessionsPage = async (req, res) => {
         ({ dataValues }) => dataValues.adId
       );
 
-      userResponses = await Ad.findAll({
+      const userResponsesData = await Ad.findAll({
         where: { id: tutorResponseData },
         include: [{ model: Student }],
+      });
+      const userResponses = userResponsesData.map((each) => {
+        return each.get({ plain: true });
       });
     }
     console.log(userResponses, receivedResponses);

@@ -6,17 +6,12 @@
           <hr class="uk-divider-icon" />
 
   {{#if userResponses}}
-    {{#if (isEqualTo userType "student")}}
       {{#each userResponses}}
-      //STUDENT CARD
+
       {{/each}}
-    {{else}}
-      {{#each userResponses}}
-       //TUTOR CARD
-      {{/each}}
-    {{/if}}
+ 
   {{else}}
-//ERROR CARD
+
   {{/if}}
 </div>
   <div id="receivedRequests">
@@ -24,19 +19,13 @@
           <hr class="uk-divider-icon" />
 
   {{#if receivedResponses}}
-    {{#if (isEqualTo userType "student")}}
       {{#each receivedResponses}}
-            //STUDENT CARD
+          {{> receivedRequests}}
       {{/each}}
-    {{else}}
-      {{#each receivedResponses}}
-          //TUTOR CARD
-      {{/each}}
-    {{/if}}
+
   {{else}}
-  //ERROR CARD
+
   {{/if}}
 
-  {{}}
 </div>
 </main>

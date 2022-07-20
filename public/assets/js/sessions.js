@@ -181,4 +181,4 @@ const handleSessionCard = async () => {
   }
 };
 
-$(document).ready(handleSessionCard);
+// $(document).ready(handleSessionCard);
