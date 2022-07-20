@@ -51,9 +51,8 @@ const renderTutorCard = (data, id) => {
                 </p>
               </div>
               <div class="uk-card-footer">
-                <a href="#" class="uk-button uk-button-text"
-                  >Read Bio for more information</a
-                >
+               <button class="uk-button uk-button-primary" id="acceptButton">Accept</button>
+    <button class="uk-button uk-button-danger" id="rejectButton">Reject</button>
               </div>
             </div>
           </div>`;
@@ -96,9 +95,8 @@ const renderStudentCard = (data, id) => {
                 </p>
               </div>
               <div class="uk-card-footer">
-                <a href="#" class="uk-button uk-button-text"
-                  >Read Bio for more information</a
-                >
+              <button class="uk-button uk-button-primary" id="acceptButton">Accept</button>
+    <button class="uk-button uk-button-danger" id="rejectButton">Reject</button>
               </div>
             </div>
           </div>`;
