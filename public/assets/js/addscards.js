@@ -6,18 +6,35 @@ const rejectAd = $("rejectButton");
 const completedAd = $("#completedAd");
 const pendingAd = $("pendingAd");
 
-const payload = {
-  adId,
-  status: "pending",
-};
+/
 
 //this function is when a buddy/tutor responds to an add
 const handleAcceptedAd = async (event) => {
-  event.preventDefault();
-  const clickAcceptButton = $("acceptButton").val();
-  if (clickAcceptButton) {
-    data = await Response.findAll({ where: {} });
+  try {
+    event.preventDefault();
+    //find all ads with pending status
+    const clickAcceptButton = $("acceptButton").val();
+    if (clickAcceptButton) {
+      //get the ads from db th
+      data = await Response.findAll({ where: { status: "Pending" } });
+      console.log(data);
+      return res.json({ success: true, data });
+      //update the status to completed
+      const updatedAdStatus = await Response.create({
+        status: "Completed"
+
+      });
+      console.log(updatedAdStatus);
+      //show the new add card with completed
+    }
+  } catch (error) {
+    console.log(`[ERROR]: Failed to get the Ad status| ${error.message}`);
+
+    return res.status(500).json({ success: false });
   }
+};
+  
+
   //fire a request to update the status
   //post request to controller api/response with ad id req.session.user.id
   // const response = await fetch("/api/response", {
