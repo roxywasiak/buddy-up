@@ -1,4 +1,4 @@
-const { Ad } = require("../../models");
+const { Ad, Subject } = require("../../models");
 const querystring = require("node:querystring");
 const url = require("url");
 
@@ -103,6 +103,19 @@ const deleteAd = async (req, res) => {
   }
 };
 
+const getAdsBySubjectId = async (req, res) => {
+  const { id } = req.params;
+  const data = await Ad.findAll({ where: { subjectId: { id } } });
+
+  // return res.json({ success: true, data });
+  return res.render("viewAds", {
+    currentPage: "viewAds",
+    userAds,
+    subjects,
+    filteredAdsBySubject,
+  });
+};
+
 const getAdById = async (req, res) => {
   try {
     const { id } = req.params;
@@ -111,59 +124,10 @@ const getAdById = async (req, res) => {
     if (!data) {
       return res.status(404).json({ success: false });
     }
-    S;
+
     return res.json({ success: true, data });
   } catch (error) {
     console.log(`[ERROR]: Failed to get all ads | ${error.message}`);
-
-    return res.status(500).json({ success: false });
-  }
-};
-
-const getAdsBySubjectAndUserType = async (req, res) => {
-  try {
-    const { isTutor, subjectId } = url.parse(req.url, true).query;
-    let selectedAds;
-    if (isTutor === false && subjectId) {
-      selectedAds = await Ad.findAll({
-        where: {
-          isTutor: !isTutor,
-          subjectId,
-        },
-      });
-    }
-    if (isTutor === false) {
-      selectedAds = await Ad.findAll({
-        where: {
-          isTutor: !isTutor,
-        },
-      });
-    }
-    if (isTutor === true && subjectId) {
-      selectedAds = await Ad.findAll({
-        where: {
-          isTutor: isTutor,
-          subjectId,
-        },
-      });
-    }
-    if (isTutor === true && !subjectId) {
-      selectedAds = await Ad.findAll({
-        where: {
-          isTutor: isTutor,
-        },
-      });
-    }
-    if (subjectId || !isTutor) {
-      selectedAds = await Ad.findAll({
-        where: {
-          subjectId,
-        },
-      });
-    }
-    return res.json({ success: true, selectedAds });
-  } catch (error) {
-    console.log(`[ERROR]: Failed to get ads | ${error.message}`);
 
     return res.status(500).json({ success: false });
   }
@@ -186,6 +150,6 @@ module.exports = {
   updateAd,
   deleteAd,
   getAdById,
-  getAdsBySubjectAndUserType,
+  getAdsBySubjectId,
   getAllAds,
 };

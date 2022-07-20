@@ -45,8 +45,6 @@ const renderViewAdsPage = async (req, res) => {
       return ad.get({ plain: true });
     });
 
-    console.log(adsFromDb);
-
     // filter the ads for user
     const userAds = adsFromDb.filter(
       (ad) => ad.student.email === req.session.user.email
@@ -55,22 +53,26 @@ const renderViewAdsPage = async (req, res) => {
     // GET subject data
     const subjectsFromDb = await Subject.findAll();
 
+    // // get the subjects
     const subjects = subjectsFromDb.map((subject) => {
       return subject.get({ plain: true });
     });
 
-    // filtered all the ads by subjects
+    const defaultSubject = subjects[0];
 
-    // const selectedAdsBySubject = () => {
-    //   // get all ads
-    //   const allAds = adsFromDb.filter(
-    //     (ad) => ad.student.email !== req.session.user.email
-    //   );
+    // get all ads
+    const filteredAdsBySubject = adsFromDb.filter(
+      (ad) =>
+        ad.student.email !== req.session.user.email &&
+        ad.subject.subjectName === defaultSubject.subjectName
+    );
 
-    //   // filter ads by subject
-    // };
-
-    return res.render("viewAds", { currentPage: "viewAds", userAds, subjects });
+    return res.render("viewAds", {
+      currentPage: "viewAds",
+      userAds,
+      subjects,
+      filteredAdsBySubject,
+    });
   } catch (error) {
     console.log(`[ERROR]: Failed to get ads | ${error.message}`);
     return res.status(500).json({ error: "Failed to get ads" });
