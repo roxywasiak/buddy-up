@@ -1,4 +1,11 @@
-const { Subject, Price } = require("../../models");
+const {
+  Subject,
+  Price,
+  Student,
+  Response,
+  Tutor,
+  Ad,
+} = require("../../models");
 
 const renderHomePage = (req, res) => {
   return res.render("home", { currentPage: "home" });
@@ -41,8 +48,78 @@ const renderViewAdsPage = (req, res) => {
   return res.render("viewAds", { currentPage: "viewAds" });
 };
 
-const renderSessionsPage = (req, res) => {
-  return res.render("sessions", { currentPage: "sessions" });
+const renderSessionsPage = async (req, res) => {
+  try {
+    //declare a changeable variable
+
+    let userResponses;
+    let receivedResponses;
+
+    const { userType } = req.session.user;
+
+    if (userType === "student") {
+      //find buddy from response
+      const buddyResponses = await Response.findAll({
+        where: {
+          studentId: req.session.user.id,
+        },
+        include: [{ model: Student }],
+      });
+      const buddyResponsesData = buddyResponses.map(
+        ({ dataValues }) => dataValues
+      );
+
+      //find user who created the ad
+      const getAd = await Ad.findAll({
+        where: { studentId: req.session.user.id },
+      });
+
+      const adIds = getAd.map(({ dataValues }) => dataValues.id);
+
+      const adResponses = await Response.findAll({
+        where: {
+          adId: adIds,
+        },
+        include: [{ model: Student }, { model: Tutor }],
+      });
+
+      const adResponseData = adResponses.map(({ dataValues }) => dataValues);
+      console.log(adResponseData);
+
+      userResponses = buddyResponsesData;
+      receivedResponses = adResponseData;
+    }
+
+    if (userType === "tutor") {
+      //find Tutor
+      const tutorResponse = await Response.findAll({
+        where: {
+          tutorId: req.session.user.id,
+          status: "completed",
+        },
+      });
+
+      const tutorResponseData = tutorResponse.map(
+        ({ dataValues }) => dataValues.adId
+      );
+
+      userResponses = await Ad.findAll({
+        where: { id: tutorResponseData },
+        include: [{ model: Student }],
+      });
+    }
+    console.log(userResponses, receivedResponses);
+    return res.render("sessions", {
+      currentPage: "sessions",
+      userResponses,
+      receivedResponses,
+      userType,
+    });
+  } catch (error) {
+    console.log(`[ERROR]: Failed to get all responses| ${error.message}`);
+
+    return res.status(500).json({ success: false });
+  }
 };
 
 const renderCompleteProfilePage = async (req, res) => {

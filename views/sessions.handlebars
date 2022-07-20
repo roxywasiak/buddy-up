@@ -4,9 +4,39 @@
    <div id="mainSessions">
          <h1>My requests</h1>
           <hr class="uk-divider-icon" />
+
+  {{#if userResponses}}
+    {{#if (isEqualTo userType "student")}}
+      {{#each userResponses}}
+      //STUDENT CARD
+      {{/each}}
+    {{else}}
+      {{#each userResponses}}
+       //TUTOR CARD
+      {{/each}}
+    {{/if}}
+  {{else}}
+//ERROR CARD
+  {{/if}}
 </div>
   <div id="receivedRequests">
          <h1>Received requests</h1>
           <hr class="uk-divider-icon" />
+
+  {{#if receivedResponses}}
+    {{#if (isEqualTo userType "student")}}
+      {{#each receivedResponses}}
+            //STUDENT CARD
+      {{/each}}
+    {{else}}
+      {{#each receivedResponses}}
+          //TUTOR CARD
+      {{/each}}
+    {{/if}}
+  {{else}}
+  //ERROR CARD
+  {{/if}}
+
+  {{}}
 </div>
 </main>
