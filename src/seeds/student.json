@@ -96,10 +96,10 @@
   },
 
   {
-    "firstName": "Amelia",
-    "lastName": "Penelope",
-    "email": "ampope@email.com",
-    "password": "sydeny7",
+    "firstName": "Riz",
+    "lastName": "Khan",
+    "email": "riz@email.com",
+    "password": "pass123",
     "priceId": 3,
     "location": "Paris",
     "contactNumber": "07700 906936",
@@ -110,10 +110,10 @@
   },
 
   {
-    "firstName": "Chiss",
-    "lastName": "Spring",
-    "email": "rickspienstein@email.com",
-    "password": "passwork21",
+    "firstName": "Nazeh",
+    "lastName": "Abel",
+    "email": "nazeh@email.com",
+    "password": "pass123",
     "priceId": 2,
     "location": "Manchester",
     "contactNumber": "07700 901234",
