@@ -10,8 +10,8 @@ const handleAcceptRequest = async (event) => {
       "Content-Type": "application/json",
     },
   });
+  window.location.reload();
   const data = await response.json();
-  console.log(data);
 };
 const handleRejectRequest = async (event) => {
   const responseId = $(event.target).data("response");
@@ -24,7 +24,6 @@ const handleRejectRequest = async (event) => {
     },
   });
   const data = await response.json();
-  console.log(data);
 };
 
 const messagesPage = (event) => {
@@ -32,8 +31,6 @@ const messagesPage = (event) => {
   console.log("HERE");
   const target = $(event.target);
   const responseId = target.data("id");
-
-  console.log(responseId);
 
   window.location.assign(`/messages/${responseId}`);
 };

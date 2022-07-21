@@ -1,4 +1,5 @@
 const sendMessageForm = $("#sendMessageForm");
+const refreshBtn = $("#refreshBtn");
 
 const createMessage = async (event) => {
   event.preventDefault();
@@ -21,4 +22,9 @@ const createMessage = async (event) => {
   }
 };
 
+const refreshScreen = () => {
+  window.location.reload();
+};
+
 sendMessageForm.submit(createMessage);
+refreshBtn.on("click", refreshScreen);
