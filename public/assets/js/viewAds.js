@@ -2,6 +2,7 @@
 const searchAds = $("#searchAds");
 const adsSearchDiv = $("#adsSearchDiv");
 const subjectAds = $("#subjectAds");
+const acceptButton = $("#acceptButton");
 
 const handleSearchClick = async () => {
   //   Target the ID of subject selected
@@ -22,7 +23,7 @@ const handleSearchClick = async () => {
   }
 };
 
-const generateCards = ({ title, description, price, subject }) => {
+const generateCards = ({ title, description, price, subject, id }) => {
   subjectAds.append(`
   <div class="uk-card uk-card-default uk-width-1-2@m ads-card">
   <div class="uk-card-header">
@@ -43,20 +44,38 @@ const generateCards = ({ title, description, price, subject }) => {
     <p class="uk-text-small">Subject: ${subject.subjectName}</p>
   </div>
   <div class="uk-card-footer">
-    <a href="#" class="uk-button uk-button-text">
-      <p class="uk-text-small">Budget: ${price.budget}</p></a>
+      <p class="uk-text-small">Budget: ${price.budget}</p>
   </div>
   <br />
   <br />
   <div
     class="uk-card uk-card-default uk-width-1-2@m uk-position-bottom-center uk-margin-bottom"
   >
-    <button class="uk-button uk-button-primary" id="acceptButton">Accept</button>
-    <button class="uk-button uk-button-danger" id="rejectButton">Reject</button>
+    <button class="uk-button uk-button-primary" data-id=${id} id="acceptButton">Accept</button>
   </div>
 </div>
   `);
 };
 
+const createResponse = async (event) => {
+  const adId = $(event.target).data("id");
+
+  const adPayload = { adId };
+
+  const createResponse = await fetch("/api/response", {
+    method: "POST",
+    body: JSON.stringify(adPayload),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (createResponse.ok) {
+    console.log("WORKED");
+  }
+};
+
 // add click event listener
+
 adsSearchDiv.on("change", handleSearchClick);
+subjectAds.on("click", "#acceptButton", createResponse);

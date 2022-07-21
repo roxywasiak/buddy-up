@@ -4,19 +4,24 @@ const createResponse = async (req, res) => {
   try {
     // create new add
     const { adId } = req.body;
-    if (req.session.user.userType === "student") {
+    const { id, userType } = req.session.user;
+    if (userType === "student") {
       await Response.create({
-        studentId: req.session.user.id,
+        studentId: id,
+        adId,
+        status: "pending",
       });
     }
-    if (req.session.user.userType === "tutor") {
+    if (userType === "tutor") {
       await Response.create({
-        tutorId: req.session.user.id,
+        tutorId: id,
+        adId,
+        status: "pending",
       });
     }
 
     // send response
-    return res.json(newResponse);
+    return res.json({ success: true });
   } catch (error) {
     console.log(`[ERROR]: Failed to create response | ${error.message}`);
     return res.status(500).json({ success: false, error: error.message });
