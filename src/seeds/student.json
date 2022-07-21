@@ -76,6 +76,7 @@
     "priceId": 3,
     "location": "London",
     "isRemote": true,
+    "isProfileComplete": true,
     "lat": 51.509865,
     "long": -0.118092
   },
