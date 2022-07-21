@@ -169,12 +169,12 @@ Messages.hasMany(Tutor, {
   onDelete: "CASCADE",
 });
 
-Response.belongsTo(Messages, {
+Response.hasMany(Messages, {
   foreignKey: "responseId",
   onDelete: "CASCADE",
 });
 
-Messages.hasMany(Response, {
+Messages.belongsTo(Response, {
   foreignKey: "responseId",
   onDelete: "CASCADE",
 });
@@ -189,4 +189,5 @@ module.exports = {
   Subject,
   Tutor,
   TutorSubject,
+  Messages,
 };
