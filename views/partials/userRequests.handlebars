@@ -1,5 +1,5 @@
 <div class="entry">
-  {{#if student}}
+  {{#if (isEqualTo userType student)}}
     <div class="uk-card uk-card-default uk-width-1-2@m ads-card">
       <div class="uk-card-header">
         <div class="uk-grid-small" uk-grid>
@@ -31,7 +31,8 @@
 
       </div>
     </div>
-  {{else}}
+  {{/if}}
+  {{#if (isEqualTo userType tutor)}}
     <div id="student-card">
       <div class="uk-card uk-card-default uk-width-1-2@m">
         <div class="uk-card-header">
@@ -49,7 +50,7 @@
 
                 {{student.firstName}}
                 {{student.lastName}}
-                - Buddy
+                - Student
               </h3>
               <a
                 href=""
