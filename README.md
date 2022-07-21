@@ -6,6 +6,12 @@ The app also allows students to find other students that they want to study with
 
 We allow students to find their perfect match within their are or remotely. We allow students to post adds so potential tutors can respond - we then render a match card for the student showing them they've been matched with a tutor.
 
+# Links To The Project
+
+Feel free to check out the Heroku link for Buddy Up [deployed Heroku URL](https://github.com/roxywasiak/buddy-up)
+
+Please click here to view our [deployed GitHub URL](https://github.com/roxywasiak/buddy-up)
+
 # Installation
 
 To run the application follow the installation process of cloning the repo
@@ -35,12 +41,6 @@ Open a terminal from the root and enter the following command
 npm run seeds
 npm run start
 ```
-
-# Links To The Project
-
-Feel free to check out the Heroku link for Buddy Up [deployed Heroku URL](https://github.com/roxywasiak/buddy-up)
-
-Please click here to view our [deployed GitHub URL](https://github.com/roxywasiak/buddy-up)
 
 # User Story
 
@@ -82,4 +82,8 @@ Please see the various screenshots of the different pages in both desktop and mo
 
 # Desktop Viewport
 
+![Desktop](./public/assets/images/desktop%20view.png "Desktop View")
+
 # Mobile Viewport
+
+![Desktop](./public/assets/images/mobile.png "Desktop View")
