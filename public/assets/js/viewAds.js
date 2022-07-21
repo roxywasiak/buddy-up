@@ -44,8 +44,7 @@ const generateCards = ({ title, description, price, subject, id }) => {
     <p class="uk-text-small">Subject: ${subject.subjectName}</p>
   </div>
   <div class="uk-card-footer">
-    <a href="#" class="uk-button uk-button-text">
-      <p class="uk-text-small">Budget: ${price.budget}</p></a>
+      <p class="uk-text-small">Budget: ${price.budget}</p>
   </div>
   <br />
   <br />
