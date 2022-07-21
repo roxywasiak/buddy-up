@@ -6,6 +6,36 @@ The app also allows students to find other students that they want to study with
 
 We allow students to find their perfect match within their are or remotely. We allow students to post adds so potential tutors can respond - we then render a match card for the student showing them they've been matched with a tutor.
 
+# Installation
+
+To run the application follow the installation process of cloning the repo
+
+```
+git@github.com:roxywasiak/buddy-up.git
+```
+
+Change directory into new cloned repo
+
+```
+cd buddy-up
+```
+
+Open an integrated terminal from the src folder and enter the following commands
+
+```
+mysql -u root -p
+(enter your password)
+source db/schema.sql
+quit
+```
+
+Open a terminal from the root and enter the following command
+
+```
+npm run seeds
+npm run start
+```
+
 # Links To The Project
 
 Feel free to check out the Heroku link for Buddy Up [deployed Heroku URL](https://github.com/roxywasiak/buddy-up)
