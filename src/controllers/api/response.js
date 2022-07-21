@@ -66,7 +66,6 @@ const getResponseByUserId = async (req, res) => {
       const buddyResponsesData = buddyResponses.map(
         ({ dataValues }) => dataValues
       );
-      console.log(buddyResponsesData);
 
       //find user who created the ad
       const getAd = await Ad.findOne({
@@ -81,7 +80,6 @@ const getResponseByUserId = async (req, res) => {
       });
 
       const adResponseData = adResponses.map(({ dataValues }) => dataValues);
-      console.log(adResponseData);
       const data = [...buddyResponsesData, ...adResponseData];
       return res.json({
         success: true,
@@ -96,17 +94,14 @@ const getResponseByUserId = async (req, res) => {
           status: "completed",
         },
       });
-      console.log(tutorResponse);
 
       const tutorResponseData = tutorResponse.map(
         ({ dataValues }) => dataValues.adId
       );
-      console.log(tutorResponseData);
 
       const data = await Ad.findAll({
         where: { id: tutorResponseData },
       });
-      console.log(data);
 
       return res.json({
         success: true,
@@ -127,8 +122,43 @@ const getResponseByUserId = async (req, res) => {
   }
 };
 
+const getAllReponsesByUserId = async (req, res) => {
+  try {
+    const { id, userType } = req.session.user;
+    if (userType === "student") {
+      const data = await Response.findAll({
+        where: {
+          studentId: id,
+        },
+      });
+      if (!data) {
+        return res.status(404).json({ success: false });
+      }
+
+      return res.json({ success: true, responseData: data });
+    } else {
+      const data = await Response.findAll({
+        where: {
+          tutorId: id,
+        },
+      });
+
+      if (!data) {
+        return res.status(404).json({ success: false });
+      }
+
+      return res.json({ success: true, responseData: data });
+    }
+  } catch (error) {
+    console.log(`[ERROR]: Failed to get student | ${error.message}`);
+
+    return res.status(500).json({ success: false });
+  }
+};
+
 module.exports = {
   createResponse,
   updateResponse,
   getResponseByUserId,
+  getAllReponsesByUserId,
 };
