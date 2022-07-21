@@ -27,15 +27,25 @@ const handleSearchClick = async () => {
     const { data } = await adResponse.json();
     const { responseData } = await response.json();
 
-    console.log(responseData);
+    const respondedAds = [];
+    responseData.forEach((item) => respondedAds.push(item.adId));
 
-    data.forEach(generateCards);
+    // data.forEach(generateCards, respondedAds);
+
+    for (let i = 0; i < data.length; i++) {
+      if (respondedAds.includes(data[i].id)) {
+        const responded = true;
+        generateCards(data[i], responded);
+      } else {
+        const responded = false;
+        generateCards(data[i], responded);
+      }
+    }
   }
 };
 
-const generateCards = ({ title, description, price, subject, id }) => {
-  const isResponsed = isResponded();
-
+const generateCards = (data, responded) => {
+  const { title, description, price, subject, id } = data;
   subjectAds.append(`
   <div class="uk-card uk-card-default uk-width-1-2@m ads-card">
   <div class="uk-card-header">
@@ -63,7 +73,12 @@ const generateCards = ({ title, description, price, subject, id }) => {
   <div
     class="uk-card uk-card-default uk-width-1-2@m uk-position-bottom-center uk-margin-bottom"
   >
-    <button class="uk-button uk-button-primary" data-id=${id} id="acceptButton">Accept</button>
+  ${
+    responded
+      ? `<button class="uk-button uk-button-default" id="acceptButton" disabled>Accepted</button>`
+      : `<button class="uk-button uk-button-primary" data-id=${id} id="acceptButton">Accept</button>`
+  }
+
   </div>
 </div>
   `);
@@ -83,7 +98,7 @@ const createResponse = async (event) => {
   });
 
   if (createResponse.ok) {
-    console.log("WORKED");
+    handleSearchClick();
   }
 };
 
