@@ -2,6 +2,7 @@
 const searchAds = $("#searchAds");
 const adsSearchDiv = $("#adsSearchDiv");
 const subjectAds = $("#subjectAds");
+const acceptButton = $("#acceptButton");
 
 const handleSearchClick = async () => {
   //   Target the ID of subject selected
@@ -52,11 +53,16 @@ const generateCards = ({ title, description, price, subject }) => {
     class="uk-card uk-card-default uk-width-1-2@m uk-position-bottom-center uk-margin-bottom"
   >
     <button class="uk-button uk-button-primary" id="acceptButton">Accept</button>
-    <button class="uk-button uk-button-danger" id="rejectButton">Reject</button>
   </div>
 </div>
   `);
 };
 
+const createResponse = () => {
+  console.log("Create Response");
+};
+
 // add click event listener
+
 adsSearchDiv.on("change", handleSearchClick);
+subjectAds.on("click", "#acceptButton", createResponse);
