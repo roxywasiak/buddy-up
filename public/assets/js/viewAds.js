@@ -3,6 +3,7 @@ const searchAds = $("#searchAds");
 const adsSearchDiv = $("#adsSearchDiv");
 const subjectAds = $("#subjectAds");
 const acceptButton = $("#acceptButton");
+const viewResponsesBtn = $("#viewResponsesBtn");
 
 const handleSearchClick = async () => {
   //   Target the ID of subject selected
@@ -102,7 +103,12 @@ const createResponse = async (event) => {
   }
 };
 
+const loadSessionsPage = () => {
+  window.location.assign("/sessions");
+};
+
 // add click event listener
 
 adsSearchDiv.on("change", handleSearchClick);
 subjectAds.on("click", "#acceptButton", createResponse);
+viewResponsesBtn.click(loadSessionsPage);
