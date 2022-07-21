@@ -7,11 +7,15 @@ const createResponse = async (req, res) => {
     if (req.session.user.userType === "student") {
       await Response.create({
         studentId: req.session.user.id,
+        adId,
+        status: "pending",
       });
     }
     if (req.session.user.userType === "tutor") {
       await Response.create({
         tutorId: req.session.user.id,
+        adId,
+        status: "pending",
       });
     }
 
