@@ -6,6 +6,8 @@ const createMessage = async (event) => {
 
   payload = { messageContent, responseId: 11 };
 
+  // XXX
+
   const response = await fetch("/api/messages", {
     method: "POST",
     body: JSON.stringify(payload),
@@ -15,7 +17,7 @@ const createMessage = async (event) => {
   });
 
   if (response.ok) {
-    console.log("Posted ok");
+    window.location.reload();
   }
 };
 

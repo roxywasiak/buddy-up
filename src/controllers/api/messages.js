@@ -5,8 +5,6 @@ const createMessage = async (req, res) => {
     const { userType, id } = req.session.user;
     const { messageContent, responseId } = req.body;
 
-    console.log(req.body);
-
     if (userType === "student") {
       await Messages.create({
         studentSenderId: id,
