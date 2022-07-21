@@ -58,9 +58,22 @@ const generateCards = ({ title, description, price, subject, id }) => {
   `);
 };
 
-const createResponse = (event) => {
-  const id = $(event.target).data("id");
-  console.log(id);
+const createResponse = async (event) => {
+  const adId = $(event.target).data("id");
+
+  const adPayload = { adId };
+
+  const createResponse = await fetch("/api/response", {
+    method: "POST",
+    body: JSON.stringify(adPayload),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (createResponse.ok) {
+    console.log("WORKED");
+  }
 };
 
 // add click event listener
