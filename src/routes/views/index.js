@@ -27,6 +27,6 @@ router.get("/viewAds", auth, renderViewAdsPage);
 router.get("/sessions", auth, renderSessionsPage);
 router.get("/completeProfile", auth, renderCompleteProfilePage);
 router.get("/profile", auth, renderProfilePage);
-router.get("/messages", auth, renderMessagesPage);
+router.get("/messages/:id", auth, renderMessagesPage);
 
 module.exports = router;

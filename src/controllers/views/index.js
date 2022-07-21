@@ -203,7 +203,8 @@ const renderProfilePage = async (req, res) => {
 };
 
 const renderMessagesPage = async (req, res) => {
-  const responseId = "4";
+  const { user } = req.session;
+  const { id: responseId } = req.params;
 
   const allMessageContent = await Messages.findAll({
     where: { responseId },
@@ -212,9 +213,13 @@ const renderMessagesPage = async (req, res) => {
 
   allMessageContent.sort((a, b) => a.createdAt - b.createdAt);
 
-  console.log(allMessageContent);
+  console.log(user);
 
-  return res.render("messages", { currentPage: "messages", allMessageContent });
+  return res.render("messages", {
+    currentPage: "messages",
+    allMessageContent,
+    user,
+  });
 };
 
 module.exports = {

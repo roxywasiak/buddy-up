@@ -1,5 +1,22 @@
 {{> privateNavBar }}
 
+{{#each allMessageContent}}
+
+    {{#if (isEqualTo user.userType student)}}
+        {{#if (isEqualTo allMessageContent.studentSenderId user.id)}}
+            <h3>{{messageContent}}</h3>
+        {{else}}
+            <h3>{{messageContent}}</h3>
+        {{/if}}
+    {{else}}
+        {{#if (isEqualTo allMessageContent.tutorSenderId user.id)}}
+            <h3>{{messageContent}}</h3>
+        {{else}}
+            <h3>{{messageContent}}</h3>
+        {{/if}}
+    {{/if}}
+{{/each}}
+
 <form id="sendMessageForm">
     <div class="uk-margin">
         <input class="uk-input" type="text" id="messageInput" placeholder="Type Message">

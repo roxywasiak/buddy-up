@@ -27,5 +27,16 @@ const handleRejectRequest = async (event) => {
   console.log(data);
 };
 
+const messagesPage = (event) => {
+  event.preventDefault();
+  console.log("HERE");
+  const target = $(event.target);
+  const responseId = target.data("id");
+
+  window.location.assign(`/messages/${responseId}`);
+};
+
 $("#acceptButton").click(handleAcceptRequest);
 $("#rejectButton").click(handleRejectRequest);
+
+$("#mainSessions").on("click", "#messagesBtn", messagesPage);
