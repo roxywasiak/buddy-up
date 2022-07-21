@@ -1,8 +1,6 @@
 const signupForm = $("#signup-form");
 const loginForm = $("#login-form");
 const logoutBtn = $("#logout-btn");
-const completeProfile = $("#complete-profile-btn");
-const profileSubmit = $("#profile4");
 
 const renderError = (id, message) => {
   const errorDiv = $(`#${id}`);
@@ -14,7 +12,6 @@ const renderError = (id, message) => {
 
 const handleSignup = async (event) => {
   event.preventDefault();
-  console.log("Signup Submitted");
 
   const firstName = $("#firstName").val();
   const lastName = $("#lastName").val();
@@ -23,6 +20,7 @@ const handleSignup = async (event) => {
   const confirmPassword = $("#confirmPassword").val();
   const userType = $("input[name='radio-choice']:checked").val();
   const termsAndConditions = $("#termsAndConditions").is(":checked");
+  const isProfileComplete = false;
 
   if (
     firstName &&
@@ -40,6 +38,7 @@ const handleSignup = async (event) => {
           lastName,
           email,
           password,
+          isProfileComplete,
         };
 
         const response = await fetch("/apiAuth/signup", {
@@ -124,48 +123,6 @@ const handleLogout = async () => {
   }
 };
 
-const handleCompleteProfileClick = () => {
-  window.location.assign("/completeProfile");
-};
-
-const change = () => {
-  $("#priceValueText").text(`£${$("#priceRange").val()}`);
-};
-
-const submitProfile = async (event) => {
-  event.preventDefault();
-  const subjectChoice = $("#subjectChoice option:selected").val();
-  const levelChoice = $("#levelChoice option:selected").val();
-  const location = $("#locationInput").val();
-  const isRemote = $("#isRemote").is(":checked");
-  const priceId = 2;
-  const socialMedia = $("#socialMediaLink").val();
-  const calendlyLink = $("#calendlyLink").val();
-
-  const payload = {
-    socialMedia,
-    calendlyLink,
-    priceId,
-    location,
-    isRemote,
-  };
-
-  const response = await fetch("/api/tutor/12", {
-    method: "PUT",
-    body: JSON.stringify(payload),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-
-  if (response.ok) {
-    window.location.assign("/dashboard");
-  }
-};
-
-$("#priceRange").on("input", change);
 signupForm.submit(handleSignup);
 loginForm.submit(handleLogin);
 logoutBtn.click(handleLogout);
-profileSubmit.submit(submitProfile);
-completeProfile.click(handleCompleteProfileClick);

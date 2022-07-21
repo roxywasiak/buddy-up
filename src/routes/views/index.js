@@ -8,6 +8,7 @@ const {
   renderViewAdsPage,
   renderSessionsPage,
   renderCompleteProfilePage,
+  renderProfilePage
 } = require("../../controllers/views");
 
 const auth = require("../../middlewares/auth");
@@ -24,5 +25,6 @@ router.get("/createAds", auth, renderCreateAdsPage);
 router.get("/viewAds", auth, renderViewAdsPage);
 router.get("/sessions", auth, renderSessionsPage);
 router.get("/completeProfile", auth, renderCompleteProfilePage);
+router.get("/profile", auth, renderProfilePage);
 
 module.exports = router;

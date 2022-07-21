@@ -1,6 +1,6 @@
 {{> privateNavBar }}
 
-{{#if  (isEqualTo user.userType "student") }}
+{{#if  (isEqualTo userDetails.userType "student") }}
   {{> studentDashboard }}
 {{else}}
   {{> tutorDashboard }}

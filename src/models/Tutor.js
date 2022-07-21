@@ -51,6 +51,7 @@ const schema = {
   },
   socialMedia: {
     type: DataTypes.STRING,
+    validate: { isURL: true },
     allowNull: true,
   },
   calendlyLink: {
@@ -61,6 +62,11 @@ const schema = {
 
   location: {
     type: DataTypes.STRING,
+    allowNull: true,
+  },
+
+  priceAmount: {
+    type: DataTypes.INTEGER,
     allowNull: true,
   },
 
@@ -90,6 +96,10 @@ const schema = {
       min: -180,
       max: 180,
     },
+  },
+  isProfileComplete: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
   },
   userType: {
     type: DataTypes.STRING,
