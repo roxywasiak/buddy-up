@@ -4,9 +4,9 @@ const createMessage = async (event) => {
   event.preventDefault();
   const messageContent = $("#messageInput").val();
 
-  payload = { messageContent, responseId: 11 };
+  const responseId = window.location.href.split("/").slice(-1);
 
-  // XXX
+  payload = { messageContent, responseId };
 
   const response = await fetch("/api/messages", {
     method: "POST",
