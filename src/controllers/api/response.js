@@ -127,8 +127,44 @@ const getResponseByUserId = async (req, res) => {
   }
 };
 
+const getAllReponsesByUserId = async (req, res) => {
+  try {
+    const { id, userType } = req.session.user;
+    if (userType === "student") {
+      const data = await Response.findAll({
+        where: {
+          studentId: id,
+        },
+      });
+      if (!data) {
+        return res.status(404).json({ success: false });
+      }
+
+      return res.json({ success: true, responseData: data });
+    } else {
+      const data = await Response.findAll({
+        where: {
+          tutorId: id,
+        },
+      });
+
+      if (!data) {
+        return res.status(404).json({ success: false });
+      }
+
+      console.log(data);
+      return res.json({ success: true, responseData: data });
+    }
+  } catch (error) {
+    console.log(`[ERROR]: Failed to get student | ${error.message}`);
+
+    return res.status(500).json({ success: false });
+  }
+};
+
 module.exports = {
   createResponse,
   updateResponse,
   getResponseByUserId,
+  getAllReponsesByUserId,
 };

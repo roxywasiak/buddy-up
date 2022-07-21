@@ -10,20 +10,32 @@ const handleSearchClick = async () => {
 
   if (subjectId) {
     subjectAds.empty();
-    const response = await fetch(`api/ad/subject/${subjectId}`, {
+    const adResponse = await fetch(`api/ad/subject/${subjectId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
     });
 
-    const { data } = await response.json();
+    const response = await fetch(`api/response/all`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const { data } = await adResponse.json();
+    const { responseData } = await response.json();
+
+    console.log(responseData);
 
     data.forEach(generateCards);
   }
 };
 
 const generateCards = ({ title, description, price, subject, id }) => {
+  const isResponsed = isResponded();
+
   subjectAds.append(`
   <div class="uk-card uk-card-default uk-width-1-2@m ads-card">
   <div class="uk-card-header">
