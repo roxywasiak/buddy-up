@@ -41,7 +41,7 @@ const updateResponse = async (req, res) => {
     ) {
       const updatedResponse = await Response.update(
         { status },
-        { where: (id = id) }
+        { where: { id } }
       );
       return res.json(updatedResponse);
     }
@@ -54,13 +54,11 @@ const updateResponse = async (req, res) => {
 const getResponseByUserId = async (req, res) => {
   try {
     //declare a changeable variable
-    let data;
     if (req.session.user.userType === "student") {
       //find buddy from response
       const buddyResponses = await Response.findAll({
         where: {
           studentId: req.session.user.id,
-          status: "completed",
         },
       });
       const buddyResponsesData = buddyResponses.map(
@@ -68,19 +66,25 @@ const getResponseByUserId = async (req, res) => {
       );
 
       //find user who created the ad
-      const getAd = await Ad.findOne({
+      const getAd = await Ad.findAll({
         where: { studentId: req.session.user.id },
       });
 
+      const adIds = getAd.map(({ dataValues }) => dataValues.id);
+
       const adResponses = await Response.findAll({
         where: {
-          adId: getAd.dataValues.id,
-          status: "completed",
+          adId: adIds,
         },
       });
+      console.log(adResponses);
 
       const adResponseData = adResponses.map(({ dataValues }) => dataValues);
-      const data = [...buddyResponsesData, ...adResponseData];
+      console.log(adResponseData);
+      const data = {
+        userResponses: buddyResponsesData,
+        receivedResponses: adResponseData,
+      };
       return res.json({
         success: true,
         data,
@@ -99,13 +103,13 @@ const getResponseByUserId = async (req, res) => {
         ({ dataValues }) => dataValues.adId
       );
 
-      const data = await Ad.findAll({
+      const userResponses = await Ad.findAll({
         where: { id: tutorResponseData },
       });
 
       return res.json({
         success: true,
-        data,
+        data: { userResponses },
       });
     }
 
