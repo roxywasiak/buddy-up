@@ -33,10 +33,12 @@ const messagesPage = (event) => {
   const target = $(event.target);
   const responseId = target.data("id");
 
+  console.log(responseId);
+
   window.location.assign(`/messages/${responseId}`);
 };
 
 $("#acceptButton").click(handleAcceptRequest);
 $("#rejectButton").click(handleRejectRequest);
 
-$("#mainSessions").on("click", "#messagesBtn", messagesPage);
+$("#sessions-section").on("click", "#messagesBtn", messagesPage);

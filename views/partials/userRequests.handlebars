@@ -58,12 +58,13 @@
                 uk-icon="twitter"
               ></a>
               <a
-                href=""
+                href="https://youtube.com"
+                target="_blank"
                 class="uk-icon-button uk-margin-small-right"
                 uk-icon="facebook"
               ></a>
-              <a href="/messages" class="uk-icon-button" uk-icon="youtube"></a>
-              <button id="messagesBtn" data-id={{id}}>Messages</button>
+              <a class="uk-icon-button" uk-icon="youtube"></a>
+              <button class="uk-button uk-button-primary uk-button-small" style="border-radius: 10px" id="messagesBtn" data-id={{id}}>Messages</button>
             </div>
           </div>
         </div>
@@ -75,13 +76,11 @@
         <div class="uk-card-footer">
           {{#if (isEqualTo status "pending")}}
             <div
-              class="uk-button uk-button-primary"
-              id="acceptButton"
-              data-response={{id}}
+              class="uk-button uk-button-secondary"
             >pending</div>
           {{/if}}
           {{#if (isEqualTo status "completed")}}
-            <div class="uk-button uk-button-primary">Completed</div>
+            <div class="uk-button uk-button-primary" disabled>Completed</div>
           {{/if}}
         </div>
       </div>
