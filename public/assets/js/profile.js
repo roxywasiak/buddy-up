@@ -160,6 +160,7 @@ const updateProfile = async (event) => {
   const calendlyLink = $("#updateCalendlyLink").val();
   const priceAmount = $("#updatePriceAmount").val();
   const contactNumber = $("#updateContactNumber").val();
+  const priceId = $("#updateBudgetChoice option:selected").val();
 
   let payload = {};
 
@@ -187,6 +188,9 @@ const updateProfile = async (event) => {
   }
   if (contactNumber) {
     Object.assign(payload, { contactNumber });
+  }
+  if (priceId) {
+    Object.assign(payload, { priceId });
   }
 
   if (userType === "student") {
