@@ -201,6 +201,10 @@ const renderProfilePage = async (req, res) => {
   }
 };
 
+const renderMessagesPage = (req, res) => {
+  return res.render("messages", { currentPage: "messages" });
+};
+
 module.exports = {
   renderHomePage,
   renderDashboard,
@@ -210,4 +214,5 @@ module.exports = {
   renderSessionsPage,
   renderCompleteProfilePage,
   renderProfilePage,
+  renderMessagesPage,
 };
