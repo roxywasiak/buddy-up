@@ -3,10 +3,17 @@ const { Response, Ad } = require("../../models");
 const createResponse = async (req, res) => {
   try {
     // create new add
-    const response = req.body;
-
-    // create new ad
-    const newResponse = await Response.create(response);
+    const { adId } = req.body;
+    if (req.session.user.userType === "student") {
+      await Response.create({
+        studentId: req.session.user.id,
+      });
+    }
+    if (req.session.user.userType === "tutor") {
+      await Response.create({
+        tutorId: req.session.user.id,
+      });
+    }
 
     // send response
     return res.json(newResponse);
@@ -19,16 +26,18 @@ const createResponse = async (req, res) => {
 const updateResponse = async (req, res) => {
   try {
     // update response
-    const { status, userType, id } = req.body;
-    if (userType !== "tutor" && userType !== "student") {
-      return res.status(500).json({ success: false, error: error.message });
-    }
+    const { status } = req.body;
+    const { userType, id: userId } = req.session.user;
+    const { id } = req.params;
     if (
       status === "pending" ||
       status === "completed" ||
       status === "rejected"
     ) {
-      const updatedResponse = await Response.update({ status, id });
+      const updatedResponse = await Response.update(
+        { status },
+        { where: (id = id) }
+      );
       return res.json(updatedResponse);
     }
   } catch (error) {

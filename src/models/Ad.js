@@ -23,6 +23,10 @@ const schema = {
       key: "id",
     },
   },
+  title: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+  },
   isTutor: {
     type: DataTypes.BOOLEAN,
     default: true,

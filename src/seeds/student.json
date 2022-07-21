@@ -68,6 +68,17 @@
     "lat": 51.509865,
     "long": -0.118092
   },
+  {
+    "firstName": "Zahra",
+    "lastName": "Haji",
+    "email": "zahra@hotmail.com",
+    "password": "123",
+    "priceId": 3,
+    "location": "London",
+    "isRemote": true,
+    "lat": 51.509865,
+    "long": -0.118092
+  },
 
   {
     "firstName": "Rick",

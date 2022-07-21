@@ -1,15 +1,10 @@
-// const { Subject } = require("../../../src/models");
-
 // ~ DECLARATIONS
 const adsBtn = $("#ads-btn");
 const adsBudget = $("#ads-budget");
 const adSubject = $("#ads-subject");
 const adsDescription = $("#ads-description");
 const adsTitle = $("#ads-title");
-
-// const alertMessage = `<div class="uk-alert-danger" uk-alert id="alert-div"> <a class="uk-alert-close" uk-close></a>
-// <p> Please complete all fields </p>
-// </div>`;
+const alertContainer = $("#error-message");
 
 // fn to handle form submit
 const handleFormSubmit = async (event) => {
@@ -28,11 +23,19 @@ const handleFormSubmit = async (event) => {
     try {
       // create payload
       const payload = {
+        title,
         isTutor: false,
         description,
         subjectId,
         priceId,
       };
+
+      // display spinner on page
+
+      // setInterval(() => {
+      //   clearInterval(alertContainer);
+      //   alertContainer.append(`<div uk-spinner></div>`);
+      // }, 0);
 
       //   create response
       const response = await fetch("/api/ad/", {
@@ -47,19 +50,16 @@ const handleFormSubmit = async (event) => {
       const data = await response.json();
 
       // validation for duplicates subject entry
-      const alert = document.querySelector("#alert-div");
       if (!response.ok) {
-        if (!alert) {
-          btnContainer.append(`<div class="uk-alert-danger" uk-alert id="alert-div"> <a class="uk-alert-close" uk-close></a>
-      <p> Ad already created for subject</p>
-      </div>`);
-        }
+        alertContainer.empty()
+          .append(`<div class="uk-alert-danger" uk-alert id="alert-div"> <a class="uk-alert-close" uk-close></a>
+          <p> Duplicate Subject  </p>
+          </div>`);
       }
 
       // render page when data response status is ok
       if (response.ok) {
         // display spinner before page load
-        // <div uk-spinner></div>
 
         //  change window location
         window.location.assign("/viewAds");
@@ -71,12 +71,11 @@ const handleFormSubmit = async (event) => {
     }
   } else {
     // append alert div
-    const alert = document.querySelector("#alert-div");
-    if (!alert) {
-      btnContainer.append(`<div class="uk-alert-danger" uk-alert id="alert-div"> <a class="uk-alert-close" uk-close></a>
+
+    alertContainer.empty()
+      .append(`<div class="uk-alert-danger" uk-alert id="alert-div"> <a class="uk-alert-close" uk-close></a>
       <p> Please complete all fields </p>
       </div>`);
-    }
   }
 };
 

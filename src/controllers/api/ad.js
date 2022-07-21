@@ -1,15 +1,16 @@
-const { Ad } = require("../../models");
+const { Ad, Subject, Price } = require("../../models");
 const querystring = require("node:querystring");
 const url = require("url");
 
 //post
 const createAd = async (req, res) => {
   try {
-    const { isTutor, priceId, description, subjectId } = req.body;
+    const { isTutor, title, priceId, description, subjectId } = req.body;
     console.log({ isTutor, priceId, description, subjectId });
     if (isTutor === false && priceId) {
       const createdAd = await Ad.create({
         studentId: req.session.user.id,
+        title,
         priceId,
         isTutor,
         description,
@@ -102,6 +103,16 @@ const deleteAd = async (req, res) => {
   }
 };
 
+const getAdsBySubjectId = async (req, res) => {
+  const { id } = req.params;
+  const data = await Ad.findAll({
+    where: { subjectId: id },
+    include: [{ model: Subject }, { model: Price }],
+  });
+  // return res.json({ success: true, data });
+  return res.json({ success: true, data });
+};
+
 const getAdById = async (req, res) => {
   try {
     const { id } = req.params;
@@ -110,59 +121,10 @@ const getAdById = async (req, res) => {
     if (!data) {
       return res.status(404).json({ success: false });
     }
-    S;
+
     return res.json({ success: true, data });
   } catch (error) {
     console.log(`[ERROR]: Failed to get all ads | ${error.message}`);
-
-    return res.status(500).json({ success: false });
-  }
-};
-
-const getAdsBySubjectAndUserType = async (req, res) => {
-  try {
-    const { isTutor, subjectId } = url.parse(req.url, true).query;
-    let selectedAds;
-    if (isTutor === false && subjectId) {
-      selectedAds = await Ad.findAll({
-        where: {
-          isTutor: !isTutor,
-          subjectId,
-        },
-      });
-    }
-    if (isTutor === false) {
-      selectedAds = await Ad.findAll({
-        where: {
-          isTutor: !isTutor,
-        },
-      });
-    }
-    if (isTutor === true && subjectId) {
-      selectedAds = await Ad.findAll({
-        where: {
-          isTutor: isTutor,
-          subjectId,
-        },
-      });
-    }
-    if (isTutor === true && !subjectId) {
-      selectedAds = await Ad.findAll({
-        where: {
-          isTutor: isTutor,
-        },
-      });
-    }
-    if (subjectId || !isTutor) {
-      selectedAds = await Ad.findAll({
-        where: {
-          subjectId,
-        },
-      });
-    }
-    return res.json({ success: true, selectedAds });
-  } catch (error) {
-    console.log(`[ERROR]: Failed to get ads | ${error.message}`);
 
     return res.status(500).json({ success: false });
   }
@@ -185,6 +147,6 @@ module.exports = {
   updateAd,
   deleteAd,
   getAdById,
-  getAdsBySubjectAndUserType,
+  getAdsBySubjectId,
   getAllAds,
 };
