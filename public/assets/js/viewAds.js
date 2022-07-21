@@ -23,7 +23,7 @@ const handleSearchClick = async () => {
   }
 };
 
-const generateCards = ({ title, description, price, subject }) => {
+const generateCards = ({ title, description, price, subject, id }) => {
   subjectAds.append(`
   <div class="uk-card uk-card-default uk-width-1-2@m ads-card">
   <div class="uk-card-header">
@@ -52,14 +52,15 @@ const generateCards = ({ title, description, price, subject }) => {
   <div
     class="uk-card uk-card-default uk-width-1-2@m uk-position-bottom-center uk-margin-bottom"
   >
-    <button class="uk-button uk-button-primary" id="acceptButton">Accept</button>
+    <button class="uk-button uk-button-primary" data-id=${id} id="acceptButton">Accept</button>
   </div>
 </div>
   `);
 };
 
-const createResponse = () => {
-  console.log("Create Response");
+const createResponse = (event) => {
+  const id = $(event.target).data("id");
+  console.log(id);
 };
 
 // add click event listener
