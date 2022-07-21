@@ -18,7 +18,7 @@
                     <div>
                         <progress class="uk-progress" value="5" max="100"></progress>
                     </div>
-                  <h3 class="uk-card-title uk-text-center">Choose your preferred subject and level</h3>
+                  <h3 class="uk-card-title uk-text-center">Subject</h3>
                   <form id="profile1">
                     <div class="uk-margin">
                         <select id="subjectChoice" class="uk-select">
@@ -29,13 +29,13 @@
                     </div>
                     <div class="uk-margin">
                         <select id="levelChoice" class="uk-select">
-                            <option>Beginner</option>
-                            <option>Intermediate</option>
-                            <option>Advance</option>
+                            <option value=1>Beginner</option>
+                            <option value=2>Intermediate</option>
+                            <option value=3>Advance</option>
                         </select>
                     </div>
                     <div class="uk-margin">
-                      <button type="submit" class="uk-button uk-button-primary uk-button-large uk-width-1-1" uk-switcher-item="1">Next</button>
+                      <button id="page1Submit" class="uk-button uk-button-primary uk-button-large uk-width-1-1">Next</button>
                     </div>
                   </form>
                 </li>
@@ -43,7 +43,7 @@
                     <div>
                         <progress class="uk-progress" value="25" max="100"></progress>
                     </div>
-                  <h3 class="uk-card-title uk-text-center">Please enter your location</h3>
+                  <h3 class="uk-card-title uk-text-center">Location</h3>
                   <form id="profile2">
                     <div class="uk-margin">
                       <div class="uk-inline uk-width-1-1">
@@ -54,51 +54,17 @@
                     <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
                         <label><input class="uk-checkbox" type="checkbox" id="isRemote"> Remote Sessions?</label>
                     </div>
-
+                    <div id="location-error"></div>
                     <div class="uk-margin">
-                      <button type="submit" class="uk-button uk-button-primary uk-button-large uk-width-1-1" uk-switcher-item="2">Next</button>
+                      <button id="page2Submit" class="uk-button uk-button-primary uk-button-large uk-width-1-1">Next</button>
                     </div>
                   </form>
                 </li>
-                <li>
-                    <div>
-                        <progress class="uk-progress" value="50" max="100"></progress>
-                    </div>
-                  <h3 class="uk-card-title uk-text-center">Please enter your price per session</h3>
-                  <form id="profile3">
-                    <div class="uk-margin">
-                        <div class="uk-margin">
-                        <input class="uk-range" id="priceRange" type="range" value="1" min="0" max="50" step="0.5">
-                        <h2 id="priceValueText">£0</h2>
-                    </div>
-                    </div>
-                    <div class="uk-margin">
-                      <button type="submit" class="uk-button uk-button-primary uk-button-large uk-width-1-1" uk-switcher-item="3">Next</button>
-                    </div>
-                  </form>
-                </li>
-                <li>
-                    <div>
-                        <progress class="uk-progress" value="75" max="100"></progress>
-
-                    </div>
-                  <h3 class="uk-card-title uk-text-center">Please enter your links</h3>
-                  <form id="profile4">
-                    <div class="uk-margin">
-                      <div class="uk-inline uk-width-1-1">
-                        <span class="uk-form-icon" uk-icon="icon: linkedin"></span>
-                        <input class="uk-input uk-form-large" type="text" id="socialMediaLink" placeholder="Social Media">
-                      </div>
-                    </div>
-                    <div class="uk-margin">
-                      <div class="uk-inline uk-width-1-1">
-                        <span class="uk-form-icon" uk-icon="icon: calendar"></span>
-                        <input class="uk-input uk-form-large" type="text" id="calendlyLink" placeholder="Calendly Link">	
-                      </div>
-                    </div>
-                    <div class="uk-margin">
-                      <button type="submit" class="uk-button uk-button-primary uk-button-large uk-width-1-1">Submit</button>
-                    </div>
+                  {{#if  (isEqualTo user.userType "student") }}
+                    {{> studentCompleteProfile }}
+                  {{else}}
+                    {{> tutorCompleteProfile }}
+                  {{/if}}
                   </form>
                 </li>
               </ul>

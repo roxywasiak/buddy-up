@@ -61,6 +61,10 @@ const schema = {
     type: DataTypes.STRING,
     allowNull: true,
   },
+  contactNumber: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
   isRemote: {
     type: DataTypes.BOOLEAN,
     defaultValue: true,
@@ -78,6 +82,10 @@ const schema = {
     validate: {
       isDecimal: true,
     },
+  },
+  isProfileComplete: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
   },
   userType: {
     type: DataTypes.STRING,

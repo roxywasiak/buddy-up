@@ -1,0 +1,35 @@
+<li>
+  <div>
+    <progress class="uk-progress" value="50" max="100"></progress>
+  </div>
+  <h3 class="uk-card-title uk-text-center">Please enter your budget per session</h3>
+  <form id="profile3">
+    <div class="uk-margin">
+        <select id="BudgetChoice" class="uk-select">
+            <option value=1>Low</option>
+            <option value=2>Medium</option>
+            <option value=3>High</option>
+        </select>
+    </div>
+    <div class="uk-margin">
+      <button type="submit" class="uk-button uk-button-primary uk-button-large uk-width-1-1" uk-switcher-item="3">Next</button>
+    </div>
+  </form>
+</li>
+<li>
+    <div>
+        <progress class="uk-progress" value="75" max="100"></progress>
+
+    </div>
+  <h3 class="uk-card-title uk-text-center">Contact</h3>
+  <form id="profile4">
+    <div class="uk-margin">
+      <div class="uk-inline uk-width-1-1">
+        <span class="uk-form-icon" uk-icon="icon: reciever"></span>
+        <input class="uk-input uk-form-large" type="text" id="contactNumber" placeholder="Contact Number">	
+      </div>
+    </div>
+    <div id="profile-error"></div>
+    <div class="uk-margin">
+      <button type="submit" class="uk-button uk-button-primary uk-button-large uk-width-1-1">Submit</button>
+    </div>

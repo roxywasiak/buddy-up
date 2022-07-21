@@ -1,0 +1,81 @@
+{{> privateNavBar }}
+
+<main>
+    <div class="uk-margin uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
+        <h1>Your Profile</h1>
+        {{#if  (isEqualTo userDetails.isProfileComplete 1) }}
+            <form id="updateProfileForm">
+                <div class="uk-margin">
+                    <div class="uk-inline uk-width-1-1">
+                        <span class="uk-form-icon" uk-icon="icon: user"></span>
+                        <input class="uk-input uk-form-large" type="text" id="updateFirstName" placeholder={{userDetails.firstName}}>
+                    </div>
+                </div>
+                <div class="uk-margin">
+                    <div class="uk-inline uk-width-1-1">
+                        <span class="uk-form-icon" uk-icon="icon: user"></span>
+                        <input class="uk-input uk-form-large" type="text" id="updateLastName" placeholder={{userDetails.lastName}}>
+                    </div>
+                </div>
+                {{!-- <div class="uk-margin">
+                    <div class="uk-inline uk-width-1-1">
+                        <span class="uk-form-icon" uk-icon="icon: mail"></span>
+                        <input class="uk-input uk-form-large" type="text" id="updateEmail" placeholder={{userDetails.email}}>
+                    </div>
+                </div> --}}
+                <div class="uk-margin">
+                    <div class="uk-inline uk-width-1-1">
+                        <span class="uk-form-icon" uk-icon="icon: location"></span>
+                        <input class="uk-input uk-form-large" type="text" id="updateLocation" placeholder={{userDetails.location}}>	
+                    </div>
+                </div>
+
+
+                {{#if  (isEqualTo userDetails.userType "student") }}
+                    <input style="display: none;" type="text" id="formUserType" value="student">
+                    <div class="uk-margin">
+                        <div class="uk-inline uk-width-1-1">
+                            <span class="uk-form-icon" uk-icon="icon: receiver"></span>
+                            <input class="uk-input uk-form-large" type="text" id="updateContactNumber" placeholder={{userDetails.contactNumber}}>	
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <select id="updateBudgetChoice" class="uk-select" >
+                            <option value=1 {{#if (isEqualTo userDetails.priceId 1)}} selected {{/if}}>Low</option>
+                            <option value=2 {{#if (isEqualTo userDetails.priceId 2)}} selected {{/if}}>Medium</option>
+                            <option value=3 {{#if (isEqualTo userDetails.priceId 3)}} selected {{/if}}>High</option>
+                        </select>
+                    </div>
+                {{else}}
+                    <div class="uk-margin">
+                        <div class="uk-inline uk-width-1-1">
+                            <span class="uk-form-icon" uk-icon="icon: linkedin"></span>
+                            <input class="uk-input uk-form-large" type="text" id="updateSocialMedia" placeholder={{userDetails.socialMedia}}>	
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <div class="uk-inline uk-width-1-1">
+                            <span class="uk-form-icon" uk-icon="icon: calendar"></span>
+                            <input class="uk-input uk-form-large" type="text" id="updateCalendlyLink" placeholder={{userDetails.calendlyLink}}>	
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <div class="uk-inline uk-width-1-1">
+                            <span class="uk-form-icon" uk-icon="icon: tag"></span>
+                            <input class="uk-input uk-form-large" type="text" id="updatePriceAmount" placeholder=£{{userDetails.priceAmount}}/session>	
+                        </div>
+                    </div>
+                {{/if}}
+
+                <div id="signup-error"></div>
+                <div class="uk-margin">
+                    <button class="uk-button uk-button-primary uk-button-large uk-width-1-1" type="submit">Save Changes</button>
+                </div>
+            </form>
+        {{else}}
+            <h3>Please start by completing your profile</h3>
+            <button id="complete-profile-btn">Complete Profile</button>
+        {{/if}}
+    </div>
+
+</main>

@@ -31,22 +31,41 @@ const getTutorById = async (req, res) => {
 const updateTutor = async (req, res) => {
   try {
     const {
+      firstName,
+      lastName,
+      email,
       socialMedia,
       calendlyLink,
+      priceAmount,
       priceId,
       location,
       isRemote,
       lat,
       long,
+      isProfileComplete,
     } = req.body;
-    // const id = req.sessions.user.id;
-    const id = 12;
+    const id = req.session.user.id;
+
+    //const id = 12;
     const data = await Tutor.findByPk(id);
     if (!data) {
       return res.status(404).json({ success: false });
     }
     await Tutor.update(
-      { socialMedia, calendlyLink, priceId, location, isRemote, lat, long },
+      {
+        firstName,
+        lastName,
+        email,
+        socialMedia,
+        calendlyLink,
+        priceAmount,
+        priceId,
+        location,
+        isRemote,
+        lat,
+        long,
+        isProfileComplete,
+      },
       { where: { id: id } }
     );
     return res.json({ success: true });

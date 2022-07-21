@@ -6,7 +6,9 @@
     "password": "pass1234",
     "priceId": 1,
     "location": "Birmingham",
+    "contactNumber": "07700 900981",
     "isRemote": true,
+    "isProfileComplete": true,
     "lat": 33.518589,
     "long": -86.810356
   },
@@ -18,7 +20,9 @@
     "password": "clairep",
     "priceId": 1,
     "location": "Birmingham",
+    "contactNumber": "07700 900247",
     "isRemote": true,
+    "isProfileComplete": true,
     "lat": 33.518589,
     "long": -86.810356
   },
@@ -30,7 +34,9 @@
     "password": "secreat",
     "priceId": 3,
     "location": "London",
+    "contactNumber": "07700 900795",
     "isRemote": false,
+    "isProfileComplete": true,
     "lat": 51.509865,
     "long": -0.118092
   },
@@ -41,8 +47,10 @@
     "email": "mulley@email.com",
     "password": "passwr21",
     "location": "Dublin",
+    "contactNumber": "07700 905216",
     "priceId": 2,
     "isRemote": false,
+    "isProfileComplete": true,
     "lat": 53.349804,
     "long": -6.26031
   },
@@ -54,7 +62,9 @@
     "password": "pasmsce",
     "priceId": 2,
     "location": "London",
+    "contactNumber": "07700 909246",
     "isRemote": true,
+    "isProfileComplete": true,
     "lat": 51.509865,
     "long": -0.118092
   },
@@ -66,6 +76,7 @@
     "priceId": 3,
     "location": "London",
     "isRemote": true,
+    "isProfileComplete": true,
     "lat": 51.509865,
     "long": -0.118092
   },
@@ -77,7 +88,9 @@
     "password": "gshsio",
     "priceId": 2,
     "location": "Dublin",
+    "contactNumber": "07700 908524",
     "isRemote": true,
+    "isProfileComplete": true,
     "lat": 53.349804,
     "long": -6.26031
   },
@@ -89,7 +102,9 @@
     "password": "sydeny7",
     "priceId": 3,
     "location": "Paris",
+    "contactNumber": "07700 906936",
     "isRemote": false,
+    "isProfileComplete": true,
     "lat": 48.856613,
     "long": 2.352222
   },
@@ -101,7 +116,9 @@
     "password": "passwork21",
     "priceId": 2,
     "location": "Manchester",
+    "contactNumber": "07700 901234",
     "isRemote": true,
+    "isProfileComplete": true,
     "lat": 53.4794892,
     "long": -2.2451148
   },
@@ -113,7 +130,9 @@
     "password": "ruby123",
     "priceId": 1,
     "location": "Manchester",
+    "contactNumber": "07700 904321",
     "isRemote": true,
+    "isProfileComplete": true,
     "lat": 53.4794892,
     "long": -2.2451148
   },
@@ -125,7 +144,9 @@
     "password": "reallea12",
     "priceId": 3,
     "location": "Birmingham",
+    "contactNumber": "07700 901058",
     "isRemote": true,
+    "isProfileComplete": true,
     "lat": 33.518589,
     "long": -86.810356
   }
