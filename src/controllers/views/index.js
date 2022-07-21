@@ -145,11 +145,11 @@ const renderSessionsPage = async (req, res) => {
         where: { id: tutorResponseData },
         include: [{ model: Student }],
       });
-      const userResponses = userResponsesData.map((each) => {
+      userResponses = userResponsesData.map((each) => {
         return each.get({ plain: true });
       });
     }
-    console.log(userResponses, receivedResponses);
+    console.log(userResponses, userType);
     return res.render("sessions", {
       currentPage: "sessions",
       userResponses,
