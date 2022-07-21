@@ -1,9 +1,11 @@
-const { Ad, Subject, Messages } = require("../../models");
+const { Messages } = require("../../models");
 //post
 const createMessage = async (req, res) => {
   try {
-    const { userType, id } = req.session;
+    const { userType, id } = req.session.user;
     const { messageContent, responseId } = req.body;
+
+    console.log(req.body);
 
     if (userType === "student") {
       await Messages.create({
