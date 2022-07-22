@@ -8,7 +8,7 @@
     "subjectId": 2
   },
   {
-    "studentId": 8,
+    "studentId": 7,
     "priceId": 2,
     "title": "I need a journalism tutor",
     "isTutor": true,
@@ -72,7 +72,7 @@
     "subjectId": 1
   },
   {
-    "studentId": 8,
+    "studentId": 7,
     "priceId": 1,
     "title": " Help me understand Jquery",
     "isTutor": false,
@@ -104,7 +104,7 @@
     "subjectId": 4
   },
   {
-    "studentId": 8,
+    "studentId": 7,
     "priceId": 1,
     "title": "I want a tutor skilled at using the guitar",
     "isTutor": true,
@@ -120,7 +120,7 @@
     "subjectId": 6
   },
   {
-    "studentId": 8,
+    "studentId": 7,
     "priceId": 1,
     "title": "I need help with algebra",
     "isTutor": true,
