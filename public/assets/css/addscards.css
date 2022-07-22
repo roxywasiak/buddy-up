@@ -3,6 +3,10 @@
   box-sizing: border-box;
 }
 
+.body {
+  background: var(--bs--gray);
+}
+
 /* colors*/
 :root {
   --light-cornflower-blue: #8ecae6ff;

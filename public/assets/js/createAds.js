@@ -32,12 +32,19 @@ const handleFormSubmit = async (event) => {
 
       // display spinner on page
 
-      // setInterval(() => {
-      //   clearInterval(alertContainer);
-      //   alertContainer.append(`<div uk-spinner></div>`);
-      // }, 0);
+      function myTimer() {
+        alertContainer.empty();
 
-      //   create response
+        alertContainer.append(`<div uk-spinner></div>`);
+        clearInterval(myInterval);
+      }
+
+      const myInterval = setInterval(myTimer, 1000);
+
+      const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+      await sleep(3000);
+
+      // create response
       const response = await fetch("/api/ad/", {
         method: "POST",
         body: JSON.stringify(payload),

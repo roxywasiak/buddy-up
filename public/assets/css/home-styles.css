@@ -194,7 +194,8 @@
 }
 @media (max-width: 768px) {
   .view-card {
-    margin: 20px;
+    width: 17rem;
+    order: 0 !important;
   }
   .card-flex-container {
     display: flex;

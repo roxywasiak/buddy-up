@@ -2,7 +2,7 @@
   {
     "studentId": 4,
     "priceId": 1,
-    "title": "I need a Chemistry tutor",
+    "title": "I need a chemistry tutor",
     "isTutor": true,
     "description": "I really need help with chemistry A-level please can anyone help",
     "subjectId": 2
@@ -10,7 +10,7 @@
   {
     "studentId": 5,
     "priceId": 2,
-    "title": "I need a Journalism tutor",
+    "title": "I need a journalism tutor",
     "isTutor": true,
     "description": "I want to become a journalist in the future and I need more advanced sessions with a tutor - please help!",
     "subjectId": 3
@@ -19,8 +19,16 @@
     "studentId": 1,
     "priceId": 2,
     "isTutor": false,
-    "title": "Practise piano Music with me?",
+    "title": "Practice piano with me?",
     "description": "I want to practise music with someone who has advanced piano skills. Is there a buddy who wants to join?",
+    "subjectId": 5
+  },
+  {
+    "studentId": 2,
+    "priceId": 1,
+    "isTutor": true,
+    "title": "I need a piano teacher",
+    "description": " I need a tutor who can help me improve my piano skills",
     "subjectId": 5
   },
   {
@@ -42,7 +50,7 @@
   {
     "studentId": 10,
     "priceId": 1,
-    "title": "Struggling with Chemistry",
+    "title": "Struggling with chemistry",
     "isTutor": false,
     "description": "I am currently studying for my chemistry exam, I need someone to study with me and keep me motivated",
     "subjectId": 3
@@ -50,7 +58,7 @@
   {
     "studentId": 4,
     "priceId": 1,
-    "title": "I want a Chemistry buddy",
+    "title": "I want a chemistry buddy",
     "isTutor": true,
     "description": "I enjoy studying chemistry and would like to study with another student",
     "subjectId": 3
@@ -58,10 +66,50 @@
   {
     "studentId": 9,
     "priceId": 1,
-    "title": "Tutor for Maths",
+    "title": "Tutor for maths",
     "isTutor": true,
     "description": "I need a tutor who would push in Math and challenge me to do well in this subject",
     "subjectId": 1
+  },
+  {
+    "studentId": 8,
+    "priceId": 1,
+    "title": " Help me understand Jquery",
+    "isTutor": false,
+    "description": "I want to code with anyone else struggling in to understand Jquery. It can't just be me, right?",
+    "subjectId": 6
+  },
+  {
+    "studentId": 8,
+    "priceId": 1,
+    "title": " Help me understand Jquery",
+    "isTutor": false,
+    "description": "I want to code with anyone else struggling in to understand Jquery. It can't just be me, right?",
+    "subjectId": 6
+  },
+  {
+    "studentId": 8,
+    "priceId": 1,
+    "title": " Help me understand Jquery",
+    "isTutor": false,
+    "description": "I want to code with anyone else struggling in to understand Jquery. It can't just be me, right?",
+    "subjectId": 6
+  },
+  {
+    "studentId": 8,
+    "priceId": 1,
+    "title": " Help me understand Jquery",
+    "isTutor": false,
+    "description": "I want to code with anyone else struggling in to understand Jquery. It can't just be me, right?",
+    "subjectId": 6
+  },
+  {
+    "studentId": 8,
+    "priceId": 1,
+    "title": " Help me understand Jquery",
+    "isTutor": false,
+    "description": "I want to code with anyone else struggling in to understand Jquery. It can't just be me, right?",
+    "subjectId": 6
   },
   {
     "studentId": 8,
