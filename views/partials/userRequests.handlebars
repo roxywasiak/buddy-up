@@ -1,39 +1,45 @@
 <div class="entry">
   {{#if (isEqualTo parent.userType "student")}}
-    <div class="uk-card uk-card-default uk-width-1-2@m ads-card">
-      <div class="uk-card-header">
-        <div class="uk-grid-small" uk-grid>
-          <div class="uk-width-auto"></div>
-          <div class="uk-width-expand">
-            <br />
-            <p class="uk-text-meta uk-margin-remove-top uk-text-small">
-              {{ad.title}}
-            </p>
+    <div id="student-card" class="uk-margin">
+      <div class="uk-card uk-card-default uk-width-1-2@m">
+        <div class="uk-card-header">
+          <div class="uk-grid-small uk-flex-middle" uk-grid>
+            <div class="uk-width-auto">
+            </div>
+            <div class="uk-width-expand">
+              <h3 class="uk-card-title uk-margin-remove-bottom">
+                Me
+              </h3>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="uk-card-body">
-        <p class="uk-text-small">{{ad.description}}</p>
-      </div>
-      <div class="uk-card-body">
-        <p class="uk-text-small">{{ad.subject.subjectName}}</p>
-      </div>
-      <div class="uk-card-footer">
-        <a href="#" class="uk-button uk-button-text">
-          <p class="uk-text-small">{{ad.price.price}}</p></a>
-      </div>
-      <br />
-      <br />
-      <div
-        class="uk-card uk-card-default uk-width-1-2@m uk-position-bottom-center uk-margin-bottom"
-      >
-        <div class="uk-button uk-button-default" id="pendingAd">{{status}}</div>
-
+        <div class="uk-card-body">
+          <p>
+            {{ad.description}}
+          </p>
+          <p>
+            {{ad.subject.subjectName}}
+          </p>
+        </div>
+        <div class="uk-card-footer">
+          {{#if (isEqualTo status "pending")}}
+            <div
+              class="uk-button uk-button-primary"
+              data-response={{id}}
+            >pending</div>
+          {{/if}}
+          {{#if (isEqualTo status "completed")}}
+            <div class="uk-button uk-button-primary">Completed</div>
+          {{/if}}
+          {{#if (isEqualTo status "rejected")}}
+            <div class="uk-button uk-button-danger">Rejected</div>
+          {{/if}}
+        </div>
       </div>
     </div>
   {{/if}}
   {{#if (isEqualTo parent.userType "tutor")}}
-    <div id="student-card">
+    <div id="student-card" class="uk-margin">
       <div class="uk-card uk-card-default uk-width-1-2@m">
         <div class="uk-card-header">
           <div class="uk-grid-small uk-flex-middle" uk-grid>
@@ -49,26 +55,19 @@
                 class="uk-icon-button uk-margin-small-right"
                 uk-icon="mail"
               ></a>
-              <a href="" class="uk-icon-button" uk-icon="comments"></a>
             </div>
           </div>
         </div>
         <div class="uk-card-body">
           <p>
-            Click links above to email and message.
+            {{description}}
+          </p>
+          <p>
+            {{subject.subjectName}}
           </p>
         </div>
         <div class="uk-card-footer">
-          {{#if (isEqualTo status "pending")}}
-            <div
-              class="uk-button uk-button-primary"
-              id="acceptButton"
-              data-response={{id}}
-            >pending</div>
-          {{/if}}
-          {{#if (isEqualTo status "completed")}}
-            <div class="uk-button uk-button-primary">Completed</div>
-          {{/if}}
+
         </div>
       </div>
     </div>

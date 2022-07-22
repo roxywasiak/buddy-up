@@ -161,13 +161,13 @@ const renderSessionsPage = async (req, res) => {
 
       const userResponsesData = await Ad.findAll({
         where: { id: tutorResponseData },
-        include: [{ model: Student }],
+        include: [{ model: Student }, { model: Subject }],
       });
       userResponses = userResponsesData.map((each) => {
         return each.get({ plain: true });
       });
     }
-    // console.log(userResponses);
+    console.log(userResponses);
     return res.render("sessions", {
       currentPage: "sessions",
       userResponses,
