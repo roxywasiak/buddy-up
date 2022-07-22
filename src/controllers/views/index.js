@@ -203,7 +203,7 @@ const renderProfilePage = async (req, res) => {
 };
 
 const renderMessagesPage = async (req, res) => {
-  const { user } = req.session;
+  const { userType, id: userId } = req.session.user;
   const { id: responseId } = req.params;
 
   const allMessageContent = await Messages.findAll({
@@ -211,14 +211,20 @@ const renderMessagesPage = async (req, res) => {
     raw: true,
   });
 
+  const messageData = [];
+
+  const addData = (item) => {
+    newMessageContent = Object.assign(item, { userType, userId });
+    messageData.push(newMessageContent);
+  };
+
   allMessageContent.sort((a, b) => a.createdAt - b.createdAt);
 
-  console.log(user);
+  allMessageContent.forEach(addData);
 
   return res.render("messages", {
     currentPage: "messages",
-    allMessageContent,
-    user,
+    messageData,
   });
 };
 
