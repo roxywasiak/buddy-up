@@ -6,14 +6,39 @@
           class="fa-solid fa-people-arrows-left-right fa-color"
         ></i>Buddy Up
       </a>
-      <ul class="uk-navbar-nav">
+      <ul class="uk-navbar-nav nav-desk">
         <li class="uk-active link"><a href="/dashboard">Dashboard</a></li>
-        <li class="uk-active link"><a href="/sessions">My sessions</a></li>
-        <li class="uk-active link"><a href="/createads">Create ads</a></li>
+        <li class="uk-active link"><a href="/profile">My Profile</a></li>
+        <li class="uk-active link"><a href="/createads">Create Ads</a></li>
         <li class="uk-active link"><a href="/viewads">View ads</a></li>
-        <li class="uk-active link"><a href="/profile">Profile</a></li>
+        <li class="uk-active link"><a href="/sessions">My sessions</a></li>
         <li class="uk-active link" id="logout-btn"><a href="">Logout</a></li>
       </ul>
+      <div class="nav-mobile">
+        <nav class="uk-navbar uk-navbar-container uk-margin" uk-navbar>
+          <div class="">
+            <a
+              class="uk-navbar-toggle uk-navbar-toggle-animate"
+              uk-navbar-toggle-icon
+              href="#"
+            ></a>
+            <div class="uk-navbar-dropdown uk-navbar-right">
+              <ul class="uk-nav uk-navbar-dropdown-nav">
+                <li class="uk-active link"><a
+                    href="/dashboard"
+                  >Dashboard</a></li>
+                <li class="uk-active link"><a href="/profile">My Profile</a></li>
+                <li class="uk-active link"><a href="/createads">Create Ads</a></li>
+                <li class="uk-active link"><a href="/viewads">View ads</a></li>
+                <li class="uk-active link"><a href="/sessions">My sessions</a></li>
+                <li class="uk-active link" id="logout-btn"><a
+                    href=""
+                  >Logout</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
     </div>
   </nav>
 </header>

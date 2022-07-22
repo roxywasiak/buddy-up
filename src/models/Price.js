@@ -19,7 +19,7 @@ const schema = {
     },
   },
   budget: {
-    type: DataTypes.ENUM(["low", "medium", "high"]),
+    type: DataTypes.ENUM(["Low", "Medium", "High"]),
     allowNull: true,
   },
 };
