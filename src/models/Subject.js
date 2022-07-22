@@ -1,7 +1,6 @@
 const { Model, DataTypes } = require("sequelize");
 
 const connection = require("../config/connection");
-// import referencee
 
 class Subject extends Model {}
 
@@ -21,17 +20,6 @@ const schema = {
     allowNull: false,
   },
 };
-
-Product.belongsToMany(Tag, {
-  through: ProductTag,
-  foreignKey: "product_id",
-});
-
-// Tags belongToMany Products (through ProductTag)
-Tag.belongsToMany(Product, {
-  through: ProductTag,
-  foreignKey: "tag_id",
-});
 
 const options = {
   sequelize: connection,
