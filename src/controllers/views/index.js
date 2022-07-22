@@ -5,6 +5,7 @@ const {
   Response,
   Tutor,
   Ad,
+  Messages,
 } = require("../../models");
 
 const renderHomePage = (req, res) => {
@@ -201,6 +202,26 @@ const renderProfilePage = async (req, res) => {
   }
 };
 
+const renderMessagesPage = async (req, res) => {
+  const { user } = req.session;
+  const { id: responseId } = req.params;
+
+  const allMessageContent = await Messages.findAll({
+    where: { responseId },
+    raw: true,
+  });
+
+  allMessageContent.sort((a, b) => a.createdAt - b.createdAt);
+
+  console.log(user);
+
+  return res.render("messages", {
+    currentPage: "messages",
+    allMessageContent,
+    user,
+  });
+};
+
 module.exports = {
   renderHomePage,
   renderDashboard,
@@ -210,4 +231,5 @@ module.exports = {
   renderSessionsPage,
   renderCompleteProfilePage,
   renderProfilePage,
+  renderMessagesPage,
 };

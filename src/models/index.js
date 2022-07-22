@@ -5,6 +5,7 @@ const Response = require("./Response");
 const Student = require("./Student");
 const Subject = require("./Subject");
 const Tutor = require("./Tutor");
+const Messages = require("./Messages");
 
 const TutorSubject = require("./TutorSubject");
 const Report = require("./Report");
@@ -147,6 +148,37 @@ Report.belongsTo(Student, {
   onDelete: "CASCADE",
 });
 
+// Messages
+Student.belongsTo(Messages, {
+  foreignKey: "studentId",
+  onDelete: "CASCADE",
+});
+
+Messages.hasMany(Student, {
+  foreignKey: "studentId",
+  onDelete: "CASCADE",
+});
+
+Tutor.belongsTo(Messages, {
+  foreignKey: "tutorId",
+  onDelete: "CASCADE",
+});
+
+Messages.hasMany(Tutor, {
+  foreignKey: "tutorId",
+  onDelete: "CASCADE",
+});
+
+Response.hasMany(Messages, {
+  foreignKey: "responseId",
+  onDelete: "CASCADE",
+});
+
+Messages.belongsTo(Response, {
+  foreignKey: "responseId",
+  onDelete: "CASCADE",
+});
+
 module.exports = {
   Ad,
   Review,
@@ -157,4 +189,5 @@ module.exports = {
   Subject,
   Tutor,
   TutorSubject,
+  Messages,
 };
