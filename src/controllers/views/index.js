@@ -211,21 +211,34 @@ const renderMessagesPage = async (req, res) => {
     raw: true,
   });
 
+  const responsesData = await Response.findAll({
+    where: { id: responseId },
+    include: [{ model: Ad }],
+    raw: true,
+  });
   const messageData = [];
 
-  const addData = (item) => {
-    newMessageContent = Object.assign(item, { userType, userId });
-    messageData.push(newMessageContent);
-  };
+  if (
+    (userId === responsesData[0]["ad.studentId"] && userType === "student") ||
+    (userId === responsesData[0].tutorId && userType === "tutor") ||
+    (userId === responsesData[0].studentId && userType === "student")
+  ) {
+    const addData = (item) => {
+      const newMessageContent = Object.assign(item, { userType, userId });
+      messageData.push(newMessageContent);
+    };
 
-  allMessageContent.sort((a, b) => a.createdAt - b.createdAt);
+    allMessageContent.sort((a, b) => a.createdAt - b.createdAt);
 
-  allMessageContent.forEach(addData);
+    allMessageContent.forEach(addData);
 
-  return res.render("messages", {
-    currentPage: "messages",
-    messageData,
-  });
+    return res.render("messages", {
+      currentPage: "messages",
+      messageData,
+    });
+  } else {
+    renderDashboard(req, res);
+  }
 };
 
 module.exports = {
