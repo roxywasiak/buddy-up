@@ -1,8 +1,8 @@
 <main class="uk-animation-fade">
   <h1 class="welcome">Welcome to your Tutor Dashboard!
     {{userDetails.firstName}}
-  </h1>
-  <h2>{{{dateFormat timeStamp}}}
+  </h1>.
+  <h2>{{{getCurrentDate "123"}}}
   </h2>
   {{#if (isEqualTo userDetails.isProfileComplete 0)}}
     <button id="complete-profile-btn">Complete Profile</button>

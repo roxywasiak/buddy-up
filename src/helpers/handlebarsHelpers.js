@@ -9,7 +9,14 @@ const dateFormat = (date) => {
   return `Created: ${formattedDate}`;
 };
 
+const getCurrentDate = (value) => {
+  const d = new Date();
+  const formattedDate = dateFns.format(new Date(d), "do MMMM, yyyy");
+  return formattedDate;
+};
+
 module.exports = {
   isEqualTo,
   dateFormat,
+  getCurrentDate,
 };
