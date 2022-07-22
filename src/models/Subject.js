@@ -1,7 +1,6 @@
 const { Model, DataTypes } = require("sequelize");
 
 const connection = require("../config/connection");
-// import referencee
 
 class Subject extends Model {}
 

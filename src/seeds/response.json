@@ -2,7 +2,7 @@
   {
     "adId": 1,
     "tutorId": 4,
-    "status": "pending"
+    "status": "completed"
   },
   {
     "adId": 2,
@@ -17,7 +17,7 @@
   {
     "adId": 4,
     "tutorId": 6,
-    "status": "pending"
+    "status": "completed"
   },
   {
     "adId": 5,
@@ -32,7 +32,7 @@
   {
     "adId": 7,
     "tutorId": 5,
-    "status": "rejected"
+    "status": "completed"
   },
   {
     "adId": 8,

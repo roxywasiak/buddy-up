@@ -116,7 +116,7 @@
     "priceId": 1,
     "title": " Help me understand Jquery",
     "isTutor": false,
-    "description": "I want to code with anyone else struggling in to understand Jquery. It can't just be me, right?",
+    "description": "I want to code with anyone else struggling to understand Jquery. It can't just be me, right?",
     "subjectId": 6
   },
   {
@@ -124,7 +124,7 @@
     "priceId": 1,
     "title": "I need help with algebra",
     "isTutor": true,
-    "description": "I need a buddy who can help me learn algebra,I am struggling so I would any help",
+    "description": "I need a buddy who can help me learn algebra, I am struggling so I would be grateful for any help",
     "subjectId": 1
   }
 ]

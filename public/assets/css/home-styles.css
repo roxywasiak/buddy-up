@@ -391,3 +391,21 @@ h1 {
   margin-bottom: 40px;
   color: var(--dark-blue);
 }
+
+/* message page */
+.create-BTN {
+  background-color: var(--bs-gray-800);
+  color: var(--white) !important;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+}
+
+.BNT-create {
+  background-color: var(--blue);
+  color: var(--white) !important;
+  border-radius: 10px;
+}
