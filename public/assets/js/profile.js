@@ -88,8 +88,6 @@ const submitProfile = async (event) => {
   } else if (contactNumber) {
     isContact = validateContactNumber(contactNumber);
 
-    console.log(isContact);
-
     if (isContact) {
       const studentPayload = {
         priceId: budget,
