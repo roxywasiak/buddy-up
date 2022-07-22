@@ -2,11 +2,8 @@
   <h1 class="welcome">Welcome to your Tutor Dashboard!
     {{userDetails.firstName}}
   </h1>.
-  <h2>{{{getCurrentDate "123"}}}
+  <h2 class="h2">{{{getCurrentDate "123"}}}
   </h2>
-  {{#if (isEqualTo userDetails.isProfileComplete 0)}}
-    <button id="complete-profile-btn">Complete Profile</button>
-  {{/if}}
 
   <!-- MAIN-->
 
@@ -19,18 +16,28 @@
         uk-scrollspy="cls: uk-animation-slide-left; repeat: true"
       >
         <div class="uk-card-media-left uk-cover-container">
-          <img src="./assets/images/ads.jpg" alt="" uk-cover />
+          <img src="./assets/images/coding.jpg" alt="" uk-cover />
           <canvas width="600" height="400"></canvas>
         </div>
-        <div class="uk-card-body dash-ad">
-          <h3 class="uk-card-title"> Your profile</h3>
-          <p> Fill in your profile details before you using the application </p>
-          <p> Click start, to start to complete!</p>
-          <div>
-            <button class="uk-button uk-button-primary create-bt">
-              <a href="/profile" class="btn-create-bt">Start</a></button>
+
+        {{#if (isEqualTo userDetails.isProfileComplete 0)}}
+          <div class="uk-card-body dash-ad">
+            <h3 class="uk-card-title"> Your profile</h3>
+            <p>
+              Fill in your profile details before you using the application
+            </p>
+            <p> Click start, to start to complete!</p>
+
+            <div>
+              <button
+                class="uk-button uk-button-primary create-bt"
+                id="complete-profile-btn"
+              >start</button>
+
+            </div>
           </div>
-        </div>
+        {{/if}}
+
       </div>
 
       <div
@@ -49,8 +56,10 @@
               Ads allow you to make a request to arrange a tutor or buddy meet
               up</p>
             <p> Click create, to begin your journey today!</p>
+
             <button class="uk-button uk-button-primary create">
               <a href="/sessions" class="btn-create">Start</a></button>
+
           </div>
         </div>
 

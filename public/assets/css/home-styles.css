@@ -382,3 +382,12 @@ h1 {
   color: var(--white) !important;
   text-decoration: none !important;
 }
+
+.h2 {
+  font-family: "Raleway", sans-serif;
+  text-align: center;
+  font-size: 50px;
+  font-weight: 500;
+  margin-bottom: 40px;
+  color: var(--dark-blue);
+}
