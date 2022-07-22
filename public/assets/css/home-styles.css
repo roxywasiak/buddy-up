@@ -235,3 +235,19 @@
   justify-content: center;
   cursor: pointer;
 }
+
+.sent-messages {
+  text-align: right;
+  background-color: #cde3f8;
+  padding: 5px;
+  padding-right: 15px;
+  border-radius: 10px;
+}
+
+.received-messages {
+  text-align: left;
+  background-color: #f8ebcd;
+  padding: 5px;
+  padding-left: 15px;
+  border-radius: 10px;
+}

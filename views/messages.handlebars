@@ -16,19 +16,19 @@
               class="uk-margin uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large"
             >
             <h2 style="text-align: center;">Messages</h2>
-        {{#each allMessageContent}}
+        {{#each messageData}}
 
-            {{#if (isEqualTo user.userType student)}}
-                {{#if (isEqualTo studentSenderId user.id)}}
-                    <h3 style="text-align: right;">{{messageContent}}</h3>
+            {{#if (isEqualTo userType "student")}}
+                {{#if (isEqualTo studentSenderId userId)}}
+                    <h3 class="sent-messages">{{messageContent}}</h3>
                 {{else}}
-                    <h3 class=".uk-text-left">{{messageContent}}</h3>
+                    <h3 class="received-messages">{{messageContent}}</h3>
                 {{/if}}
             {{else}}
-                {{#if (isEqualTo allMessageContent.tutorSenderId user.id)}}
-                    <h3 class=".uk-text-right">{{messageContent}}</h3>
+                {{#if (isEqualTo tutorSenderId userId)}}
+                    <h3 class="sent-messages">{{messageContent}}</h3>
                 {{else}}
-                    <h3 class=".uk-text-left">{{messageContent}}</h3>
+                    <h3 class="received-messages">{{messageContent}}</h3>
                 {{/if}}
             {{/if}}
         {{/each}}

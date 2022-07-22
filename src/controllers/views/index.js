@@ -210,7 +210,7 @@ const renderProfilePage = async (req, res) => {
 };
 
 const renderMessagesPage = async (req, res) => {
-  const { user } = req.session;
+  const { userType, id: userId } = req.session.user;
   const { id: responseId } = req.params;
 
   const allMessageContent = await Messages.findAll({
@@ -218,15 +218,34 @@ const renderMessagesPage = async (req, res) => {
     raw: true,
   });
 
-  allMessageContent.sort((a, b) => a.createdAt - b.createdAt);
-
-  console.log(user);
-
-  return res.render("messages", {
-    currentPage: "messages",
-    allMessageContent,
-    user,
+  const responsesData = await Response.findAll({
+    where: { id: responseId },
+    include: [{ model: Ad }],
+    raw: true,
   });
+  const messageData = [];
+
+  if (
+    (userId === responsesData[0]["ad.studentId"] && userType === "student") ||
+    (userId === responsesData[0].tutorId && userType === "tutor") ||
+    (userId === responsesData[0].studentId && userType === "student")
+  ) {
+    const addData = (item) => {
+      const newMessageContent = Object.assign(item, { userType, userId });
+      messageData.push(newMessageContent);
+    };
+
+    allMessageContent.sort((a, b) => a.createdAt - b.createdAt);
+
+    allMessageContent.forEach(addData);
+
+    return res.render("messages", {
+      currentPage: "messages",
+      messageData,
+    });
+  } else {
+    renderDashboard(req, res);
+  }
 };
 
 module.exports = {
