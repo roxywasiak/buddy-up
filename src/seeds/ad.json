@@ -8,7 +8,7 @@
     "subjectId": 2
   },
   {
-    "studentId": 5,
+    "studentId": 8,
     "priceId": 2,
     "title": "I need a journalism tutor",
     "isTutor": true,
@@ -32,7 +32,7 @@
     "subjectId": 5
   },
   {
-    "studentId": 7,
+    "studentId": 9,
     "priceId": 1,
     "title": "JavaScript",
     "isTutor": true,
@@ -80,7 +80,39 @@
     "subjectId": 6
   },
   {
+    "studentId": 9,
+    "priceId": 1,
+    "title": "I want a buddy who likes journalism",
+    "isTutor": false,
+    "description": "I want to get a career in journalism, I want advice on what direction to take",
+    "subjectId": 2
+  },
+  {
+    "studentId": 2,
+    "priceId": 1,
+    "title": " Astrology",
+    "isTutor": false,
+    "description": "I would like to learn more about astrology, would you like to be my buddy",
+    "subjectId": 4
+  },
+  {
+    "studentId": 9,
+    "priceId": 1,
+    "title": " I want an astrology tutor",
+    "isTutor": true,
+    "description": "I am struggling with the understanding some of the main principles of my university course. Please help!",
+    "subjectId": 4
+  },
+  {
     "studentId": 8,
+    "priceId": 1,
+    "title": "I want a tutor skilled at using the guitar",
+    "isTutor": true,
+    "description": "I just started learning the guitar, I want to learn fast to perform for my school play",
+    "subjectId": 5
+  },
+  {
+    "studentId": 4,
     "priceId": 1,
     "title": " Help me understand Jquery",
     "isTutor": false,
@@ -90,33 +122,9 @@
   {
     "studentId": 8,
     "priceId": 1,
-    "title": " Help me understand Jquery",
-    "isTutor": false,
-    "description": "I want to code with anyone else struggling in to understand Jquery. It can't just be me, right?",
-    "subjectId": 6
-  },
-  {
-    "studentId": 8,
-    "priceId": 1,
-    "title": " Help me understand Jquery",
-    "isTutor": false,
-    "description": "I want to code with anyone else struggling in to understand Jquery. It can't just be me, right?",
-    "subjectId": 6
-  },
-  {
-    "studentId": 8,
-    "priceId": 1,
-    "title": " Help me understand Jquery",
-    "isTutor": false,
-    "description": "I want to code with anyone else struggling in to understand Jquery. It can't just be me, right?",
-    "subjectId": 6
-  },
-  {
-    "studentId": 8,
-    "priceId": 1,
-    "title": " Help me understand Jquery",
-    "isTutor": false,
-    "description": "I want to code with anyone else struggling in to understand Jquery. It can't just be me, right?",
-    "subjectId": 6
+    "title": "I need help with algebra",
+    "isTutor": true,
+    "description": "I need a buddy who can help me learn algebra,I am struggling so I would any help",
+    "subjectId": 1
   }
 ]
