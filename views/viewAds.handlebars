@@ -22,12 +22,8 @@
 
 
    <!-- SEARCH ADS  -->
-                         <div class="uk-margin">
-                          <label
-                            class="uk-form-label uk-text-bold"
-                            for="form-horizontal-select"
-                            >Subject</label
-                          >
+                         <div class="uk-margin search">
+                         
                           <div class="uk-form-controls">
                             <select
                          id="adsSearchDiv"
@@ -35,7 +31,7 @@
                               uk-form-custom="target: true"
                               id="form-horizontal-select"
                             >
-                            <option id="searchAds" value="">Select an Option</option>
+                            <option id="searchAds" value="">Search By Subject</option>
                             {{#each subjects}}
                             <option id="searchAds" value={{id}}>{{subjectName}}</option>
                             {{/each}}

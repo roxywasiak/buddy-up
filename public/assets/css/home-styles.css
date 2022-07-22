@@ -1,8 +1,3 @@
-* {
-  margin: 0px;
-  box-sizing: border-box;
-}
-
 /* colors*/
 :root {
   --light-cornflower-blue: #8ecae6ff;
@@ -21,9 +16,14 @@
 }
 
 /* main */
-.body {
-  background: var(--bs--gray);
+body {
+  background: var(--bs--gray) !important;
   font-family: "Raleway", sans-serif;
+}
+
+* {
+  margin: 0px;
+  box-sizing: border-box;
 }
 
 /* navbar styles */
@@ -100,7 +100,6 @@
 }
 
 .create-btn {
-  font-family: "Poppins", sans-serif;
   font-size: 13px;
   display: inline-block;
   text-transform: uppercase;
@@ -126,6 +125,11 @@
 .user-image {
   border-radius: 100%;
   width: 8rem;
+}
+
+.search {
+  margin: 40px auto;
+  width: 50%;
 }
 
 /* responsivness  */
@@ -199,6 +203,9 @@
   color: var(--bs-gray-700);
 }
 
+#search-title {
+  text-align: center !important;
+}
 .checked {
   color: var(--selective-yellow);
 }
@@ -264,4 +271,29 @@
   flex-direction: row;
   justify-content: center;
   cursor: pointer;
+}
+
+/* ads page styling */
+* {
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+/* colors*/
+
+.title {
+  font-family: "Raleway", sans-serif;
+  margin-top: 50px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 500;
+  color: var(--bs-gray-700);
+}
+
+/* cards styles */
+.ads-card {
+  margin: 20px;
+  text-align: center;
+  border-radius: 4px;
+  width: 20rem;
 }
