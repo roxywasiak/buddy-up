@@ -5,7 +5,7 @@
     "title": "I need a chemistry tutor",
     "isTutor": true,
     "description": "I really need help with chemistry A-level please can anyone help",
-    "subjectId": 2
+    "subjectId": 3
   },
   {
     "studentId": 7,
@@ -13,7 +13,7 @@
     "title": "I need a journalism tutor",
     "isTutor": true,
     "description": "I want to become a journalist in the future and I need more advanced sessions with a tutor - please help!",
-    "subjectId": 3
+    "subjectId": 4
   },
   {
     "studentId": 1,
@@ -21,7 +21,7 @@
     "isTutor": false,
     "title": "Practice piano with me?",
     "description": "I want to practise music with someone who has advanced piano skills. Is there a buddy who wants to join?",
-    "subjectId": 5
+    "subjectId": 6
   },
   {
     "studentId": 2,
@@ -29,7 +29,7 @@
     "isTutor": true,
     "title": "I need a piano teacher",
     "description": " I need a tutor who can help me improve my piano skills",
-    "subjectId": 5
+    "subjectId": 6
   },
   {
     "studentId": 9,
@@ -37,7 +37,7 @@
     "title": "JavaScript",
     "isTutor": true,
     "description": "I am passionate about coding and want a tutor who can make me better",
-    "subjectId": 6
+    "subjectId": 7
   },
   {
     "studentId": 2,
@@ -45,7 +45,7 @@
     "title": "Help me with Maths",
     "isTutor": true,
     "description": "I need maths to meet my offer for university but I do not think that is attainable. I would like a tutor that has experience improving their tutee's grade in a short time span. Thank you.",
-    "subjectId": 1
+    "subjectId": 2
   },
   {
     "studentId": 10,
@@ -53,7 +53,7 @@
     "title": "Struggling with chemistry",
     "isTutor": false,
     "description": "I am currently studying for my chemistry exam, I need someone to study with me and keep me motivated",
-    "subjectId": 3
+    "subjectId": 4
   },
   {
     "studentId": 4,
@@ -61,7 +61,7 @@
     "title": "I want a chemistry buddy",
     "isTutor": true,
     "description": "I enjoy studying chemistry and would like to study with another student",
-    "subjectId": 3
+    "subjectId": 4
   },
   {
     "studentId": 9,
@@ -69,7 +69,7 @@
     "title": "Tutor for maths",
     "isTutor": true,
     "description": "I need a tutor who would push in Math and challenge me to do well in this subject",
-    "subjectId": 1
+    "subjectId": 2
   },
   {
     "studentId": 7,
@@ -77,7 +77,7 @@
     "title": " Help me understand Jquery",
     "isTutor": false,
     "description": "I want to code with anyone else struggling in to understand Jquery. It can't just be me, right?",
-    "subjectId": 6
+    "subjectId": 7
   },
   {
     "studentId": 9,
@@ -85,7 +85,7 @@
     "title": "I want a buddy who likes journalism",
     "isTutor": false,
     "description": "I want to get a career in journalism, I want advice on what direction to take",
-    "subjectId": 2
+    "subjectId": 3
   },
   {
     "studentId": 2,
@@ -93,7 +93,7 @@
     "title": " Astrology",
     "isTutor": false,
     "description": "I would like to learn more about astrology, would you like to be my buddy",
-    "subjectId": 4
+    "subjectId": 5
   },
   {
     "studentId": 9,
@@ -101,7 +101,7 @@
     "title": " I want an astrology tutor",
     "isTutor": true,
     "description": "I am struggling with the understanding some of the main principles of my university course. Please help!",
-    "subjectId": 4
+    "subjectId": 5
   },
   {
     "studentId": 7,
@@ -109,7 +109,7 @@
     "title": "I want a tutor skilled at using the guitar",
     "isTutor": true,
     "description": "I just started learning the guitar, I want to learn fast to perform for my school play",
-    "subjectId": 5
+    "subjectId": 6
   },
   {
     "studentId": 4,
@@ -117,7 +117,7 @@
     "title": " Help me understand Jquery",
     "isTutor": false,
     "description": "I want to code with anyone else struggling in to understand Jquery. It can't just be me, right?",
-    "subjectId": 6
+    "subjectId": 7
   },
   {
     "studentId": 7,
@@ -125,6 +125,6 @@
     "title": "I need help with algebra",
     "isTutor": true,
     "description": "I need a buddy who can help me learn algebra,I am struggling so I would any help",
-    "subjectId": 1
+    "subjectId": 2
   }
 ]
