@@ -1,5 +1,7 @@
 <main class="uk-animation-fade">
-  <h1>Welcome {{userDetails.firstName}} to your Tutor Dashboard</h1>
+  <h1 class="welcome">Welcome to your Tutor Dashboard!
+    {{userDetails.firstName}}
+  </h1>
   {{#if (isEqualTo userDetails.isProfileComplete 0)}}
     <button id="complete-profile-btn">Complete Profile</button>
   {{/if}}

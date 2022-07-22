@@ -110,6 +110,7 @@ body {
   transition: ease-in-out 0.3s;
   border-radius: 8px;
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+  margin-bottom: 20px;
 }
 
 .btn-href {
@@ -325,4 +326,59 @@ h1 {
   padding: 5px;
   padding-left: 15px;
   border-radius: 10px;
+}
+
+/* dashboard board */
+
+.welcome {
+  font-family: "Raleway", sans-serif;
+  margin-top: 50px;
+  text-align: center;
+  font-size: 50px;
+  font-weight: 700;
+}
+
+.dash-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+.dash-card {
+  width: 50%;
+  text-align: center;
+}
+
+.dash-ad {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.create {
+  color: var(--black) !important;
+  font-size: 13px;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-radius: 8px;
+}
+.create-bt {
+  color: var(--black) !important;
+  font-size: 13px;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-radius: 8px;
+}
+
+.btn-create {
+  color: var(--black) !important;
+  text-decoration: none !important;
+}
+
+.btn-create-bt {
+  color: var(--white) !important;
+  text-decoration: none !important;
 }
