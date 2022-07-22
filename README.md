@@ -8,7 +8,7 @@ We allow students to find their perfect match within their are or remotely. We a
 
 # Links To The Project
 
-Feel free to check out the Heroku link for Buddy Up [Deployed Heroku URL](https://github.com/roxywasiak/buddy-up)
+Feel free to check out the Heroku link for Buddy Up [Deployed Heroku URL](https://limitless-citadel-05906.herokuapp.com/)
 
 Please click here to view our [Deployed GitHub URL](https://github.com/roxywasiak/buddy-up)
 
