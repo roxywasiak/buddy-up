@@ -112,7 +112,10 @@ const renderSessionsPage = async (req, res) => {
         where: {
           studentId: req.session.user.id,
         },
-        include: [{ model: Student }, { model: Ad }],
+        include: [
+          { model: Student },
+          { model: Ad, include: [{ model: Subject }, { model: Student }] },
+        ],
       });
 
       const buddyResponsesData = buddyResponses.map((each) => {
@@ -129,7 +132,11 @@ const renderSessionsPage = async (req, res) => {
         where: {
           adId: adIds,
         },
-        include: [{ model: Student }, { model: Tutor }],
+        include: [
+          { model: Student },
+          { model: Tutor },
+          { model: Ad, include: [{ model: Subject }] },
+        ],
       });
       const adResponseData = adResponses.map((each) => {
         return each.get({ plain: true });
@@ -160,7 +167,7 @@ const renderSessionsPage = async (req, res) => {
         return each.get({ plain: true });
       });
     }
-    console.log(userResponses, receivedResponses, userType);
+    // console.log(userResponses);
     return res.render("sessions", {
       currentPage: "sessions",
       userResponses,

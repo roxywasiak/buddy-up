@@ -1,5 +1,5 @@
 <div class="entry">
-  {{#if (isEqualTo userType student)}}
+  {{#if (isEqualTo parent.userType "student")}}
     <div class="uk-card uk-card-default uk-width-1-2@m ads-card">
       <div class="uk-card-header">
         <div class="uk-grid-small" uk-grid>
@@ -32,7 +32,7 @@
       </div>
     </div>
   {{/if}}
-  {{#if (isEqualTo userType tutor)}}
+  {{#if (isEqualTo parent.userType "tutor")}}
     <div id="student-card">
       <div class="uk-card uk-card-default uk-width-1-2@m">
         <div class="uk-card-header">

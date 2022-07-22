@@ -1,37 +1,37 @@
 {{> privateNavBar }}
 
- <main id="sessions-section" class="uk-container uk-width-1-1">
-   <div id="mainSessions">
-         <h1>My requests</h1>
-          <hr class="uk-divider-icon" />
+<main id="sessions-section" class="uk-container uk-width-1-1">
+  <div id="mainSessions">
+    <h1>My requests</h1>
+    <hr class="uk-divider-icon" />
 
-  {{#if userResponses}}
-      {{#each userResponses}}
-{{> userRequests}}
-      {{/each}}
- 
-  {{else}}
-<div class="uk-alert-warning" uk-alert>
-    <a class="uk-alert-close" uk-close></a>
-    <p>Sorry, there are currently no user requests.</p>
-</div>
-  {{/if}}
-</div>
+    {{#if userResponses}}
+    {{#each userResponses}}
+    {{> userRequests parent=../this}}
+    {{/each}}
+
+    {{else}}
+    <div class="uk-alert-warning" uk-alert>
+      <a class="uk-alert-close" uk-close></a>
+      <p>Sorry, there are currently no user requests.</p>
+    </div>
+    {{/if}}
+  </div>
   <div id="receivedRequests">
-         <h1>Received requests</h1>
-          <hr class="uk-divider-icon" />
+    <h1>My Ad Responses</h1>
+    <hr class="uk-divider-icon" />
 
-  {{#if receivedResponses}}
-      {{#each receivedResponses}}
-          {{> receivedRequests}}
-      {{/each}}
+    {{#if receivedResponses}}
+    {{#each receivedResponses}}
+    {{> receivedRequests}}
+    {{/each}}
 
-  {{else}}
-<div class="uk-alert-warning" uk-alert>
-    <a class="uk-alert-close" uk-close></a>
-    <p>Sorry, there are currently no user responses.</p>
-</div>
-  {{/if}}
+    {{else}}
+    <div class="uk-alert-warning" uk-alert>
+      <a class="uk-alert-close" uk-close></a>
+      <p>Sorry, there are currently no user responses.</p>
+    </div>
+    {{/if}}
 
-</div>
+  </div>
 </main>
