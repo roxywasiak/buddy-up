@@ -1,4 +1,4 @@
-<div class="entry">
+<div class="entry uk-animation-fade">
   {{#if (isEqualTo userType student)}}
     <div class="uk-card uk-card-default uk-width-1-2@m ads-card">
       <div class="uk-card-header">
@@ -64,7 +64,12 @@
                 uk-icon="facebook"
               ></a>
               <a class="uk-icon-button" uk-icon="youtube"></a>
-              <button class="uk-button uk-button-primary uk-button-small" style="border-radius: 10px" id="messagesBtn" data-id={{id}}>Messages</button>
+              <button
+                class="uk-button uk-button-primary uk-button-small"
+                style="border-radius: 10px"
+                id="messagesBtn"
+                data-id={{id}}
+              >Messages</button>
             </div>
           </div>
         </div>
@@ -75,9 +80,7 @@
         </div>
         <div class="uk-card-footer">
           {{#if (isEqualTo status "pending")}}
-            <div
-              class="uk-button uk-button-secondary"
-            >pending</div>
+            <div class="uk-button uk-button-secondary">pending</div>
           {{/if}}
           {{#if (isEqualTo status "completed")}}
             <div class="uk-button uk-button-primary" disabled>Completed</div>
