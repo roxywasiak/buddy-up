@@ -11,7 +11,10 @@
       {{/each}}
  
   {{else}}
-
+<div class="uk-alert-warning" uk-alert>
+    <a class="uk-alert-close" uk-close></a>
+    <p>Sorry, there are currently no user requests.</p>
+</div>
   {{/if}}
 </div>
   <div id="receivedRequests">
@@ -24,7 +27,10 @@
       {{/each}}
 
   {{else}}
-
+<div class="uk-alert-warning" uk-alert>
+    <a class="uk-alert-close" uk-close></a>
+    <p>Sorry, there are currently no user responses.</p>
+</div>
   {{/if}}
 
 </div>

@@ -159,7 +159,7 @@ const renderSessionsPage = async (req, res) => {
         return each.get({ plain: true });
       });
     }
-    console.log(userResponses, userType);
+    console.log(userResponses, receivedResponses, userType);
     return res.render("sessions", {
       currentPage: "sessions",
       userResponses,
