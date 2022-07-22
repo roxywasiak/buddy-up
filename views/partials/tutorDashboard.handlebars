@@ -2,6 +2,9 @@
   <h1 class="welcome">Welcome to your Tutor Dashboard!
     {{userDetails.firstName}}
   </h1>
+  <h2>{{{dateFormat "Qo" timeStamp}}}
+    {{{dateFormat "MMMM" timeStamp}}}
+    {{{dateFormat "YY" timeStamp}}}</h2>
   {{#if (isEqualTo userDetails.isProfileComplete 0)}}
     <button id="complete-profile-btn">Complete Profile</button>
   {{/if}}
