@@ -60,10 +60,14 @@
         </div>
         <div class="uk-card-footer">
           {{#if (isEqualTo status "pending")}}
-            <div class="uk-button uk-button-secondary">pending</div>
+            <div
+              class="uk-button uk-button-primary"
+              id="acceptButton"
+              data-response={{id}}
+            >pending</div>
           {{/if}}
           {{#if (isEqualTo status "completed")}}
-            <div class="uk-button uk-button-primary" disabled>Completed</div>
+            <div class="uk-button uk-button-primary">Completed</div>
           {{/if}}
         </div>
       </div>
