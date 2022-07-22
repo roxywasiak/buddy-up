@@ -41,6 +41,7 @@
                     </div>
                     <div class="uk-margin">
                         <select id="updateBudgetChoice" class="uk-select" >
+                            <option value="" disabled>Budget</option>
                             <option value=1 {{#if (isEqualTo userDetails.priceId 1)}} selected {{/if}}>Low</option>
                             <option value=2 {{#if (isEqualTo userDetails.priceId 2)}} selected {{/if}}>Medium</option>
                             <option value=3 {{#if (isEqualTo userDetails.priceId 3)}} selected {{/if}}>High</option>

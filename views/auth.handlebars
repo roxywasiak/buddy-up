@@ -184,7 +184,7 @@
                             type="checkbox"
                             id="termsAndConditions"
                           />
-                          I agree the Terms and Conditions.</label>
+                          I agree the <a href="#modal-example" uk-toggle>Terms and Conditions.</a></label>
                       </div>
                       <div id="signup-error"></div>
                       <div class="uk-margin">
@@ -206,5 +206,15 @@
         </div>
       </div>
     </div>
+  </div>
+
+    <!-- This is the modal -->
+  <div id="modal-example" uk-modal>
+      <div class="uk-modal-dialog uk-modal-body">
+          <p>{{> termsAndConditions}}</p>
+          <p class="uk-text-right">
+              <button class="uk-button uk-button-default uk-modal-close" type="button">Close</button>
+          </p>
+      </div>
   </div>
 </main>
