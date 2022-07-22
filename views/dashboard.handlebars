@@ -1,0 +1,8 @@
+
+{{#if  (isEqualTo userDetails.userType "student") }}
+{{> privateNavBar }}
+  {{> studentDashboard }}
+{{else}}
+{{> tutorNavBar }}
+  {{> tutorDashboard }}
+{{/if}}

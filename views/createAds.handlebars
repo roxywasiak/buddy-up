@@ -1,0 +1,131 @@
+{{> privateNavBar }}
+
+       <main>
+      <div
+        class="uk-section uk-section-muted uk-flex uk-flex-middle uk-animation-fade"
+        uk-height-viewport
+      >
+        <div class="uk-width-1-1">
+          <div class="uk-container">
+            <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid>
+              <div class="uk-width-1-1@m">
+                <div
+                  class="uk-margin uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large"
+                >
+                  <h3 class="uk-card-title uk-text-center">Create an advert</h3>
+                  <ul
+                    class="uk-tab uk-flex-center"
+                    uk-grid
+                    uk-switcher="animation: uk-animation-fade"
+                  >
+                    <li class="uk-hidden">Forgot Password?</li>
+                  </ul>
+                  <ul class="uk-switcher">
+                    <li>
+                      <h4 class="uk-text-center">
+                        Please fill in the following details
+                      </h4>
+                      <!--ABS FORM SECTION-->
+                      <!-- title -->
+                      <form class="uk-form-stacked uk-margin">
+                        <div class="card-info uk-margin">
+                          <label
+                            class="uk-form-label uk-text-bold"
+                            for="form-stacked-text"
+                            >Title
+                          </label>
+                          <div class="uk-form-controls">
+                            <input
+                              id="ads-title"
+                              class="uk-input"
+                              class="form-stacked-text"
+                              type="text"
+                              placeholder="Enter title..."
+                            />
+                          </div>
+                        </div>
+
+                        <!-- description  -->
+                        <div class="card-info uk-margin">
+                          <label
+                            class="uk-form-label uk-text-bold"
+                            for="form-stacked-text"
+                            >Description
+                          </label>
+                          <div class="uk-form-controls">
+                            <div class="uk-margin">
+                              <textarea
+                                id="ads-description"
+                                class="uk-textarea"
+                                rows="5"
+                                type="text"
+                                placeholder="Enter Description..."
+                              ></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- form subject section  -->
+                        <div class="uk-margin">
+                          <label
+                            class="uk-form-label uk-text-bold"
+                            for="form-horizontal-select"
+                            >Subject</label
+                          >
+                          <div class="uk-form-controls">
+                            <select
+                              id="ads-subject"
+                              class="uk-select"
+                              uk-form-custom="target: true"
+                              id="form-horizontal-select"
+                            >
+                            {{#each subjects}}
+                            <option value={{id}}>{{subjectName}}</option>
+                            {{/each}}
+                          
+                            </select>
+                          </div>
+                        </div>
+
+                        <!-- budget section  -->
+                        <div class="uk-margin">
+                          <label
+                            class="uk-form-label uk-text-bold"
+                            for="form-horizontal-select"
+                            >Budget</label
+                          >
+                          <div class="uk-form-controls">
+                            <select
+                              id="ads-budget"
+                              class="uk-select"
+                              class="form-horizontal-select"
+                            >
+                            {{#each prices}}
+                            <option id="subject-choices" value={{id}} >{{budget}} £{{price}}</option>
+                            {{/each}}
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="uk-card-body" id="btn-container">
+                         
+
+                          <button
+                            id="ads-btn"
+                            class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom"
+                            type="submit"
+                          >
+                            Submit
+                          </button>
+                          <div id="error-message" class="uk-text-center uk-align-center"></div>
+                        </div>
+                      </form>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>

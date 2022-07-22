@@ -1,0 +1,58 @@
+{{> privateNavBar }}
+
+
+
+
+  <main>
+      <!-- MY ADS CARD -->
+      <section class="my-ads-container uk-animation-fade">
+        <h1 class="title">My Ads</h1>
+
+        <div class="uk-flex uk-flex-center ads-flex-container">
+      {{#each userAds as | ad | }}
+                       {{> adCard}}
+                            {{/each}}
+                          
+        </div>
+      </section>
+
+      <!-- RECEIVED ADS SECTION -->
+      <section class="my-ads-container">
+        <h1 class="title"> Search Ads</h1>
+
+
+   <!-- SEARCH ADS  -->
+                         <div class="uk-margin uk-animation-fade search ">
+                         
+                          <div class="uk-form-controls">
+                            <select
+                         id="adsSearchDiv"
+                              class="uk-select"
+                              uk-form-custom="target: true"
+                              id="form-horizontal-select"
+                            >
+                            <option id="searchAds" value="">Search By Subject</option>
+                            {{#each subjects}}
+                            <option id="searchAds" value={{id}}>{{subjectName}}</option>
+                            {{/each}}
+
+                            <!-- RECEIVED ADS SECTION -->
+
+
+                          
+                            </select>
+                          </div>
+                        </div>
+
+                              <section class="my-ads-container">
+
+        <div class="uk-flex uk-flex-center uk-animation-fade ads-flex-container" id="subjectAds">
+          <!-- card starts here -->
+            {{!-- {{#each filteredAdsBySubject as | ad | }}
+                       {{> receivedAdCard}}
+                       
+                            {{/each}} --}}
+      
+        </div>
+      </section>
+    </main>

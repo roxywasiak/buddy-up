@@ -1,0 +1,31 @@
+{{> privateNavBar }}
+
+ <main id="sessions-section" class="uk-container uk-animation-fade uk-width-1-1">
+   <div id="mainSessions">
+         <h1>My requests</h1>
+          <hr class="uk-divider-icon" />
+
+  {{#if userResponses}}
+      {{#each userResponses}}
+{{> userRequests}}
+      {{/each}}
+ 
+  {{else}}
+
+  {{/if}}
+</div>
+  <div id="receivedRequests">
+         <h1>Received requests</h1>
+          <hr class="uk-divider-icon" />
+
+  {{#if receivedResponses}}
+      {{#each receivedResponses}}
+          {{> receivedRequests}}
+      {{/each}}
+
+  {{else}}
+
+  {{/if}}
+
+</div>
+</main>
