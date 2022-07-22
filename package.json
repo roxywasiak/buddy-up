@@ -4,7 +4,7 @@
   "description": "a full stack application where a user can be matched with a study buddy",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index.js",
+    "start": "npm run seeds && node src/index.js",
     "dev": "nodemon src/index.js",
     "seeds": "node src/seeds/seed.js"
   },
@@ -24,6 +24,7 @@
     "bcrypt": "^5.0.1",
     "connect-session-sequelize": "^7.1.4",
     "country-state-city": "^3.0.1",
+    "date-fns": "^2.29.1",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "express-handlebars": "^6.0.6",

@@ -1,8 +1,67 @@
+<main class="uk-animation-fade">
+  <h1 class="welcome">Welcome to your Student Dashboard
+    {{userDetails.firstName}}!
+  </h1>
+  <h2 class="h2">{{{getCurrentDate "123"}}}
+  </h2>
 
-<main>
-    <h1>Welcome {{userDetails.firstName}} to your Student Dashboard</h1>
-    {{#if  (isEqualTo userDetails.isProfileComplete 0) }}
-      <button id="complete-profile-btn">Complete Profile</button>
-    {{/if}}
+  <!-- MAIN-->
 
+  <div class="div-flex-container">
+    <section class="dash-container">
+
+      <div
+        class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin dash-card"
+        uk-grid
+        uk-scrollspy="cls: uk-animation-slide-left; repeat: true"
+      >
+        <div class="uk-card-media-left uk-cover-container">
+          <img src="./assets/images/ads.jpg" alt="" uk-cover />
+          <canvas width="600" height="400"></canvas>
+        </div>
+
+        {{#if (isEqualTo userDetails.isProfileComplete 0)}}
+          <div class="uk-card-body dash-ad">
+            <h3 class="uk-card-title"> Your profile</h3>
+            <p>
+              Fill in your profile details before you using the application
+            </p>
+            <p> Click start, to start to complete!</p>
+            <div>
+              <button
+                class="uk-button uk-button-primary create-bt"
+                id="complete-profile-btn"
+              >
+                Start</button>
+            </div>
+          </div>
+        {{/if}}
+
+      </div>
+
+      <div
+        class="uk-card uk-card-default uk-grid-collapse uk-card-secondary uk-child-width-1-2@s uk-margin dash-card"
+        uk-grid
+        uk-scrollspy="cls: uk-animation-slide-right; repeat: true"
+      >
+        <div class="uk-flex-last@s uk-card-media-right uk-cover-container">
+          <img src="./assets/images/sessions.jpg" alt="" uk-cover />
+          <canvas width="600" height="400"></canvas>
+        </div>
+        <div>
+          <div class="uk-card-body dash-ad">
+            <h3 class="uk-card-title">What is an Ad</h3>
+            <p>
+              Ads allow you to make a request to arrange a tutor or buddy meet
+              up</p>
+            <p> Click create, to begin your journey today!</p>
+            <button class="uk-button uk-button-primary create">
+              <a href="/createAds" class="btn-create">Start</a></button>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+  </div>
 </main>

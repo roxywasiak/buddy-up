@@ -14,10 +14,10 @@
     "long": -86.810356
   },
   {
-    "firstName": "Bob",
-    "lastName": "Smith",
-    "email": "bobsmith@email.com",
-    "password": "secret123",
+    "firstName": "Suraj",
+    "lastName": "Verma",
+    "email": "suraj@email.com",
+    "password": "pass123",
     "socialMedia": "https://birmingham.bootcampcontent.com/users/sign_in",
     "calendlyLink": "https://calendly.com/",
     "location": "Birmingham",

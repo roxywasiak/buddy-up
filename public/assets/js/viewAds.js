@@ -67,7 +67,7 @@ const generateCards = (data, responded) => {
     <p class="uk-text-small">Subject: ${subject.subjectName}</p>
   </div>
   <div class="uk-card-footer">
-      <p class="uk-text-small">Budget: ${price.budget}</p>
+      <p class="uk-text-small">${price.budget}:£${price.price}</p>
   </div>
   <br />
   <br />
