@@ -9,6 +9,7 @@ const review = require("./review");
 const subject = require("./subject");
 const tutorSubject = require("./tutorSubject");
 const tutor = require("./tutor");
+const messages = require("./messages");
 
 const router = Router();
 router.use("/ad", ad);
@@ -18,7 +19,6 @@ router.use("/response", response);
 router.use("/review", review);
 router.use("/subject", subject);
 router.use("/tutorSubject", tutorSubject);
-// router.use("/studentDashboard", studentDashboard);
-// router.use("/tutorDashboard", tutorDashboard);
+router.use("/messages", messages);
 
 module.exports = router;
