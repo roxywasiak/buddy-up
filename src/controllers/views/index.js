@@ -103,14 +103,14 @@ const renderSessionsPage = async (req, res) => {
 
     let userResponses;
     let receivedResponses;
-
-    const { userType } = req.session.user;
+    const allData = [];
+    const { userType, id } = req.session.user;
 
     if (userType === "student") {
       //find buddy from response
       const buddyResponses = await Response.findAll({
         where: {
-          studentId: req.session.user.id,
+          studentId: id,
         },
         include: [{ model: Student }, { model: Ad }],
       });
@@ -120,7 +120,7 @@ const renderSessionsPage = async (req, res) => {
       });
       //find user who created the ad
       const getAd = await Ad.findAll({
-        where: { studentId: req.session.user.id },
+        where: { studentId: id },
       });
 
       const adIds = getAd.map(({ dataValues }) => dataValues.id);
@@ -137,30 +137,38 @@ const renderSessionsPage = async (req, res) => {
 
       userResponses = buddyResponsesData;
       receivedResponses = adResponseData;
-    }
-
-    if (userType === "tutor") {
+    } else {
       //find Tutor
-      const tutorResponse = await Response.findAll({
+      const buddyResponses = await Response.findAll({
         where: {
-          tutorId: req.session.user.id,
-          status: "completed",
+          tutorId: id,
         },
+        include: [{ model: Student }, { model: Tutor }, { model: Ad }],
       });
 
-      const tutorResponseData = tutorResponse.map(
-        ({ dataValues }) => dataValues.adId
-      );
-
-      const userResponsesData = await Ad.findAll({
-        where: { id: tutorResponseData },
-        include: [{ model: Student }],
-      });
-      userResponses = userResponsesData.map((each) => {
+      const rawBuddyResponses = buddyResponses.map((each) => {
         return each.get({ plain: true });
       });
+
+      const addData = async (item) => {
+        const studentAdData = await Ad.findAll({
+          where: {
+            id: item.adId,
+          },
+          raw: true,
+          include: [{ model: Student }],
+        });
+
+        const newData = Object.assign(item, studentAdData);
+        console.log(newData);
+        allData.push(newData);
+      };
+
+      rawBuddyResponses.forEach(addData);
+
+      console.log(allData);
+      userResponses = buddyResponses;
     }
-    console.log(userResponses, userType);
     return res.render("sessions", {
       currentPage: "sessions",
       userResponses,

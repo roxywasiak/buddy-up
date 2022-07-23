@@ -14,9 +14,12 @@
 
   {{/if}}
 </div>
+{{#if  (isEqualTo userType "student") }}
   <div id="receivedRequests">
          <h1>Received requests</h1>
           <hr class="uk-divider-icon" />
+
+
 
   {{#if receivedResponses}}
       {{#each receivedResponses}}
@@ -25,6 +28,7 @@
 
   {{else}}
 
+  {{/if}}
   {{/if}}
 
 </div>
