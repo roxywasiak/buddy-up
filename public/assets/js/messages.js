@@ -9,16 +9,18 @@ const createMessage = async (event) => {
 
   payload = { messageContent, responseId };
 
-  const response = await fetch("/api/messages", {
-    method: "POST",
-    body: JSON.stringify(payload),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+  if (messageContent) {
+    const response = await fetch("/api/messages", {
+      method: "POST",
+      body: JSON.stringify(payload),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
-  if (response.ok) {
-    window.location.reload();
+    if (response.ok) {
+      window.location.reload();
+    }
   }
 };
 
