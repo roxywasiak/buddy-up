@@ -9,7 +9,7 @@
 
   <div class="div-flex-container">
     <section class="dash-container">
-
+        {{#if (isEqualTo userDetails.isProfileComplete 0)}}
       <div
         class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin dash-card"
         uk-grid
@@ -20,7 +20,7 @@
           <canvas width="600" height="400"></canvas>
         </div>
 
-        {{#if (isEqualTo userDetails.isProfileComplete 0)}}
+
           <div class="uk-card-body dash-ad">
             <h3 class="uk-card-title"> Your profile</h3>
             <p>
@@ -35,10 +35,10 @@
                 Start</button>
             </div>
           </div>
-        {{/if}}
+
 
       </div>
-
+        {{/if}}
       <div
         class="uk-card uk-card-default uk-grid-collapse uk-card-secondary uk-child-width-1-2@s uk-margin dash-card"
         uk-grid
