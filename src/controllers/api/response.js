@@ -39,11 +39,12 @@ const updateResponse = async (req, res) => {
       status === "completed" ||
       status === "rejected"
     ) {
+      console.log("HERE");
       const updatedResponse = await Response.update(
         { status },
         { where: { id } }
       );
-      return res.json(updatedResponse);
+      return res.json({ success: true });
     }
   } catch (error) {
     console.log(`[ERROR]: Failed to create Response | ${error.message}`);
